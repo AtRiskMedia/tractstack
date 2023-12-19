@@ -1,0 +1,11 @@
+{
+  "name": "@tractstack/types",
+  "version": "0.1.0",
+  "license": "FSL-1.0-MIT",
+  "dependencies": {
+    "tslib": "^2.3.0"
+  },
+  "type": "commonjs",
+  "main": "./src/index.js",
+  "typings": "./src/index.d.ts"
+}
