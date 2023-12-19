@@ -8,9 +8,6 @@
   },
   "files": [],
   "include": [],
-  "paths": {
-    "@tractstack/helpers": ["libs/helpers/src/index.ts"]
-  },
   "references": [
     {
       "path": "./tsconfig.lib.json"

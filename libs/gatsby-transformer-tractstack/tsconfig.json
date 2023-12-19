@@ -9,11 +9,13 @@
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true
   },
+  "paths": {
+    "@tractstack/gatsby-transformer-tractstack": [
+      "libs/gatsby-transformer-tractstack/src/index.ts"
+    ]
+  },
   "files": [],
   "include": [],
-  "paths": {
-    "@tractstack/types": ["libs/types/src/index.ts"]
-  },
   "references": [
     {
       "path": "./tsconfig.lib.json"

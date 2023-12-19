@@ -15,6 +15,12 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@tractstack/drupal-react-oauth-provider": [
+        "libs/drupal-react-oauth-provider/src/index.ts"
+      ],
+      "@tractstack/gatsby-transformer-tractstack": [
+        "libs/gatsby-transformer-tractstack/src/index.ts"
+      ],
       "@tractstack/helpers": ["libs/helpers/src/index.ts"],
       "@tractstack/nivo": ["libs/nivo/src/index.ts"],
       "@tractstack/types": ["libs/types/src/index.ts"]
