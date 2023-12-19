@@ -2,7 +2,10 @@
   "name": "@tractstack/source",
   "version": "0.1.0",
   "license": "FSL-1.0-MIT",
-  "scripts": {},
+  "scripts": {
+    "format": "nx format:write",
+    "build": "nx run-many --targets=build"
+  },
   "private": true,
   "dependencies": {
     "react": "18.2.0",
