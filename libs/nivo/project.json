@@ -13,7 +13,7 @@
       "executor": "@nx/rollup:rollup",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "dist/libs/nivo",
+        "outputPath": "libs/nivo/dist",
         "tsConfig": "libs/nivo/tsconfig.lib.json",
         "project": "libs/nivo/package.json",
         "entryFile": "libs/nivo/src/index.ts",
