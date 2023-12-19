@@ -11,7 +11,6 @@ if (typeof global !== `undefined`)
   global.Buffer = global.Buffer || require(`buffer`).Buffer;
 
 export function useInterval(callback: any, delay: number | null) {
-  console.log(22);
   const savedCallback: any = useRef();
   useEffect(() => {
     savedCallback.current = callback;
