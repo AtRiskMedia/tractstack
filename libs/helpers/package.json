@@ -9,5 +9,5 @@
     "atriskmedia"
   ],
   "main": "./dist/index.esm.js",
-  "typings": "./dist/index.esm.d.ts"
+  "types": "./dist/index.esm.d.ts"
 }
