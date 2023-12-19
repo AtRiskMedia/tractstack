@@ -1,63 +1,65 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars, no-unused-vars
-import React, { useRef, useEffect } from "react"
-import * as ReactDOMServer from "react-dom/server"
+import React, { useRef, useEffect } from 'react';
+import * as ReactDOMServer from 'react-dom/server';
 
-import { SvgBreaks, SvgPanes, SvgModals } from "./shapes"
-import { lispLexer } from "./lexer"
-import { concierge } from "./concierge"
-import { IStoryFragmentId } from "./types"
+import { SvgBreaks, SvgPanes, SvgModals } from './shapes';
+import { lispLexer } from './lexer';
+import { concierge } from './concierge';
+import { IStoryFragmentId } from './types';
 
-global.Buffer = global.Buffer || require(`buffer`).Buffer
+if (typeof global !== `undefined`)
+  global.Buffer = global.Buffer || require(`buffer`).Buffer;
 
 export function useInterval(callback: any, delay: number | null) {
-  const savedCallback: any = useRef()
+  console.log(22);
+  const savedCallback: any = useRef();
   useEffect(() => {
-    savedCallback.current = callback
-  }, [callback])
+    savedCallback.current = callback;
+  }, [callback]);
   useEffect(() => {
     function tick() {
-      savedCallback.current()
+      savedCallback.current();
     }
     if (delay !== null) {
-      const id = setInterval(tick, delay)
-      return () => clearInterval(id)
+      const id = setInterval(tick, delay);
+      return () => clearInterval(id);
     }
-  }, [delay])
+  }, [delay]);
 }
 
 // from https://tobbelindstrom.com/blog/measure-scrollbar-width-and-height/
 export const getScrollbarSize = () => {
-  const { body } = document
-  const scrollDiv = document.createElement(`div`)
+  const { body } = document;
+  const scrollDiv = document.createElement(`div`);
 
   // Append element with defined styling
   scrollDiv.setAttribute(
     `style`,
-    `width: 1337px; height: 1337px; position: absolute; left: -9999px; overflow: scroll;`,
-  )
-  body.appendChild(scrollDiv)
+    `width: 1337px; height: 1337px; position: absolute; left: -9999px; overflow: scroll;`
+  );
+  body.appendChild(scrollDiv);
   // Collect width & height of scrollbar
-  const scrollbarWidth = scrollDiv.offsetWidth - scrollDiv.clientWidth
+  const scrollbarWidth = scrollDiv.offsetWidth - scrollDiv.clientWidth;
   // Remove element
-  body.removeChild(scrollDiv)
-  return scrollbarWidth
-}
+  body.removeChild(scrollDiv);
+  return scrollbarWidth;
+};
 
 export const viewportWidth: any = {
   mobile: 600,
   tablet: 1080,
   desktop: 1920,
   server: 0,
-}
+};
 
 export const SocialIcons = ({
   name,
   ariaHidden = true,
   className = ``,
 }: {
-  name: string
-  ariaHidden: boolean
-  className: string
+  name: string;
+  ariaHidden: boolean;
+  className: string;
 }) => {
   switch (name) {
     case `Twitter`:
@@ -70,7 +72,7 @@ export const SocialIcons = ({
         >
           <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" />
         </svg>
-      )
+      );
 
     case `GitLab`:
       return (
@@ -82,7 +84,7 @@ export const SocialIcons = ({
         >
           <path d="m 361.18739,157.75722 -0.49207,-1.29831 -47.63959,-128.362872 a 12.411079,12.813709 0 0 0 -4.90247,-6.09639 12.75735,13.171214 0 0 0 -14.57983,0.809088 12.75735,13.171214 0 0 0 -4.22815,6.623239 L 257.17853,131.03847 H 126.92599 L 94.75925,29.431975 a 12.502203,12.907789 0 0 0 -4.228152,-6.642055 12.75735,13.171214 0 0 0 -14.579829,-0.809088 12.520428,12.926605 0 0 0 -4.902467,6.09639 l -47.730714,128.306428 -0.473844,1.29831 a 88.46311,91.332957 0 0 0 29.341904,105.55787 l 0.164024,0.1317 0.437395,0.31988 72.571093,56.10937 35.90283,28.05469 21.86974,17.0473 a 14.707403,15.184527 0 0 0 17.7874,0 l 21.86974,-17.0473 35.90282,-28.05469 73.0085,-56.44806 0.18224,-0.15053 a 88.499559,91.370589 0 0 0 29.30546,-105.44497 z" />
         </svg>
-      )
+      );
 
     case `GitHub`:
       return (
@@ -98,12 +100,12 @@ export const SocialIcons = ({
             clipRule="evenodd"
           />
         </svg>
-      )
+      );
 
     default:
-      return <></>
+      return <></>;
   }
-}
+};
 
 export const Svg = (shapeName: string, viewportKey: string, id: string) => {
   const shapeData =
@@ -111,10 +113,10 @@ export const Svg = (shapeName: string, viewportKey: string, id: string) => {
     typeof SvgPanes[shapeName][viewportKey] !== `undefined`
       ? SvgPanes[shapeName][viewportKey]
       : typeof SvgBreaks[shapeName] !== `undefined`
-        ? SvgBreaks[shapeName]
-        : typeof SvgModals[shapeName] !== `undefined`
-          ? SvgModals[shapeName]
-          : null
+      ? SvgBreaks[shapeName]
+      : typeof SvgModals[shapeName] !== `undefined`
+      ? SvgModals[shapeName]
+      : null;
   return (
     shapeData && (
       <svg
@@ -130,30 +132,30 @@ export const Svg = (shapeName: string, viewportKey: string, id: string) => {
         </g>
       </svg>
     )
-  )
-}
+  );
+};
 
 export const SvgImageMaskPayload = (
   shapeName: string,
   thisId: string,
-  viewportKey: string,
+  viewportKey: string
 ) => {
-  const shape = Svg(shapeName, viewportKey, thisId)
+  const shape = Svg(shapeName, viewportKey, thisId);
   const svgString =
     typeof shape === `object`
       ? ReactDOMServer.renderToStaticMarkup(shape)
-      : false
+      : false;
   const b64 =
     typeof svgString === `string`
       ? Buffer.from(svgString, `utf8`).toString(`base64`)
-      : null
-  const dataUri = b64 && `data:image/svg+xml;base64,${b64}`
+      : null;
+  const dataUri = b64 && `data:image/svg+xml;base64,${b64}`;
   const css = dataUri
     ? `-webkit-mask-image: url("${dataUri}"); mask-image: url("${dataUri}"); ` +
       `mask-repeat: no-repeat; -webkit-mask-size: 100% AUTO; mask-size: 100% AUTO; `
-    : ``
-  return css
-}
+    : ``;
+  return css;
+};
 
 export const SvgShapeOutsidePayload = (
   shapeName: string,
@@ -161,27 +163,27 @@ export const SvgShapeOutsidePayload = (
   thisId: string,
   paneHeight: number,
   isModal: boolean = false,
-  modalPayload: any | boolean = false,
+  modalPayload: any | boolean = false
 ) => {
-  const thisWidth = viewportWidth[viewportKey]
+  const thisWidth = viewportWidth[viewportKey];
   const shapeData =
     !modalPayload &&
     typeof SvgPanes[shapeName] !== `undefined` &&
     typeof SvgPanes[shapeName][viewportKey] !== `undefined`
       ? SvgPanes[shapeName][viewportKey]
       : typeof modalPayload === `object` &&
-          typeof SvgModals[shapeName] !== `undefined`
-        ? SvgModals[shapeName]
-        : null
-  if (shapeData === null) return null
+        typeof SvgModals[shapeName] !== `undefined`
+      ? SvgModals[shapeName]
+      : null;
+  if (shapeData === null) return null;
   const multiplier: number = modalPayload?.zoomFactor
     ? parseFloat(parseFloat(modalPayload.zoomFactor).toFixed(4))
-    : 1
-  const width = parseInt(shapeData.viewBox[0]) * multiplier
-  const height = parseInt(shapeData.viewBox[1]) * multiplier
-  const cut = parseInt(shapeData.cut) * multiplier
-  const paddingLeft = parseInt(modalPayload?.paddingLeft) * multiplier || 0
-  const paddingTop = parseInt(modalPayload?.paddingTop) * multiplier || 0
+    : 1;
+  const width = parseInt(shapeData.viewBox[0]) * multiplier;
+  const height = parseInt(shapeData.viewBox[1]) * multiplier;
+  const cut = parseInt(shapeData.cut) * multiplier;
+  const paddingLeft = parseInt(modalPayload?.paddingLeft) * multiplier || 0;
+  const paddingTop = parseInt(modalPayload?.paddingTop) * multiplier || 0;
   const viewBox = (!modalPayload && {
     left: `0 0 ${cut} ${width}`,
     right: `${cut} 0 ${width - cut} ${height}`,
@@ -200,9 +202,9 @@ export const SvgShapeOutsidePayload = (
       thisWidth - (width - cut + paddingLeft)
     } ${paneHeight}`,
     rightMaskWidth: thisWidth - (width - cut + paddingLeft),
-  }
-  const thisWidthLeft = cut + paddingLeft
-  const thisWidthRight = thisWidth - thisWidthLeft
+  };
+  const thisWidthLeft = cut + paddingLeft;
+  const thisWidthRight = thisWidth - thisWidthLeft;
   const leftMaskSvg = (
     <svg
       id={`svg__${thisId}--shape-outside-left-mask`}
@@ -232,7 +234,7 @@ export const SvgShapeOutsidePayload = (
         height={paneHeight + paddingTop}
       ></rect>
     </svg>
-  )
+  );
   const rightMaskSvg = (
     <svg
       id={`svg__${thisId}--shape-outside-right-mask`}
@@ -262,19 +264,19 @@ export const SvgShapeOutsidePayload = (
         height={paneHeight + paddingTop}
       ></rect>
     </svg>
-  )
-  const svgStringLeft = ReactDOMServer.renderToStaticMarkup(leftMaskSvg)
+  );
+  const svgStringLeft = ReactDOMServer.renderToStaticMarkup(leftMaskSvg);
   const b64Left =
     typeof svgStringLeft === `string`
       ? Buffer.from(svgStringLeft, `utf8`).toString(`base64`)
-      : null
-  const leftMask = `data:image/svg+xml;base64,${b64Left}`
-  const svgStringRight = ReactDOMServer.renderToStaticMarkup(rightMaskSvg)
+      : null;
+  const leftMask = `data:image/svg+xml;base64,${b64Left}`;
+  const svgStringRight = ReactDOMServer.renderToStaticMarkup(rightMaskSvg);
   const b64Right =
     typeof svgStringRight === `string`
       ? Buffer.from(svgStringRight, `utf8`).toString(`base64`)
-      : null
-  const rightMask = `data:image/svg+xml;base64,${b64Right}`
+      : null;
+  const rightMask = `data:image/svg+xml;base64,${b64Right}`;
   const left = (
     <svg
       id={`svg__${thisId}--shape-outside-left`}
@@ -291,7 +293,7 @@ export const SvgShapeOutsidePayload = (
         <path d={isModal ? shapeData.innerPath : shapeData.path} />
       </g>
     </svg>
-  )
+  );
   const right = (
     <svg
       id={`svg__${thisId}--shape-outside-right`}
@@ -308,10 +310,10 @@ export const SvgShapeOutsidePayload = (
         <path d={isModal ? shapeData.innerPath : shapeData.path} />
       </g>
     </svg>
-  )
+  );
   const isShapeOutside = !isModal
     ? `svg__shape-outside svg__shape-outside--${viewportKey}-${shapeName}`
-    : ``
+    : ``;
   const shape = (
     <svg
       id={`svg__${thisId}`}
@@ -325,26 +327,26 @@ export const SvgShapeOutsidePayload = (
         <path d={shapeData.path} />
       </g>
     </svg>
-  )
+  );
   const cssShapeOutside =
     !isModal && typeof modalPayload !== `object`
       ? `#svg__${thisId}--shape-outside-left { float:left; shape-outside: url(${leftMask}); } ` +
         `#svg__${thisId}--shape-outside-right { float:right; shape-outside: url(${rightMask}); } `
       : typeof modalPayload === `object`
-        ? `#svg__${thisId}--shape-outside-left { ` +
-          `width: calc( var(--scale) * ${thisWidthLeft} * 1px ); ` +
-          `float:left; shape-outside: url(${leftMask}); } ` +
-          `#svg__${thisId}--shape-outside-right { ` +
-          `width: calc( var(--scale) * ${thisWidthRight} * 1px ); ` +
-          `float:right; shape-outside: url(${rightMask}); } `
-        : ``
+      ? `#svg__${thisId}--shape-outside-left { ` +
+        `width: calc( var(--scale) * ${thisWidthLeft} * 1px ); ` +
+        `float:left; shape-outside: url(${leftMask}); } ` +
+        `#svg__${thisId}--shape-outside-right { ` +
+        `width: calc( var(--scale) * ${thisWidthRight} * 1px ); ` +
+        `float:right; shape-outside: url(${rightMask}); } `
+      : ``;
   const cssModal =
     typeof modalPayload === `object`
       ? `#svg__${thisId}, #svg__${thisId} ` +
         `{ width: calc(var(--scale) * ${width} * 1px ); ` +
         `margin-left: calc( var(--scale) * ${paddingLeft} * 1px ); ` +
         `margin-top: calc( var(--scale) * ${paddingTop} * 1px ); } `
-      : ``
+      : ``;
   return {
     shape,
     left,
@@ -352,17 +354,17 @@ export const SvgShapeOutsidePayload = (
     leftMask,
     rightMask,
     css: `${cssShapeOutside} ${cssModal}`,
-  }
-}
+  };
+};
 
 export const getControllerPayload = (
   isExpanded: boolean,
-  viewportKey: string,
+  viewportKey: string
 ) => {
-  const shapeName = isExpanded ? `controllerExpanded` : `controllerMinimized`
-  const thisId = `${shapeName}-${viewportKey}`
-  return SvgImageMaskPayload(shapeName, thisId, viewportKey)
-}
+  const shapeName = isExpanded ? `controllerExpanded` : `controllerMinimized`;
+  const thisId = `${shapeName}-${viewportKey}`;
+  return SvgImageMaskPayload(shapeName, thisId, viewportKey);
+};
 
 export const HtmlAstToReact = (
   payload: any,
@@ -371,41 +373,41 @@ export const HtmlAstToReact = (
   hooks: any,
   memory: any = {},
   id: IStoryFragmentId,
-  idx: number = 0,
+  idx: number = 0
 ) => {
   // recursive function
-  const interceptEditInPlace = hooks?.EditInPlace
-  const newMemory = { ...memory }
-  let contents, rawElement, raw
-  if (element) raw = element
-  else if (typeof payload?.ast === `object`) raw = payload.ast
-  else return null
+  const interceptEditInPlace = hooks?.EditInPlace;
+  const newMemory = { ...memory };
+  let contents, rawElement, raw;
+  if (element) raw = element;
+  else if (typeof payload?.ast === `object`) raw = payload.ast;
+  else return null;
   const composed = raw
     .filter((e: any) => !(e?.type === `text` && e?.value === `\n`))
     .map((e: any, thisIdx: number) => {
       if (e?.type === `text`) {
-        if (e?.value === `\n`) return null
-        return e?.value
+        if (e?.value === `\n`) return null;
+        return e?.value;
       }
-      const Tag = e?.tagName
-      const thisId = `${idx}-${thisIdx}`
-      const thisBuilderId = `${Tag}-${thisIdx}`
-      let injectClassNames
+      const Tag = e?.tagName;
+      const thisId = `${idx}-${thisIdx}`;
+      const thisBuilderId = `${Tag}-${thisIdx}`;
+      let injectClassNames;
       const injectClassNamesRaw =
         e?.tagName && typeof thisClassNames[e?.tagName] !== `undefined`
           ? thisClassNames[e?.tagName]
-          : ``
+          : ``;
       if (injectClassNamesRaw && typeof injectClassNamesRaw === `string`) {
-        injectClassNames = injectClassNamesRaw
+        injectClassNames = injectClassNamesRaw;
       } else if (
         e?.tagName &&
         injectClassNamesRaw &&
         typeof injectClassNamesRaw === `object`
       ) {
         if (typeof memory[e.tagName] !== `undefined`)
-          memory[e.tagName] = memory[e.tagName] + 1
-        else memory[e.tagName] = 0
-        injectClassNames = injectClassNamesRaw[memory[e.tagName]]
+          memory[e.tagName] = memory[e.tagName] + 1;
+        else memory[e.tagName] = 0;
+        injectClassNames = injectClassNamesRaw[memory[e.tagName]];
       }
       switch (e?.tagName) {
         case `p`:
@@ -418,9 +420,9 @@ export const HtmlAstToReact = (
               hooks,
               memory,
               id,
-              idx + 1,
-            )
-          })
+              idx + 1
+            );
+          });
           if (id?.isBuilderPreview && interceptEditInPlace)
             return (
               <div
@@ -439,12 +441,12 @@ export const HtmlAstToReact = (
                   className: injectClassNames,
                 })}
               </div>
-            )
+            );
           return (
             <p key={thisId} className={classNames(injectClassNames)}>
               {contents}
             </p>
-          )
+          );
 
         case `h1`:
         case `h2`:
@@ -470,12 +472,12 @@ export const HtmlAstToReact = (
                   className: injectClassNames,
                 })}
               </div>
-            )
+            );
           return (
             <Tag className={classNames(injectClassNames)} key={thisId}>
               {e?.children[0].value}
             </Tag>
-          )
+          );
 
         case `a`:
           if (
@@ -485,18 +487,18 @@ export const HtmlAstToReact = (
           ) {
             // check for buttons action payload
             // requires match on button's urlTarget === link's href
-            let isButton
+            let isButton;
             if (
               typeof payload?.buttonData === `object` &&
               Object.keys(payload?.buttonData).length
             ) {
-              const target = e?.properties?.href
+              const target = e?.properties?.href;
               if (target && typeof payload?.buttonData[target] !== `undefined`)
-                isButton = payload?.buttonData[target]
+                isButton = payload?.buttonData[target];
             }
             const isExternalUrl =
               typeof e?.properties?.href === `string` &&
-              e.properties.href.substring(0, 8) === `https://`
+              e.properties.href.substring(0, 8) === `https://`;
 
             // if (id?.isBuilderPreview && interceptEditInPlace)
             //  return ` [${e?.children[0].value}](${e.properties.href}) `
@@ -509,7 +511,7 @@ export const HtmlAstToReact = (
                 >
                   {e?.children[0].value}
                 </a>
-              )
+              );
             else if (id?.isBuilderPreview)
               return (
                 <button
@@ -520,7 +522,7 @@ export const HtmlAstToReact = (
                 >
                   {e?.children[0].value}
                 </button>
-              )
+              );
             else if (isExternalUrl) {
               return (
                 <a
@@ -532,13 +534,13 @@ export const HtmlAstToReact = (
                 >
                   {e?.children[0].value}
                 </a>
-              )
+              );
             } else if (isButton) {
               // inject button with callback function, add css className
-              const thisButtonPayload = lispLexer(isButton?.callbackPayload)
+              const thisButtonPayload = lispLexer(isButton?.callbackPayload);
               const injectPayload = function (): void {
-                concierge(thisButtonPayload, hooks, id, payload.parent)
-              }
+                concierge(thisButtonPayload, hooks, id, payload.parent);
+              };
               return (
                 <button
                   type="button"
@@ -548,12 +550,12 @@ export const HtmlAstToReact = (
                 >
                   {e?.children[0].value}
                 </button>
-              )
+              );
             }
             // else, treat at internal link to a storyfragment
             const thisPayload = lispLexer(
-              `(hookGotoStoryFragment (${e?.properties?.href}))`,
-            )
+              `(hookGotoStoryFragment (${e?.properties?.href}))`
+            );
             return (
               <button
                 className={isButton?.className || injectClassNames}
@@ -562,59 +564,59 @@ export const HtmlAstToReact = (
               >
                 {e?.children[0].value}
               </button>
-            )
+            );
           }
-          break
+          break;
 
         case `img`: {
           // check for alt text
           const altText =
             e?.properties?.alt ||
-            `This should be descriptive text of an image | We apologize the alt text is missing.`
+            `This should be descriptive text of an image | We apologize the alt text is missing.`;
           // check for image and imageWrapper style tag
-          let injectClassNamesImgWrapper
-          let injectClassNamesImg
+          let injectClassNamesImgWrapper;
+          let injectClassNamesImg;
           const injectClassNamesImgRawWrapper =
             e?.tagName && typeof thisClassNames.imgWrapper !== `undefined`
               ? thisClassNames.imgWrapper
-              : ``
+              : ``;
           const injectClassNamesImgRaw =
             e?.tagName && typeof thisClassNames.img !== `undefined`
               ? thisClassNames.img
-              : ``
+              : ``;
           if (
             injectClassNamesImgRawWrapper &&
             typeof injectClassNamesImgRawWrapper === `string`
           ) {
-            injectClassNamesImgWrapper = injectClassNamesImgRawWrapper
+            injectClassNamesImgWrapper = injectClassNamesImgRawWrapper;
           } else if (
             e?.tagName &&
             injectClassNamesImgRawWrapper &&
             typeof injectClassNamesImgRawWrapper === `object`
           ) {
             if (e?.tagName && typeof memory.imgWrapper !== `undefined`)
-              memory.imgWrapper = memory.imgWrapper + 1
-            else memory.imgWrapper = 0
+              memory.imgWrapper = memory.imgWrapper + 1;
+            else memory.imgWrapper = 0;
             injectClassNamesImgWrapper =
-              injectClassNamesImgRawWrapper[memory.img]
+              injectClassNamesImgRawWrapper[memory.img];
           }
           if (
             injectClassNamesImgRaw &&
             typeof injectClassNamesImgRaw === `string`
           ) {
-            injectClassNamesImg = injectClassNamesImgRaw
+            injectClassNamesImg = injectClassNamesImgRaw;
           } else if (
             e?.tagName &&
             injectClassNamesImgRaw &&
             typeof injectClassNamesImgRaw === `object`
           ) {
             if (e?.tagName && typeof memory.img !== `undefined`)
-              memory.img = memory.img + 1
-            else memory.img = 0
-            injectClassNamesImg = injectClassNamesImgRaw[memory.img]
+              memory.img = memory.img + 1;
+            else memory.img = 0;
+            injectClassNamesImg = injectClassNamesImgRaw[memory.img];
           }
-          const pass = /\.[A-Za-z0-9]+$/
-          const extcheck = e?.properties?.src?.match(pass)
+          const pass = /\.[A-Za-z0-9]+$/;
+          const extcheck = e?.properties?.src?.match(pass);
 
           if (
             extcheck &&
@@ -624,8 +626,8 @@ export const HtmlAstToReact = (
           ) {
             // imageData in this case is an array ... assumes image is first element
             const thisImageDataRaw = payload?.imageData?.filter(
-              (image: any) => image.filename === e?.properties?.src,
-            )[0]
+              (image: any) => image.filename === e?.properties?.src
+            )[0];
             // payload?.mode === `paragraph__markdown` ? `contain` : `cover`
             // --  no longer using GatsbyImage
             /*
@@ -661,12 +663,12 @@ export const HtmlAstToReact = (
                   className={classNames(
                     injectClassNames,
                     injectClassNamesImgWrapper,
-                    injectClassNamesImg,
+                    injectClassNamesImg
                   )}
                   key={thisId}
                   src={thisImageDataRaw?.localFile?.publicURL}
                 />
-              )
+              );
               return (
                 <div
                   className="builder relative z-10"
@@ -681,25 +683,25 @@ export const HtmlAstToReact = (
                     className: injectClassNames,
                   })}
                 </div>
-              )
+              );
             }
             return (
               <img
                 className={classNames(
                   injectClassNames,
                   injectClassNamesImgWrapper,
-                  injectClassNamesImg,
+                  injectClassNamesImg
                 )}
                 key={thisId}
                 src={thisImageDataRaw?.localFile?.publicURL}
                 title={altText}
                 alt={e?.properties?.alt}
               />
-            )
+            );
           } else if (extcheck && extcheck[0] === `.svg`) {
             const thisImageDataRaw = payload?.imageData.filter(
-              (image: any) => image.filename === e?.properties?.src,
-            )[0]
+              (image: any) => image.filename === e?.properties?.src
+            )[0];
             const image = (
               <img
                 key={thisId}
@@ -707,7 +709,7 @@ export const HtmlAstToReact = (
                 title={altText}
                 className={classNames(injectClassNames, injectClassNamesImg)}
               />
-            )
+            );
             if (id?.isBuilderPreview && interceptEditInPlace)
               return (
                 <div
@@ -723,44 +725,44 @@ export const HtmlAstToReact = (
                     className: injectClassNames,
                   })}
                 </div>
-              )
-            return image
+              );
+            return image;
           }
-          break
+          break;
         }
         case `code`: {
           // if (typeof hooks.template === `undefined`) return null
           // currently only supports inject, belief, youtube and resource
-          const regexpHook = /(youtube|toggle|resource|belief)\((.*?)\)/
-          const regexpValues = /((?:[^\\|]+|\\\|?)+)/g
-          const thisHookRaw = e.children[0].value.match(regexpHook)
+          const regexpHook = /(youtube|toggle|resource|belief)\((.*?)\)/;
+          const regexpValues = /((?:[^\\|]+|\\\|?)+)/g;
+          const thisHookRaw = e.children[0].value.match(regexpHook);
           const hook =
             thisHookRaw && typeof thisHookRaw[1] === `string`
               ? thisHookRaw[1]
-              : null
+              : null;
           const thisHookPayload =
             thisHookRaw && typeof thisHookRaw[2] === `string`
               ? thisHookRaw[2]
-              : null
+              : null;
           const thisHookValuesRaw =
-            thisHookPayload && thisHookPayload.match(regexpValues)
+            thisHookPayload && thisHookPayload.match(regexpValues);
           const value1 =
             thisHookValuesRaw && thisHookValuesRaw.length
               ? thisHookValuesRaw[0]
-              : null
+              : null;
           const value2 =
             thisHookValuesRaw && thisHookValuesRaw.length > 1
               ? thisHookValuesRaw[1]
-              : null
+              : null;
           const value3 =
             thisHookValuesRaw && thisHookValuesRaw.length > 2
               ? thisHookValuesRaw[2]
-              : null
+              : null;
           const injectClassNamesExtra =
             typeof thisClassNames.codeExtra !== `undefined`
               ? thisClassNames.codeExtra
-              : ``
-          if (!hook) return <></>
+              : ``;
+          if (!hook) return <></>;
           if (id?.isBuilderPreview && !interceptEditInPlace)
             return (
               <div
@@ -772,7 +774,7 @@ export const HtmlAstToReact = (
                   Code hook: {hook} = {value1} | {value2}
                 </p>
               </div>
-            )
+            );
           if (
             hook === `belief` &&
             value1 &&
@@ -784,7 +786,7 @@ export const HtmlAstToReact = (
               <div
                 className={classNames(
                   injectClassNames,
-                  `builder relative z-10`,
+                  `builder relative z-10`
                 )}
                 id={thisBuilderId}
                 key={thisId}
@@ -796,9 +798,9 @@ export const HtmlAstToReact = (
                   parent: memory.parent,
                 })}
               </div>
-            )
+            );
           else if (hook === `belief` && value1 && value2) {
-            const Belief = hooks.belief
+            const Belief = hooks.belief;
             return (
               <Belief
                 key={thisId}
@@ -807,7 +809,7 @@ export const HtmlAstToReact = (
                 cssClassesExtra={injectClassNamesExtra}
                 storyFragmentId={id}
               />
-            )
+            );
           } else if (
             hook === `inject` &&
             value1 &&
@@ -818,7 +820,7 @@ export const HtmlAstToReact = (
               <div
                 className={classNames(
                   injectClassNames,
-                  `builder relative z-10`,
+                  `builder relative z-10`
                 )}
                 id={thisBuilderId}
                 key={thisId}
@@ -830,11 +832,11 @@ export const HtmlAstToReact = (
                   parent: memory.parent,
                 })}
               </div>
-            )
+            );
           else if (hook === `inject` && value1) {
-            const InjectComponent = hooks?.templates?.injectComponent
+            const InjectComponent = hooks?.templates?.injectComponent;
             if (InjectComponent)
-              return <InjectComponent key={thisId} target={value1} />
+              return <InjectComponent key={thisId} target={value1} />;
           } else if (
             hook === `toggle` &&
             value1 &&
@@ -847,7 +849,7 @@ export const HtmlAstToReact = (
               <div
                 className={classNames(
                   injectClassNames,
-                  `builder relative z-10`,
+                  `builder relative z-10`
                 )}
                 id={thisBuilderId}
                 key={thisId}
@@ -859,9 +861,9 @@ export const HtmlAstToReact = (
                   parent: memory.parent,
                 })}
               </div>
-            )
+            );
           else if (hook === `toggle` && value1 && value2 && value3) {
-            const ToggleBelief = hooks?.toggle
+            const ToggleBelief = hooks?.toggle;
             return (
               <ToggleBelief
                 key={thisId}
@@ -871,7 +873,7 @@ export const HtmlAstToReact = (
                 storyFragmentId={id}
                 cssClasses={injectClassNamesExtra}
               />
-            )
+            );
           } else if (
             hook === `youtube` &&
             value1 &&
@@ -883,7 +885,7 @@ export const HtmlAstToReact = (
               <div
                 className={classNames(
                   injectClassNames,
-                  `builder relative z-10`,
+                  `builder relative z-10`
                 )}
                 id={thisBuilderId}
                 key={thisId}
@@ -895,9 +897,9 @@ export const HtmlAstToReact = (
                   parent: memory.parent,
                 })}
               </div>
-            )
+            );
           else if (hook === `youtube` && value1 && value2) {
-            const YouTube = hooks?.youtube
+            const YouTube = hooks?.youtube;
             return (
               <YouTube
                 key={thisId}
@@ -905,7 +907,7 @@ export const HtmlAstToReact = (
                 title={value2}
                 cssClasses={injectClassNames}
               />
-            )
+            );
           } else if (
             hook === `resource` &&
             value1 &&
@@ -917,7 +919,7 @@ export const HtmlAstToReact = (
               <div
                 className={classNames(
                   injectClassNames,
-                  `builder relative z-10`,
+                  `builder relative z-10`
                 )}
                 id={thisBuilderId}
                 key={thisId}
@@ -929,22 +931,22 @@ export const HtmlAstToReact = (
                   parent: memory.parent,
                 })}
               </div>
-            )
+            );
           else if (hook === `resource` && value1 && value2) {
             const values =
-              value1[0] === `*` ? value1.substring(1) : value1.split(/[,]+/)
+              value1[0] === `*` ? value1.substring(1) : value1.split(/[,]+/);
             const resources =
               value1[0] === `*`
-                ? hooks?.resourcePayload?.filter(
-                    (e: any) => values?.includes(e?.node?.categorySlug),
+                ? hooks?.resourcePayload?.filter((e: any) =>
+                    values?.includes(e?.node?.categorySlug)
                   )
-                : hooks?.resourcePayload?.filter(
-                    (e: any) => values?.includes(e?.node?.slug),
-                  )
+                : hooks?.resourcePayload?.filter((e: any) =>
+                    values?.includes(e?.node?.slug)
+                  );
             const template =
               hooks?.templates &&
               Object.prototype.hasOwnProperty.call(hooks?.templates, value2) &&
-              hooks.templates[value2]
+              hooks.templates[value2];
             if (resources && template)
               return template(
                 resources,
@@ -954,19 +956,19 @@ export const HtmlAstToReact = (
                   ...hooks,
                   concierge,
                 },
-                injectClassNames,
-              )
-            return null
-          } else return null
-          break
+                injectClassNames
+              );
+            return null;
+          } else return null;
+          break;
         }
 
         case `ul`:
         case `ol`:
           rawElement = e?.children.filter(
-            (e: any) => !(e.type === `text` && e.value === `\n`),
-          )
-          newMemory.parent = thisIdx
+            (e: any) => !(e.type === `text` && e.value === `\n`)
+          );
+          newMemory.parent = thisIdx;
           contents = HtmlAstToReact(
             payload,
             rawElement,
@@ -974,8 +976,8 @@ export const HtmlAstToReact = (
             hooks,
             newMemory,
             id,
-            idx + 1,
-          )
+            idx + 1
+          );
           if (id?.isBuilderPreview && interceptEditInPlace)
             return (
               <Tag
@@ -985,15 +987,15 @@ export const HtmlAstToReact = (
               >
                 {contents}
               </Tag>
-            )
+            );
           return (
             <Tag key={thisId} className={classNames(injectClassNames)}>
               {contents}
             </Tag>
-          )
+          );
 
         case `li`:
-          newMemory.child = thisIdx
+          newMemory.child = thisIdx;
           contents = e?.children?.map((li: any) => {
             return HtmlAstToReact(
               payload,
@@ -1002,9 +1004,9 @@ export const HtmlAstToReact = (
               hooks,
               newMemory,
               id,
-              thisIdx,
-            )
-          })
+              thisIdx
+            );
+          });
           if (
             id?.isBuilderPreview &&
             interceptEditInPlace &&
@@ -1030,27 +1032,27 @@ export const HtmlAstToReact = (
                   className: injectClassNames,
                 })}
               </div>
-            )
+            );
           return (
             <li className={classNames(injectClassNames)} key={thisId}>
               {contents[0][0]}
             </li>
-          )
+          );
 
         case `br`:
-          return <br key={thisId} />
+          return <br key={thisId} />;
 
         case `em`:
           if (typeof e?.children[0]?.value === `string`) {
-            return <em key={thisId}>{e?.children[0]?.value}</em>
+            return <em key={thisId}>{e?.children[0]?.value}</em>;
           }
-          break
+          break;
 
         case `strong`:
           if (typeof e?.children[0]?.value === `string`) {
-            return <strong key={thisId}>{e?.children[0]?.value}</strong>
+            return <strong key={thisId}>{e?.children[0]?.value}</strong>;
           }
-          break
+          break;
 
         /*
         case `blockquote`:
@@ -1077,24 +1079,24 @@ export const HtmlAstToReact = (
             */
 
         default:
-          console.log(`helpers.js: MISS on`, e)
+          console.log(`helpers.js: MISS on`, e);
       }
-      return null
-    })
-  return composed
-}
+      return null;
+    });
+  return composed;
+};
 
 export const getLogo = (
   fieldSvgLogo: any,
   fieldImageLogo: any,
   viewportKey: string,
-  GatsbyImage: any, // FIX
+  GatsbyImage: any // FIX
 ) => {
   // svg or image logo?
   if (typeof fieldSvgLogo?.localFile?.publicURL === `string`) {
     // svg logo
-    const thisImageId = fieldSvgLogo?.id
-    const thisImage = fieldSvgLogo?.localFile?.publicURL
+    const thisImageId = fieldSvgLogo?.id;
+    const thisImage = fieldSvgLogo?.localFile?.publicURL;
     return (
       <img
         key={thisImageId}
@@ -1102,13 +1104,13 @@ export const getLogo = (
         className={`menu__logo`}
         alt="Logo"
       />
-    )
+    );
   } else if (
     typeof fieldImageLogo?.localFile?.childImageSharp[viewportKey] !==
     `undefined`
   ) {
-    const thisImageId = fieldImageLogo?.id
-    const thisImage = fieldImageLogo?.localFile?.childImageSharp[viewportKey]
+    const thisImageId = fieldImageLogo?.id;
+    const thisImage = fieldImageLogo?.localFile?.childImageSharp[viewportKey];
     // image logo
     return (
       <GatsbyImage
@@ -1118,33 +1120,33 @@ export const getLogo = (
         image={thisImage}
         objectFit="contain"
       />
-    )
+    );
   }
-  return <></>
-}
+  return <></>;
+};
 
 export const tractStackGraph = (data: any) => {
-  const tractStackId = data[0].node.relationships.tractstack.id
-  const tractStackTitle = data[0].node.relationships.tractstack.title
+  const tractStackId = data[0].node.relationships.tractstack.id;
+  const tractStackTitle = data[0].node.relationships.tractstack.title;
   const graph = data.map((e: any) => {
-    const storyFragmentId = e.node.id
-    const storyFragmentTitle = e.node.title
-    const storyFragmentSlug = e.node.slug
+    const storyFragmentId = e.node.id;
+    const storyFragmentTitle = e.node.title;
+    const storyFragmentSlug = e.node.slug;
     return {
       id: storyFragmentId,
       title: storyFragmentTitle,
       slug: storyFragmentSlug,
-    }
-  })
+    };
+  });
   return {
     id: tractStackId,
     title: tractStackTitle,
     graph,
-  }
-}
+  };
+};
 
 export function classNames(...classes: string[]) {
-  return classes.filter(Boolean).join(` `)
+  return classes.filter(Boolean).join(` `);
 }
 
 // modified from gatsby-shopify-starter
@@ -1153,23 +1155,23 @@ export const formatPrice = (currency: string, value: number | bigint) =>
     currency,
     minimumFractionDigits: 2,
     style: `currency`,
-  }).format(value)
+  }).format(value);
 
 // modified from gatsby-shopify-starter
 export const getCurrencySymbol = (
   currency: string,
-  locale: string | undefined = undefined,
+  locale: string | undefined = undefined
 ) => {
   if (!currency) {
-    return
+    return;
   }
   const formatter = Intl.NumberFormat(locale, {
     currency,
     style: `currency`,
-  })
-  const parts = formatter.formatToParts(100)
-  const symbol = parts?.find(part => part.type === `currency`)?.value || `$`
-  const formatted = formatter.format(100)
-  const symbolAtEnd = formatted.endsWith(symbol)
-  return { symbol, symbolAtEnd }
-}
+  });
+  const parts = formatter.formatToParts(100);
+  const symbol = parts?.find((part) => part.type === `currency`)?.value || `$`;
+  const formatted = formatter.format(100);
+  const symbolAtEnd = formatted.endsWith(symbol);
+  return { symbol, symbolAtEnd };
+};
