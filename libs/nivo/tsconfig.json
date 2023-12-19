@@ -4,15 +4,15 @@
     "allowJs": false,
     "esModuleInterop": false,
     "allowSyntheticDefaultImports": true,
-    "strict": true,
-    "paths": {
-      "@tractstack/nivo": [
-        "libs/nivo/src/index.ts"
-      ]
-    }
+    "strict": true
   },
   "files": [],
   "include": [],
+  "paths": {
+    "@tractstack/nivo": [
+      "libs/nivo/src/index.ts"
+    ]
+  },
   "references": [
     {
       "path": "./tsconfig.lib.json"
