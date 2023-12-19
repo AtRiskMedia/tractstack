@@ -1,10 +1,11 @@
 {
   "name": "@tractstack/nivo",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "license": "FSL-1.0-MIT",
   "description": "custom nivo visualizations for tractstack",
   "author": "Adon Irani <a@atriskmedia.com>",
-  "private": "false",
+  "main": "dist/index.esm.js",
+  "types": "dist/index.d.ts",
   "keywords": [
     "tractstack",
     "atriskmedia"
