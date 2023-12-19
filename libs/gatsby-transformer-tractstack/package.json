@@ -6,6 +6,6 @@
     "tslib": "^2.3.0"
   },
   "type": "commonjs",
-  "main": "./src/index.js",
-  "typings": "./src/index.d.ts"
+  "main": "./dist/index.esm.js",
+  "typings": "./dist/index.esm.d.ts"
 }

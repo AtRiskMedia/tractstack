@@ -13,7 +13,7 @@
       "executor": "@nx/rollup:rollup",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "dist/libs/drupal-react-oauth-provider",
+        "outputPath": "libs/drupal-react-oauth-provider/dist",
         "tsConfig": "libs/drupal-react-oauth-provider/tsconfig.lib.json",
         "project": "libs/drupal-react-oauth-provider/package.json",
         "entryFile": "libs/drupal-react-oauth-provider/src/index.ts",

@@ -4,8 +4,6 @@
   "license": "FSL-1.0-MIT",
   "description": "custom nivo visualizations for tractstack",
   "author": "Adon Irani <a@atriskmedia.com>",
-  "main": "dist/index.esm.js",
-  "types": "dist/index.d.ts",
   "keywords": [
     "tractstack",
     "atriskmedia"
@@ -16,5 +14,7 @@
     "@nivo/line": "^0.84.0",
     "@nivo/pie": "^0.84.0",
     "@nivo/swarmplot": "^0.84.0"
-  }
+  },
+  "main": "./dist/index.esm.js",
+  "typings": "./dist/index.esm.d.ts"
 }

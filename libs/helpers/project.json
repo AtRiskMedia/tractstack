@@ -13,7 +13,7 @@
       "executor": "@nx/rollup:rollup",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "dist/libs/helpers",
+        "outputPath": "libs/helpers/dist",
         "tsConfig": "libs/helpers/tsconfig.lib.json",
         "project": "libs/helpers/package.json",
         "entryFile": "libs/helpers/src/index.ts",
