@@ -6,9 +6,7 @@ import { SvgBreaks, SvgPanes, SvgModals } from './shapes';
 import { lispLexer } from './lexer';
 import { concierge } from './concierge';
 import { IStoryFragmentId } from './types';
-
-if (typeof global !== `undefined`)
-  global.Buffer = global.Buffer || require(`buffer`).Buffer;
+import { Buffer } from 'buffer';
 
 export function useInterval(callback: any, delay: number | null) {
   const savedCallback: any = useRef();
