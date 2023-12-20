@@ -1,7 +1,13 @@
 # Tract Stack monorepo
 
-By [At Risk Media](https://atriskmedia.com) 
+By [At Risk Media](https://atriskmedia.com)
 
+Contains:
+
+- @tractstack/helpers
+- @tractstack/nivo
+- @tractstack/drupal-react-oauth-provider
+- @tractstack/types
 
 ## License
 
