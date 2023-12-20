@@ -1172,3 +1172,72 @@ export const getCurrencySymbol = (
   const symbolAtEnd = formatted.endsWith(symbol);
   return { symbol, symbolAtEnd };
 };
+
+export const processGraphPayload = (payload: any) => {
+  const graphNodes: any = [];
+  const graphNodeIds: any = [];
+  const graphRelationships: any = [];
+  const graphRelationshipIds: any = [];
+  payload.forEach((row: any) => {
+    if (row?.v?.id && !graphNodeIds.includes(row.v.id)) {
+      graphNodes.push(row.v);
+      graphNodeIds.push(row.v.id);
+    }
+    if (row?.c?.id && !graphNodeIds.includes(row.c.id)) {
+      graphNodes.push(row.c);
+      graphNodeIds.push(row.c.id);
+    }
+    if (row?.s?.id && !graphNodeIds.includes(row.s.id)) {
+      graphNodes.push(row.s);
+      graphNodeIds.push(row.s.id);
+    }
+    if (row?.t?.id && !graphNodeIds.includes(row.t.id)) {
+      graphNodes.push(row.t);
+      graphNodeIds.push(row.t.id);
+    }
+    if (row?.a?.id && !graphRelationshipIds.includes(row.a.id)) {
+      graphRelationships.push(row.a);
+      graphRelationshipIds.push(row.a.id);
+    }
+    if (row?.d?.id && !graphRelationshipIds.includes(row.d.id)) {
+      graphRelationships.push(row.d);
+      graphRelationshipIds.push(row.d.id);
+    }
+    if (row?.r?.id && !graphRelationshipIds.includes(row.r.id)) {
+      graphRelationships.push(row.r);
+      graphRelationshipIds.push(row.r.id);
+    }
+    if (row?.rsf?.id && !graphRelationshipIds.includes(row.rsf.id)) {
+      graphRelationships.push(row.rsf);
+      graphRelationshipIds.push(row.rsf.id);
+    }
+    if (row?.ts1?.id && !graphRelationshipIds.includes(row.ts1.id)) {
+      graphRelationships.push(row.ts1);
+      graphRelationshipIds.push(row.ts1.id);
+    }
+    if (row?.ts2?.id && !graphRelationshipIds.includes(row.ts2.id)) {
+      graphRelationships.push(row.ts2);
+      graphRelationshipIds.push(row.ts2.id);
+    }
+    if (row?.rc?.id && !graphRelationshipIds.includes(row.rc.id)) {
+      graphRelationships.push(row.rc);
+      graphRelationshipIds.push(row.rc.id);
+    }
+  });
+  const nodes = graphNodes.map((e: any) => {
+    return {
+      id: e.id,
+      label: e.properties.object_name,
+      value: 1,
+    };
+  });
+  const edges = graphRelationships.map((e: any) => {
+    return {
+      id: e.id,
+      from: e.startNodeId,
+      to: e.endNodeId,
+      value: 1,
+    };
+  });
+  return { nodes, edges };
+};

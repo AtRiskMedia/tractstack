@@ -1,4 +1,4 @@
-import { Compositor, ParseOptions, ParseImpressions } from "./compositor"
+import { Compositor, ParseOptions, ParseImpressions } from './compositor';
 import {
   getLogo,
   getControllerPayload,
@@ -10,11 +10,12 @@ import {
   Svg,
   formatPrice,
   getCurrencySymbol,
-} from "./helper"
-import { concierge } from "./concierge"
-import { lispLexer } from "./lexer"
-import { AtRiskMediaIcon, TractStackIcon } from "./shapes"
-import { heldBeliefsScales, heldBeliefsTitles } from "./beliefs"
+  processGraphPayload,
+} from './helper';
+import { concierge } from './concierge';
+import { lispLexer } from './lexer';
+import { AtRiskMediaIcon, TractStackIcon } from './shapes';
+import { heldBeliefsScales, heldBeliefsTitles } from './beliefs';
 
 export {
   heldBeliefsScales,
@@ -24,6 +25,7 @@ export {
   formatPrice,
   getCurrencySymbol,
   Compositor,
+  processGraphPayload,
   getLogo,
   getControllerPayload,
   tractStackGraph,
@@ -36,4 +38,4 @@ export {
   useInterval,
   getScrollbarSize,
   SocialIcons,
-}
+};
