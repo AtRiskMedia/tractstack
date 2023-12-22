@@ -1227,16 +1227,23 @@ export const processGraphPayload = (payload: any) => {
   const nodes = graphNodes.map((e: any) => {
     return {
       id: e.id,
+      title: e.properties.object_type,
       label: e.properties.object_name,
       value: 1,
     };
   });
   const edges = graphRelationships.map((e: any) => {
     return {
-      id: e.id,
       from: e.startNodeId,
       to: e.endNodeId,
-      value: 1,
+      label: e.type,
+      font: { align: `top`, size: `8` },
+      arrows: {
+        to: {
+          enabled: true,
+          type: `triangle`,
+        },
+      },
     };
   });
   return { nodes, edges };
