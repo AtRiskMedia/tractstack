@@ -1,19 +1,19 @@
-import { IStoryFragmentCompositorHooks, IStoryFragmentId } from "./types"
+import { IStoryFragmentCompositorHooks, IStoryFragmentId } from './types';
 
 export const concierge = (
   payload: any,
   hooks: IStoryFragmentCompositorHooks,
   id?: IStoryFragmentId,
-  parent?: string,
+  parent?: string
 ) => {
-  const processRead = hooks.processRead
-  const updateEventStream = hooks.updateEventStream
-  const thisPayload = (payload && payload[0]) || false
-  const command = (thisPayload && thisPayload[0] && thisPayload[0][0]) || null
+  const processRead = hooks.processRead;
+  const updateEventStream = hooks.updateEventStream;
+  const thisPayload = (payload && payload[0]) || false;
+  const command = (thisPayload && thisPayload[0] && thisPayload[0][0]) || null;
   const parameters =
-    (thisPayload && thisPayload[0] && thisPayload[0][1]) || null
-  const parameterOne = (parameters && parameters[0]) || null
-  const parameterTwo = (parameters && parameters[1]) || null
+    (thisPayload && thisPayload[0] && thisPayload[0][1]) || null;
+  const parameterOne = (parameters && parameters[0]) || null;
+  const parameterTwo = (parameters && parameters[1]) || null;
 
   if (id && id?.paneId && id?.paneTitle && updateEventStream)
     updateEventStream(Date.now(), {
@@ -22,8 +22,7 @@ export const concierge = (
       type: `Pane`,
       verb: `CLICKED`,
       parentId: id.id,
-    })
-
+    });
   if (
     updateEventStream &&
     parameterOne &&
@@ -31,7 +30,7 @@ export const concierge = (
     id &&
     id?.paneId &&
     id?.paneTitle &&
-    [`home`, `storyFragment`].includes(parameterOne)
+    [`home`, `storyFragment`, `context`].includes(parameterOne)
   ) {
     updateEventStream(Date.now(), {
       id: id.paneId,
@@ -39,39 +38,39 @@ export const concierge = (
       targetSlug: command === `home` ? `home` : parameterTwo,
       type: `Pane`,
       verb: `CONNECTED`,
-    })
+    });
   }
 
   switch (command) {
     case `goto`:
       switch (parameterOne) {
         case `home`:
-          processRead(`/`, parameterOne, id?.id)
-          break
+          processRead(`/`, parameterOne, id?.id);
+          break;
         case `concierge`:
-          processRead(`/concierge/${parameterTwo}`, parameterOne, id?.id)
-          break
+          processRead(`/concierge/${parameterTwo}`, parameterOne, id?.id);
+          break;
         case `context`:
-          processRead(`/context/${parameterTwo}`, parameterOne, parent)
-          break
+          processRead(`/context/${parameterTwo}`, parameterOne, parent);
+          break;
         case `product`:
-          processRead(`/products/${parameterTwo}`, parameterOne, id?.id)
-          break
+          processRead(`/products/${parameterTwo}`, parameterOne, id?.id);
+          break;
         case `storyFragment`:
-          processRead(parameterTwo, parameterOne, id?.id)
-          break
+          processRead(parameterTwo, parameterOne, id?.id);
+          break;
         case `anchor`:
-          processRead(`#`, parameterTwo, id?.id)
-          break
+          processRead(`#`, parameterTwo, id?.id);
+          break;
         case `url`:
-          window.location.replace(parameterTwo)
-          break
+          window.location.replace(parameterTwo);
+          break;
         default:
-          console.log(`LispActionPayload misfire on goto`, parameters)
+          console.log(`LispActionPayload misfire on goto`, parameters);
       }
-      break
+      break;
     default:
-      console.log(`LispActionPayload misfire`, command, parameters)
-      break
+      console.log(`LispActionPayload misfire`, command, parameters);
+      break;
   }
-}
+};
