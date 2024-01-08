@@ -423,7 +423,7 @@ export const HtmlAstToReact = (
           if (id?.isBuilderPreview && interceptEditInPlace)
             return (
               <div
-                className="builder relative z-10 border border-transparent"
+                className="builder relative z-9 border border-transparent"
                 id={thisBuilderId}
                 key={thisId}
               >
@@ -454,7 +454,7 @@ export const HtmlAstToReact = (
           if (id?.isBuilderPreview && interceptEditInPlace)
             return (
               <div
-                className="builder relative z-10 border border-transparent"
+                className="builder relative z-9 border border-transparent"
                 id={thisBuilderId}
                 key={thisId}
               >
@@ -595,7 +595,7 @@ export const HtmlAstToReact = (
               memory.imgWrapper = memory.imgWrapper + 1;
             else memory.imgWrapper = 0;
             injectClassNamesImgWrapper =
-              injectClassNamesImgRawWrapper[memory.img];
+              injectClassNamesImgRawWrapper[memory.imgWrapper];
           }
           if (
             injectClassNamesImgRaw &&
@@ -607,9 +607,9 @@ export const HtmlAstToReact = (
             injectClassNamesImgRaw &&
             typeof injectClassNamesImgRaw === `object`
           ) {
-            if (e?.tagName && typeof memory.img !== `undefined`)
-              memory.img = memory.img + 1;
-            else memory.img = 0;
+            //if (e?.tagName && typeof memory.img !== `undefined`)
+            //  memory.img = memory.img + 1;
+            //else memory.img = 0;
             injectClassNamesImg = injectClassNamesImgRaw[memory.img];
           }
           const pass = /\.[A-Za-z0-9]+$/;
@@ -668,7 +668,7 @@ export const HtmlAstToReact = (
               );
               return (
                 <div
-                  className="builder relative z-10 border border-transparent"
+                  className="builder relative z-9 border border-transparent"
                   id={thisBuilderId}
                   key={thisId}
                 >
@@ -710,7 +710,7 @@ export const HtmlAstToReact = (
             if (id?.isBuilderPreview && interceptEditInPlace)
               return (
                 <div
-                  className="builder relative z-10 border border-transparent"
+                  className="builder relative z-9 border border-transparent"
                   id={thisBuilderId}
                   key={thisId}
                 >
@@ -763,7 +763,7 @@ export const HtmlAstToReact = (
           if (id?.isBuilderPreview && !interceptEditInPlace)
             return (
               <div
-                className="builder relative z-10 border border-transparent"
+                className="builder relative z-9 border border-transparent"
                 id={thisBuilderId}
                 key={thisId}
               >
@@ -783,7 +783,7 @@ export const HtmlAstToReact = (
               <div
                 className={classNames(
                   injectClassNames,
-                  `builder relative z-10 builder relative z-10 border border-transparent`
+                  `builder relative z-9 builder relative z-9 border border-transparent`
                 )}
                 id={thisBuilderId}
                 key={thisId}
@@ -817,7 +817,7 @@ export const HtmlAstToReact = (
               <div
                 className={classNames(
                   injectClassNames,
-                  `builder relative z-10 builder relative z-10 border border-transparent`
+                  `builder relative z-9 builder relative z-9 border border-transparent`
                 )}
                 id={thisBuilderId}
                 key={thisId}
@@ -846,7 +846,7 @@ export const HtmlAstToReact = (
               <div
                 className={classNames(
                   injectClassNames,
-                  `builder relative z-10 builder relative z-10 border border-transparent`
+                  `builder relative z-9 builder relative z-9 border border-transparent`
                 )}
                 id={thisBuilderId}
                 key={thisId}
@@ -882,7 +882,7 @@ export const HtmlAstToReact = (
               <div
                 className={classNames(
                   injectClassNames,
-                  `builder relative z-10 builder relative z-10 border border-transparent`
+                  `builder relative z-9 builder relative z-9 border border-transparent`
                 )}
                 id={thisBuilderId}
                 key={thisId}
@@ -916,7 +916,7 @@ export const HtmlAstToReact = (
               <div
                 className={classNames(
                   injectClassNames,
-                  `builder relative z-10 builder relative z-10 border border-transparent`
+                  `builder relative z-9 builder relative z-9 border border-transparent`
                 )}
                 id={thisBuilderId}
                 key={thisId}
@@ -1013,7 +1013,7 @@ export const HtmlAstToReact = (
           )
             return (
               <div
-                className="li builder relative z-10 builder relative z-10 border border-transparent"
+                className="li builder relative z-9 builder relative z-9 border border-transparent"
                 id={`${Tag}-${memory.parent}-${thisIdx}`}
                 key={thisId}
               >

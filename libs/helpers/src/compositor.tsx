@@ -1,5 +1,5 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars, no-unused-vars
-import React from "react"
+import React from 'react';
 
 import {
   Svg,
@@ -8,7 +8,7 @@ import {
   HtmlAstToReact,
   viewportWidth,
   classNames,
-} from "./helper"
+} from './helper';
 import {
   IComposedStoryFragment,
   IPane,
@@ -25,7 +25,7 @@ import {
   // IPaneFragmentBackgroundImage,
   // IPaneFragmentBackgroundVideo,
   // IPaneFragmentSvg,
-} from "./types"
+} from './types';
 
 export const Compositor = ({
   panesPayload,
@@ -34,61 +34,64 @@ export const Compositor = ({
   hooks,
   id,
 }: ICompositorProps) => {
-  let thisCss = ``
-  let hasH5P = false
-  const contentMap: IContentMapDict = {}
-  const contentChildren: IContentChildrenDict = {}
-  const impressions: IImpressionDict = {}
-  const paneIds: string[] = []
-  let hasMaxHScreen, heldBeliefs, withheldBeliefs
-  const isContextPane = id?.isContextPane
-  const keys = isContextPane ? [`all`] : [`mobile`, `tablet`, `desktop`]
-  const check = `^bg-(w*-w*|w*)`
+  let thisCss = ``;
+  let hasH5P = false;
+  const contentMap: IContentMapDict = {};
+  const contentChildren: IContentChildrenDict = {};
+  const impressions: IImpressionDict = {};
+  const paneIds: string[] = [];
+  let hasMaxHScreen, heldBeliefs, withheldBeliefs;
+  const isContextPane = id?.isContextPane;
+  const keys = isContextPane ? [`all`] : [`mobile`, `tablet`, `desktop`];
+  const check = `^bg-(w*-w*|w*)`;
   const useTailwindBgColour: string | null =
-    tailwindBgColour && tailwindBgColour.match(check) ? tailwindBgColour : ``
+    tailwindBgColour && tailwindBgColour.match(check) ? tailwindBgColour : ``;
   panesPayload?.forEach((p: IPane) => {
-    paneIds.push(p.id)
-    keys.forEach(key => {
-      let hasCodeHook: any = {}
-      let hasHiddenPane = false
-      let hasOverflowHidden = false
+    paneIds.push(p.id);
+    keys.forEach((key) => {
+      let hasCodeHook: any = {};
+      let hasHiddenPane = false;
+      let hasOverflowHidden = false;
       const paneHeightRatio = p.heightRatio
         ? p.heightRatio
         : viewportKey === `desktop` && p.heightRatioDesktop
-          ? p.heightRatioDesktop
-          : viewportKey === `tablet` && p.heightRatioTablet
-            ? p.heightRatioTablet
-            : viewportKey === `mobile` && p.heightRatioMobile
-              ? p.heightRatioMobile
-              : `0`
-      const height = (viewportWidth[key] * Number(paneHeightRatio)) / 100
-      const thisPanePayload = PaneCompositor(p, key, hooks, id)
-      if (thisPanePayload?.hasH5P) hasH5P = true
-      if (thisPanePayload?.hasHiddenPane) hasHiddenPane = true
+        ? p.heightRatioDesktop
+        : viewportKey === `tablet` && p.heightRatioTablet
+        ? p.heightRatioTablet
+        : viewportKey === `mobile` && p.heightRatioMobile
+        ? p.heightRatioMobile
+        : `0`;
+      const height = (viewportWidth[key] * Number(paneHeightRatio)) / 100;
+      const thisPanePayload = PaneCompositor(p, key, hooks, id);
+      if (thisPanePayload?.hasH5P) hasH5P = true;
+      if (thisPanePayload?.hasHiddenPane) hasHiddenPane = true;
       if (thisPanePayload?.hasCodeHook)
-        hasCodeHook = thisPanePayload.hasCodeHook
+        hasCodeHook = thisPanePayload.hasCodeHook;
       if (thisPanePayload?.heldBeliefs)
-        heldBeliefs = thisPanePayload.heldBeliefs
-      else heldBeliefs = null
+        heldBeliefs = thisPanePayload.heldBeliefs;
+      else heldBeliefs = null;
       if (thisPanePayload?.withheldBeliefs)
-        withheldBeliefs = thisPanePayload.withheldBeliefs
-      else withheldBeliefs = null
-      if (thisPanePayload?.hasMaxHScreen) hasMaxHScreen = true
-      else hasMaxHScreen = false
-      if (thisPanePayload?.hasOverflowHidden) hasOverflowHidden = true
+        withheldBeliefs = thisPanePayload.withheldBeliefs;
+      else withheldBeliefs = null;
+      if (thisPanePayload?.hasMaxHScreen) hasMaxHScreen = true;
+      else hasMaxHScreen = false;
+      if (thisPanePayload?.hasOverflowHidden) hasOverflowHidden = true;
       if (typeof thisPanePayload?.impressions?.payload === `object`)
-        impressions[p.id] = { ...thisPanePayload.impressions.payload, id: p.id }
+        impressions[p.id] = {
+          ...thisPanePayload.impressions.payload,
+          id: p.id,
+        };
       if (typeof thisPanePayload?.css === `string`)
-        thisCss = `${thisCss} ${thisPanePayload.css} `
+        thisCss = `${thisCss} ${thisPanePayload.css} `;
       if (height === 0)
-        thisCss = `#${key}-${p.id} { height: auto; } ${thisCss} `
+        thisCss = `#${key}-${p.id} { height: auto; } ${thisCss} `;
       else if (height > 0)
         thisCss =
           `#${key}-${p.id} { height: calc(var(--scale) * ${height} * 1px); } ` +
-          `${thisCss} `
+          `${thisCss} `;
       const thisChildren = thisPanePayload.children.filter((e: any) => {
-        return Object.keys(e).length
-      })
+        return Object.keys(e).length;
+      });
       if (
         id?.isBuilderPreview &&
         thisChildren.length === 0 &&
@@ -98,14 +101,14 @@ export const Compositor = ({
           <div className="py-16 flex items-center justify-center">
             <p>[Code hook inserted here]</p>
           </div>
-        )
+        );
       else if (id?.isBuilderPreview && thisChildren.length === 0)
         contentChildren[`${key}-${p.id}`] = (
           <div className="py-16 flex items-center justify-center">
             <p>[Empty pane]</p>
           </div>
-        )
-      else contentChildren[`${key}-${p.id}`] = thisChildren
+        );
+      else contentChildren[`${key}-${p.id}`] = thisChildren;
       contentMap[p.id] = {
         title: p.title,
         slug: p.slug,
@@ -117,9 +120,9 @@ export const Compositor = ({
         hasCodeHook,
         heldBeliefs,
         withheldBeliefs,
-      }
-    })
-  })
+      };
+    });
+  });
   if (id?.tractStackId)
     contentMap[id.tractStackId] = {
       title: id.tractStackTitle,
@@ -128,7 +131,7 @@ export const Compositor = ({
       parentId: id.tractStackId,
       heldBeliefs: null,
       withheldBeliefs: null,
-    }
+    };
   if (id?.id && id?.title && id?.slug) {
     contentMap[id.id] = {
       title: id.title,
@@ -138,78 +141,78 @@ export const Compositor = ({
       tailwindBgColour: useTailwindBgColour,
       heldBeliefs: null,
       withheldBeliefs: null,
-    }
+    };
     const storyFragment: IComposedStoryFragment = {
       paneIds,
       css: thisCss,
       hasH5P,
       impressions,
-    }
+    };
     return {
       storyFragment,
       contentMap,
       contentChildren,
-    }
+    };
   }
   return {
     contentMap,
     contentChildren,
-  }
-}
+  };
+};
 
 const PaneCompositor = (
   payload: IPane,
   viewportKey: string,
   hooks: IStoryFragmentCompositorHooks,
-  id: IStoryFragmentId,
+  id: IStoryFragmentId
 ) => {
   const optionsPayload = payload?.optionsPayload
     ? ParseOptions(payload.optionsPayload)
-    : null
-  const hasCodeHook = optionsPayload?.codeHook
-  const hasHiddenPane = optionsPayload?.hiddenPane
-  const hasH5P = hasCodeHook && hasCodeHook.target === `h5p`
+    : null;
+  const hasCodeHook = optionsPayload?.codeHook;
+  const hasHiddenPane = optionsPayload?.hiddenPane;
+  const hasH5P = hasCodeHook && hasCodeHook.target === `h5p`;
   const impressionsPayload =
     id?.id &&
     optionsPayload?.impressions &&
-    ParseImpressions(optionsPayload.impressions, id.id)
+    ParseImpressions(optionsPayload.impressions, id.id);
   const maxHeightScreen = !!(
     optionsPayload &&
     optionsPayload[`max-h-screen`] &&
     optionsPayload[`max-h-screen`] === true
-  )
+  );
   const hasOverflowHidden = !!(
     optionsPayload &&
     optionsPayload.overflowHidden &&
     optionsPayload.overflowHidden === true
-  )
-  const heldBeliefs = optionsPayload?.heldBeliefs
-  const withheldBeliefs = optionsPayload?.withheldBeliefs
+  );
+  const heldBeliefs = optionsPayload?.heldBeliefs;
+  const withheldBeliefs = optionsPayload?.withheldBeliefs;
   const paneHeightRatio = payload.heightRatio
     ? payload.heightRatio
     : viewportKey === `desktop` && payload.heightRatioDesktop
-      ? payload.heightRatioDesktop
-      : viewportKey === `tablet` && payload.heightRatioTablet
-        ? payload.heightRatioTablet
-        : viewportKey === `mobile` && payload.heightRatioMobile
-          ? payload.heightRatioMobile
-          : `0`
+    ? payload.heightRatioDesktop
+    : viewportKey === `tablet` && payload.heightRatioTablet
+    ? payload.heightRatioTablet
+    : viewportKey === `mobile` && payload.heightRatioMobile
+    ? payload.heightRatioMobile
+    : `0`;
   const paneHeight =
-    (viewportWidth[viewportKey] * Number(paneHeightRatio)) / 100
+    (viewportWidth[viewportKey] * Number(paneHeightRatio)) / 100;
   const paneHeightOffsetViewport =
     viewportKey === `desktop`
       ? payload.heightOffsetDesktop
       : viewportKey === `tablet`
-        ? payload.heightOffsetTablet
-        : viewportKey === `mobile`
-          ? payload.heightOffsetMobile
-          : null
+      ? payload.heightOffsetTablet
+      : viewportKey === `mobile`
+      ? payload.heightOffsetMobile
+      : null;
   const cssContainer =
     typeof paneHeightOffsetViewport === `number` && paneHeightOffsetViewport
       ? `#wrapper-${viewportKey}-${
           payload.id
         } { margin-top: calc(var(--scale) * ${paneHeightOffsetViewport.toString()} * 1px ); } `
-      : ``
+      : ``;
   const compositing =
     typeof optionsPayload?.paneFragmentsPayload === `object` &&
     optionsPayload?.paneFragmentsPayload.length > 0
@@ -217,10 +220,10 @@ const PaneCompositor = (
           .filter(
             (e: IPaneFragment) =>
               typeof e?.hiddenViewports === `string` &&
-              !e.hiddenViewports.includes(viewportKey),
+              !e.hiddenViewports.includes(viewportKey)
           )
           .sort(
-            (a: any, b: any) => (a?.field_zindex || 0) - (b?.field_zindex || 0),
+            (a: any, b: any) => (a?.field_zindex || 0) - (b?.field_zindex || 0)
           )
           .map((f: any) => {
             switch (f?.internal?.type) {
@@ -242,10 +245,10 @@ const PaneCompositor = (
                     paneId: payload.id,
                     paneTitle: payload.title,
                     paneSlug: payload.slug,
-                  },
-                )
+                  }
+                );
               case `bgPane`:
-                return ParagraphBackgroundPaneCompositor(f, viewportKey)
+                return ParagraphBackgroundPaneCompositor(f, viewportKey);
               // case `paragraph__background_image`:
               //  return ParagraphBackgroundImageCompositor(f, viewportKey, hooks)
               // case `paragraph__background_video`:
@@ -256,31 +259,31 @@ const PaneCompositor = (
                 return ParagraphBackgroundColourCompositor(
                   f,
                   viewportKey,
-                  payload.id,
-                )
+                  payload.id
+                );
               default:
-                console.log(`No compositor for ${f?.internal?.type}`)
-                return null
+                console.log(`No compositor for ${f?.internal?.type}`);
+                return null;
             }
           })
-      : {}
+      : {};
   const thisChildren =
     compositing && Object.keys(compositing).length > 0
       ? compositing
           .map((e: any) => {
-            return e?.children || null
+            return e?.children || null;
           })
           .filter((n: any) => n)
-      : []
+      : [];
   const thisCss =
     compositing && Object.keys(compositing).length > 0
       ? compositing
           .map((e: any) => {
-            return e?.css || null
+            return e?.css || null;
           })
           .filter((n: any) => n)
-      : []
-  const thisCssJoined = thisCss.join(` `)
+      : [];
+  const thisCssJoined = thisCss.join(` `);
   return {
     slug: payload.slug,
     children: thisChildren || [],
@@ -293,8 +296,8 @@ const PaneCompositor = (
     hasOverflowHidden,
     heldBeliefs,
     withheldBeliefs,
-  }
-}
+  };
+};
 
 const ParagraphMarkdownCompositor = (
   payload: IPaneFragmentMarkdown,
@@ -302,40 +305,40 @@ const ParagraphMarkdownCompositor = (
   paneHeight: number,
   hooks: IStoryFragmentCompositorHooks,
   parent: string,
-  id: IStoryFragmentId,
+  id: IStoryFragmentId
 ) => {
-  const optionsPayload = payload.optionsPayload
-  const hasModal = payload?.isModal
-  const thisId = `${viewportKey}-${payload.id}-markdown`
-  const thisIdModal = `${viewportKey}-${payload.id}-modal`
-  const zIndex = `` // `z-index: ${payload?.zindex || `100`};`
-  const zIndexModal = hasModal
-    ? `z-index: ${(payload.zindex - 1).toString() || `99`};`
-    : false
+  const optionsPayload = payload.optionsPayload;
+  const hasModal = payload?.isModal;
+  const thisId = `${viewportKey}-${payload.id}-markdown`;
+  const thisIdModal = `${viewportKey}-${payload.id}-modal`;
+  const zIndex = ``; // `z-index: ${payload?.zindex || `100`};`
+  const zIndexModal = ``; //hasModal
+  //  ? `z-index: ${(payload.zindex - 1).toString() || `99`};`
+  //  : false
   const thisTextShapeOutsideSelector =
     viewportKey === `desktop`
       ? payload.textShapeOutsideDesktop
       : viewportKey === `tablet`
-        ? payload.textShapeOutsideTablet
-        : viewportKey === `mobile`
-          ? payload.textShapeOutsideMobile
-          : payload.textShapeOutside
+      ? payload.textShapeOutsideTablet
+      : viewportKey === `mobile`
+      ? payload.textShapeOutsideMobile
+      : payload.textShapeOutside;
   const thisImageMaskShapeSelector =
     viewportKey === `desktop`
       ? payload.imageMaskShapeDesktop
       : viewportKey === `tablet`
-        ? payload.imageMaskShapeTablet
-        : viewportKey === `mobile`
-          ? payload.imageMaskShapeMobile
-          : payload.imageMaskShape
+      ? payload.imageMaskShapeTablet
+      : viewportKey === `mobile`
+      ? payload.imageMaskShapeMobile
+      : payload.imageMaskShape;
   const hasModalShapeOutside =
     hasModal && thisTextShapeOutsideSelector !== `none`
       ? thisTextShapeOutsideSelector
-      : false
+      : false;
   const isModal =
     typeof optionsPayload.modal !== `undefined` &&
-    typeof optionsPayload.modal[viewportKey] !== `undefined`
-  const thisModalPayload = isModal ? optionsPayload.modal[viewportKey] : null
+    typeof optionsPayload.modal[viewportKey] !== `undefined`;
+  const thisModalPayload = isModal ? optionsPayload.modal[viewportKey] : null;
   const hasModalShapeOutsidePayload =
     isModal && hasModalShapeOutside
       ? SvgShapeOutsidePayload(
@@ -344,9 +347,9 @@ const ParagraphMarkdownCompositor = (
           thisIdModal,
           paneHeight,
           isModal,
-          thisModalPayload,
+          thisModalPayload
         )
-      : false
+      : false;
   const hasTextShapeOutsidePayload =
     thisTextShapeOutsideSelector &&
     typeof thisTextShapeOutsideSelector === `string`
@@ -356,38 +359,38 @@ const ParagraphMarkdownCompositor = (
           thisId,
           paneHeight,
           isModal,
-          thisModalPayload,
+          thisModalPayload
         )
-      : false
+      : false;
   const hasMaskPayload =
     thisImageMaskShapeSelector && thisImageMaskShapeSelector.length
       ? SvgImageMaskPayload(thisImageMaskShapeSelector, thisId, viewportKey)
-      : false
+      : false;
   const hasModalMaskPayload =
     isModal && thisImageMaskShapeSelector && thisImageMaskShapeSelector?.length
       ? SvgImageMaskPayload(
           thisImageMaskShapeSelector,
           thisIdModal,
-          viewportKey,
+          viewportKey
         )
-      : false
-  const cssModalMask = hasModalMaskPayload || ``
-  const imageDataArrayNew = payload?.relationships?.markdown?.map(e => {
-    return e?.relationships?.images?.concat(e?.relationships?.imagesSvg)
-  })[0]
+      : false;
+  const cssModalMask = hasModalMaskPayload || ``;
+  const imageDataArrayNew = payload?.relationships?.markdown?.map((e) => {
+    return e?.relationships?.images?.concat(e?.relationships?.imagesSvg);
+  })[0];
   const imageDataArray =
     typeof imageDataArrayNew === `object` &&
     Object.keys(imageDataArrayNew).length > 0
       ? imageDataArrayNew
-      : payload?.relationships?.image
+      : payload?.relationships?.image;
   const htmlAst =
     payload?.markdownId &&
-    payload?.relationships?.markdown.filter(e => e.id === payload?.markdownId)
+    payload?.relationships?.markdown.filter((e) => e.id === payload?.markdownId)
       .length
       ? payload?.relationships?.markdown.filter(
-          e => e.id === payload?.markdownId,
+          (e) => e.id === payload?.markdownId
         )[0].childMarkdown?.childMarkdownRemark
-      : payload?.childPaneFragment?.childMarkdownRemark
+      : payload?.childPaneFragment?.childMarkdownRemark;
   const astPayload = htmlAst && {
     ast: htmlAst?.htmlAst?.children,
     mode: `paragraph__markdown`,
@@ -395,39 +398,39 @@ const ParagraphMarkdownCompositor = (
     imageData: imageDataArray,
     parent,
     viewportKey,
-  }
-  const hasClassNames = optionsPayload?.classNames
-  const hasClassNamesAll = optionsPayload?.classNames?.all
+  };
+  const hasClassNames = optionsPayload?.classNames;
+  const hasClassNamesAll = optionsPayload?.classNames?.all;
   const hasClassNamesViewport =
     hasClassNames &&
-    typeof optionsPayload.classNames[viewportKey] !== `undefined`
+    typeof optionsPayload.classNames[viewportKey] !== `undefined`;
   const injectClassNames = hasClassNamesAll
     ? optionsPayload.classNames.all
     : hasClassNamesViewport
-      ? optionsPayload.classNames[viewportKey]
-      : ``
-  const hasClassNamesParent = optionsPayload?.classNamesParent
+    ? optionsPayload.classNames[viewportKey]
+    : ``;
+  const hasClassNamesParent = optionsPayload?.classNamesParent;
   const hasClassNamesParentAll =
-    hasClassNamesParent && optionsPayload.classNamesParent.all
+    hasClassNamesParent && optionsPayload.classNamesParent.all;
   const hasClassNamesParentViewport =
     hasClassNamesParent &&
-    typeof optionsPayload?.classNamesParent[viewportKey] !== `undefined`
+    typeof optionsPayload?.classNamesParent[viewportKey] !== `undefined`;
   const classNamesParent = hasClassNamesParentAll
     ? optionsPayload.classNamesParent.all
     : hasClassNamesParentViewport
-      ? optionsPayload.classNamesParent[viewportKey]
-      : ``
-  const hasClassNamesModal = optionsPayload?.classNamesModal
+    ? optionsPayload.classNamesParent[viewportKey]
+    : ``;
+  const hasClassNamesModal = optionsPayload?.classNamesModal;
   const hasClassNamesModalAll =
-    hasClassNamesModal && optionsPayload.classNamesModal.all
+    hasClassNamesModal && optionsPayload.classNamesModal.all;
   const hasClassNamesModalViewport =
     hasClassNamesModal &&
-    typeof optionsPayload?.classNamesModal[viewportKey] !== `undefined`
+    typeof optionsPayload?.classNamesModal[viewportKey] !== `undefined`;
   const classNamesModal = hasClassNamesModalAll
     ? optionsPayload.classNamesModal.all
     : hasClassNamesModalViewport
-      ? optionsPayload.classNamesModal[viewportKey]
-      : ``
+    ? optionsPayload.classNamesModal[viewportKey]
+    : ``;
   const markdownArray = astPayload ? (
     HtmlAstToReact(
       astPayload,
@@ -435,33 +438,33 @@ const ParagraphMarkdownCompositor = (
       injectClassNames,
       hooks,
       {},
-      { ...id, viewportKey },
+      { ...id, viewportKey }
     )
   ) : (
     <></>
-  )
-  const cssMask = hasMaskPayload || ``
+  );
+  const cssMask = hasMaskPayload || ``;
   const cssTextShapeOutside = hasTextShapeOutsidePayload
     ? hasTextShapeOutsidePayload.css
-    : ``
+    : ``;
   const cssShapeOutsideModal = hasModalShapeOutsidePayload
     ? hasModalShapeOutsidePayload.css
-    : ``
-  const css = `#${thisId} { ${zIndex} ${cssMask} } ${cssTextShapeOutside} `
+    : ``;
+  const css = `#${thisId} { ${zIndex} ${cssMask} } ${cssTextShapeOutside} `;
   const cssModal = hasModal
     ? `#${thisIdModal} { ${zIndexModal} ${cssModalMask} } ${cssShapeOutsideModal} `
-    : ``
-  let working: any
-  if (!classNamesParent) working = markdownArray
+    : ``;
+  let working: any;
+  if (!classNamesParent) working = markdownArray;
   else if (typeof classNamesParent === `string`)
-    working = <div className={classNamesParent}>{markdownArray}</div>
+    working = <div className={classNamesParent}>{markdownArray}</div>;
   else
     classNamesParent.reverse().forEach((e: any) => {
       if (typeof working === `undefined`)
-        working = <div className={e}>{markdownArray}</div>
-      else working = <div className={e}>{working}</div>
-    })
-  const thisMarkdown = working
+        working = <div className={e}>{markdownArray}</div>;
+      else working = <div className={e}>{working}</div>;
+    });
+  const thisMarkdown = working;
   const jsxMarkdown = hasTextShapeOutsidePayload ? (
     <div
       id={thisId}
@@ -480,7 +483,7 @@ const ParagraphMarkdownCompositor = (
     >
       {thisMarkdown}
     </div>
-  )
+  );
   const jsxModal =
     hasModalShapeOutsidePayload &&
     typeof hasModalShapeOutsidePayload === `object` ? (
@@ -489,63 +492,63 @@ const ParagraphMarkdownCompositor = (
         key={`${thisIdModal}`}
         className={classNames(
           `paneFragment paneFragmentModal`,
-          classNamesModal,
+          classNamesModal
         )}
       >
         {hasModalShapeOutsidePayload?.shape}
       </div>
-    ) : null
-  const thisJsx = !isModal ? [jsxMarkdown] : [jsxModal, jsxMarkdown]
+    ) : null;
+  const thisJsx = !isModal ? [jsxMarkdown] : [jsxModal, jsxMarkdown];
   return {
     children: thisJsx,
     css: `${css} ${cssModal}`,
-  }
-}
+  };
+};
 
 const ParagraphBackgroundPaneCompositor = (
   payload: IPaneFragmentBackgroundPane,
-  viewportKey: string,
+  viewportKey: string
 ) => {
-  const zIndex = `` // `z-index: ${payload?.zindex || `100`};`
-  const optionsPayload = payload.optionsPayload
-  const hasArtpack = optionsPayload?.artpack
-  const hasArtpackAll = hasArtpack?.all
+  const zIndex = ``; // `z-index: ${payload?.zindex || `100`};`
+  const optionsPayload = payload.optionsPayload;
+  const hasArtpack = optionsPayload?.artpack;
+  const hasArtpackAll = hasArtpack?.all;
   const hasArtpackViewport =
     hasArtpack &&
     typeof hasArtpack[viewportKey] !== `undefined` &&
-    hasArtpack[viewportKey]
-  const artpack = (hasArtpack && hasArtpackAll) || hasArtpackViewport
-  const artpackMode = artpack?.mode
-  const artpackFiletype = artpack?.filetype
-  const artpackCollection = artpack?.collection
+    hasArtpack[viewportKey];
+  const artpack = (hasArtpack && hasArtpackAll) || hasArtpackViewport;
+  const artpackMode = artpack?.mode;
+  const artpackFiletype = artpack?.filetype;
+  const artpackCollection = artpack?.collection;
   const viewportPrefix =
-    viewportKey === `desktop` || viewportKey === `tablet` ? `1920` : `800`
+    viewportKey === `desktop` || viewportKey === `tablet` ? `1920` : `800`;
   const filenamePrefix =
-    artpackCollection !== `custom` ? `${artpackCollection}-` : ``
-  const artpackImage = artpack?.image
-  const thisId = `${viewportKey}-${payload.id}-pane`
+    artpackCollection !== `custom` ? `${artpackCollection}-` : ``;
+  const artpackImage = artpack?.image;
+  const thisId = `${viewportKey}-${payload.id}-pane`;
   const thisShapeSelector =
     viewportKey === `desktop`
       ? payload.shapeDesktop
       : viewportKey === `tablet`
-        ? payload.shapeTablet
-        : viewportKey === `mobile`
-          ? payload.shapeMobile
-          : payload.shape
-  const shapeName = thisShapeSelector !== `none` ? thisShapeSelector : null
+      ? payload.shapeTablet
+      : viewportKey === `mobile`
+      ? payload.shapeMobile
+      : payload.shape;
+  const shapeName = thisShapeSelector !== `none` ? thisShapeSelector : null;
   const shape =
-    typeof shapeName === `string` ? Svg(shapeName, viewportKey, thisId) : <></>
-  const hasClassNamesParent = optionsPayload?.classNamesParent
+    typeof shapeName === `string` ? Svg(shapeName, viewportKey, thisId) : <></>;
+  const hasClassNamesParent = optionsPayload?.classNamesParent;
   const hasClassNamesParentAll =
-    hasClassNamesParent && optionsPayload.classNamesParent.all
+    hasClassNamesParent && optionsPayload.classNamesParent.all;
   const hasClassNamesParentViewport =
     hasClassNamesParent &&
-    typeof optionsPayload?.classNamesParent[viewportKey] !== `undefined`
+    typeof optionsPayload?.classNamesParent[viewportKey] !== `undefined`;
   const classNamesParent = hasClassNamesParentAll
     ? optionsPayload.classNamesParent.all
     : hasClassNamesParentViewport
-      ? optionsPayload.classNamesParent[viewportKey]
-      : ``
+    ? optionsPayload.classNamesParent[viewportKey]
+    : ``;
 
   // modes -- standard = as-is
   // break = use artpack, show svg (from shapes), no mask
@@ -556,21 +559,21 @@ const ParagraphBackgroundPaneCompositor = (
     typeof artpackImage === `string` &&
     typeof artpackCollection === `string`
       ? Svg(`${artpackCollection}${artpackImage}`, thisId, viewportKey)
-      : false
+      : false;
   const breakSvgFill =
-    breakSvg && typeof artpack?.svgFill === `string` ? artpack.svgFill : `none`
+    breakSvg && typeof artpack?.svgFill === `string` ? artpack.svgFill : `none`;
   const maskSvg =
     artpackMode === `mask` && shapeName
       ? SvgImageMaskPayload(shapeName, thisId, viewportKey)
-      : false
+      : false;
   // @ts-ignore
   const maskObjectFit =
     maskSvg && typeof artpack?.objectFit === `string`
       ? artpack.objectFit
-      : `cover`
-  const thisShape = breakSvg || (maskSvg ? <></> : shape)
-  const breakCss = breakSvg ? `#${thisId} svg { fill: ${breakSvgFill}; }` : ``
-  const url = `/${artpackCollection}-artpack/${viewportPrefix}/${filenamePrefix}${artpackImage}.${artpackFiletype}`
+      : `cover`;
+  const thisShape = breakSvg || (maskSvg ? <></> : shape);
+  const breakCss = breakSvg ? `#${thisId} svg { fill: ${breakSvgFill}; }` : ``;
+  const url = `/${artpackCollection}-artpack/${viewportPrefix}/${filenamePrefix}${artpackImage}.${artpackFiletype}`;
   const maskCss =
     maskSvg &&
     artpackCollection &&
@@ -578,8 +581,8 @@ const ParagraphBackgroundPaneCompositor = (
     artpackFiletype &&
     maskObjectFit
       ? `#${thisId} { background:url('${url}'); background-size:${maskObjectFit}; ${zIndex} ${maskSvg} }`
-      : ``
-  const css = `#${thisId} { ${zIndex} } ${breakCss} ${maskCss}`
+      : ``;
+  const css = `#${thisId} { ${zIndex} } ${breakCss} ${maskCss}`;
   const thisJsx = [
     <div
       id={thisId}
@@ -588,13 +591,13 @@ const ParagraphBackgroundPaneCompositor = (
     >
       {thisShape}
     </div>,
-  ]
+  ];
 
   return {
     children: thisJsx,
     css,
-  }
-}
+  };
+};
 
 /*
 const ParagraphBackgroundImageCompositor = (
@@ -753,42 +756,42 @@ const ParagraphSvgCompositor = (
 const ParagraphBackgroundColourCompositor = (
   payload: IPaneFragmentBackgroundColour,
   viewportKey: string,
-  paneId: string,
+  paneId: string
 ) => {
   const bgColour =
     (typeof payload.bgColour === `string` &&
       `background-color: ${payload.bgColour};`) ||
-    ``
-  const zIndex = `` // `z-index: 50;`
-  const thisId = `${viewportKey}-${paneId}`
-  const css = `#${thisId} { ${bgColour} ${zIndex} } `
+    ``;
+  const zIndex = ``; // `z-index: 50;`
+  const thisId = `${viewportKey}-${paneId}`;
+  const css = `#${thisId} { ${bgColour} ${zIndex} } `;
   return {
     children: [],
     css,
-  }
-}
+  };
+};
 
 export const ParseOptions = (payload: string) => {
-  let action
+  let action;
   try {
-    action = JSON.parse(payload)
+    action = JSON.parse(payload);
   } catch (e) {
     if (e instanceof SyntaxError) {
-      console.log(`ERROR parsing json options: `, e)
-      return null
+      console.log(`ERROR parsing json options: `, e);
+      return null;
     }
   }
-  return action
-}
+  return action;
+};
 
 export const ParseImpressions = (payload: IImpressionDict, parent: string) => {
-  const thisPayload: any = []
-  Object.keys(payload).forEach(impression => {
-    const thisImpression = payload[impression]
-    thisPayload.push(thisImpression)
-    thisImpression.parentId = parent
-  })
+  const thisPayload: any = [];
+  Object.keys(payload).forEach((impression) => {
+    const thisImpression = payload[impression];
+    thisPayload.push(thisImpression);
+    thisImpression.parentId = parent;
+  });
   return {
     payload: thisPayload,
-  }
-}
+  };
+};
