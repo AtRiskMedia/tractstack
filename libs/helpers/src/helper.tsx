@@ -1224,14 +1224,24 @@ export const processGraphPayload = (payload: any) => {
       graphRelationshipIds.push(row.rc.id);
     }
   });
-  const nodes = graphNodes.map((e: any) => {
-    return {
-      id: e.id,
-      title: e.properties.object_type,
-      label: e.properties.object_name,
-      value: 1,
-    };
-  });
+  const nodes:any[] = []
+  graphNodes
+    .forEach((e: any) => {
+      if( e.properties.object_type )
+      nodes.push( {
+        id: e.id,
+        title: e.properties.object_type,
+        label: e.properties.object_name,
+        value: 1,
+      }
+      )
+      else if( e.properties.visit_id )
+      nodes.push({
+        id: e.id,
+        title: `Visit`,
+        label: `Visit`
+      })
+    })
   const edges = graphRelationships.map((e: any) => {
     return {
       from: e.startNodeId,
@@ -1246,5 +1256,6 @@ export const processGraphPayload = (payload: any) => {
       },
     };
   });
+
   return { nodes, edges };
 };
