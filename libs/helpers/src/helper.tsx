@@ -423,7 +423,7 @@ export const HtmlAstToReact = (
           if (id?.isBuilderPreview && interceptEditInPlace)
             return (
               <div
-                className="builder relative z-9 border border-transparent"
+                className="builder relative z-2 border border-transparent"
                 id={thisBuilderId}
                 key={thisId}
               >
@@ -454,7 +454,7 @@ export const HtmlAstToReact = (
           if (id?.isBuilderPreview && interceptEditInPlace)
             return (
               <div
-                className="builder relative z-9 border border-transparent"
+                className="builder relative z-2 border border-transparent"
                 id={thisBuilderId}
                 key={thisId}
               >
@@ -668,7 +668,7 @@ export const HtmlAstToReact = (
               );
               return (
                 <div
-                  className="builder relative z-9 border border-transparent"
+                  className="builder relative z-2 border border-transparent"
                   id={thisBuilderId}
                   key={thisId}
                 >
@@ -710,7 +710,7 @@ export const HtmlAstToReact = (
             if (id?.isBuilderPreview && interceptEditInPlace)
               return (
                 <div
-                  className="builder relative z-9 border border-transparent"
+                  className="builder relative z-2 border border-transparent"
                   id={thisBuilderId}
                   key={thisId}
                 >
@@ -763,7 +763,7 @@ export const HtmlAstToReact = (
           if (id?.isBuilderPreview && !interceptEditInPlace)
             return (
               <div
-                className="builder relative z-9 border border-transparent"
+                className="builder relative z-2 border border-transparent"
                 id={thisBuilderId}
                 key={thisId}
               >
@@ -783,7 +783,7 @@ export const HtmlAstToReact = (
               <div
                 className={classNames(
                   injectClassNames,
-                  `builder relative z-9 builder relative z-9 border border-transparent`
+                  `builder relative z-2 border border-transparent`
                 )}
                 id={thisBuilderId}
                 key={thisId}
@@ -817,7 +817,7 @@ export const HtmlAstToReact = (
               <div
                 className={classNames(
                   injectClassNames,
-                  `builder relative z-9 builder relative z-9 border border-transparent`
+                  `builder relative z-2 border border-transparent`
                 )}
                 id={thisBuilderId}
                 key={thisId}
@@ -846,7 +846,7 @@ export const HtmlAstToReact = (
               <div
                 className={classNames(
                   injectClassNames,
-                  `builder relative z-9 builder relative z-9 border border-transparent`
+                  `builder relative z-2 border border-transparent`
                 )}
                 id={thisBuilderId}
                 key={thisId}
@@ -882,7 +882,7 @@ export const HtmlAstToReact = (
               <div
                 className={classNames(
                   injectClassNames,
-                  `builder relative z-9 builder relative z-9 border border-transparent`
+                  `builder relative z-2 border border-transparent`
                 )}
                 id={thisBuilderId}
                 key={thisId}
@@ -916,7 +916,7 @@ export const HtmlAstToReact = (
               <div
                 className={classNames(
                   injectClassNames,
-                  `builder relative z-9 builder relative z-9 border border-transparent`
+                  `builder relative z-2 border border-transparent`
                 )}
                 id={thisBuilderId}
                 key={thisId}
@@ -977,13 +977,23 @@ export const HtmlAstToReact = (
           );
           if (id?.isBuilderPreview && interceptEditInPlace)
             return (
-              <Tag
+              <div
                 key={thisId}
                 id={thisBuilderId}
-                className={classNames(injectClassNames)}
+                className="builder relative z-2 border border-transparent"
               >
-                {contents}
-              </Tag>
+                {interceptEditInPlace({
+                  nth: thisIdx,
+                  parent: memory.parent,
+                  Tag: e?.tagName,
+                  value: (
+                    <Tag key={thisId} className={classNames(injectClassNames)}>
+                      {contents}
+                    </Tag>
+                  ),
+                  className: injectClassNames,
+                })}
+              </div>
             );
           return (
             <Tag key={thisId} className={classNames(injectClassNames)}>
@@ -1006,14 +1016,15 @@ export const HtmlAstToReact = (
           });
           if (
             id?.isBuilderPreview &&
-            interceptEditInPlace &&
+            !!interceptEditInPlace &&
             typeof contents === `object` &&
             typeof contents[0] === `object` &&
             typeof contents[0][0] === `string`
-          )
+          ) {
+            // this is text, e.g. list item with html
             return (
-              <div
-                className="li builder relative z-9 builder relative z-9 border border-transparent"
+              <li
+                className="builder relative z-2 border border-transparent"
                 id={`${Tag}-${memory.parent}-${thisIdx}`}
                 key={thisId}
               >
@@ -1028,8 +1039,27 @@ export const HtmlAstToReact = (
                   ),
                   className: injectClassNames,
                 })}
-              </div>
+              </li>
             );
+          } else if (
+            id?.isBuilderPreview &&
+            !!interceptEditInPlace &&
+            typeof contents === `object` &&
+            typeof contents[0] === `object`
+          ) {
+            // this is an image; requires special treatment
+            return (
+              <li
+                className="builder relative z-2 border border-transparent"
+                id={`${Tag}-${memory.parent}-${thisIdx}`}
+                key={thisId}
+              >
+                <div className={classNames(injectClassNames)} key={thisId}>
+                  {contents[0][0]}
+                </div>
+              </li>
+            );
+          }
           return (
             <li className={classNames(injectClassNames)} key={thisId}>
               {contents[0][0]}
@@ -1224,24 +1254,22 @@ export const processGraphPayload = (payload: any) => {
       graphRelationshipIds.push(row.rc.id);
     }
   });
-  const nodes:any[] = []
-  graphNodes
-    .forEach((e: any) => {
-      if( e.properties.object_type )
-      nodes.push( {
+  const nodes: any[] = [];
+  graphNodes.forEach((e: any) => {
+    if (e.properties.object_type)
+      nodes.push({
         id: e.id,
         title: e.properties.object_type,
         label: e.properties.object_name,
         value: 1,
-      }
-      )
-      else if( e.properties.visit_id )
+      });
+    else if (e.properties.visit_id)
       nodes.push({
         id: e.id,
         title: `Visit`,
-        label: `Visit`
-      })
-    })
+        label: `Visit`,
+      });
+  });
   const edges = graphRelationships.map((e: any) => {
     return {
       from: e.startNodeId,
