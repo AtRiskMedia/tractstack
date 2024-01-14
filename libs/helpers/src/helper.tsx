@@ -615,7 +615,27 @@ export const HtmlAstToReact = (
           const pass = /\.[A-Za-z0-9]+$/;
           const extcheck = e?.properties?.src?.match(pass);
 
-          if (
+          if (e?.properties?.src === `ImagePlaceholder`) {
+            // for storykeep EditInPlace interface
+            const image = <span key={thisId}>[IMAGE HERE]</span>;
+            if (id?.isBuilderPreview && interceptEditInPlace)
+              return (
+                <div
+                  className="builder relative z-2 border border-transparent"
+                  id={thisBuilderId}
+                  key={thisId}
+                >
+                  {interceptEditInPlace({
+                    nth: memory.child,
+                    Tag: e?.tagName,
+                    value: image,
+                    parent: memory.parent,
+                    className: injectClassNames,
+                  })}
+                </div>
+              );
+            return image;
+          } else if (
             extcheck &&
             (extcheck[0] === `.png` ||
               extcheck[0] === `.jpg` ||
@@ -1261,7 +1281,7 @@ export const processGraphPayload = (payload: any) => {
         id: e.id,
         title: e.properties.object_type,
         label: e.properties.object_name,
-        value: 1,
+        value: e.properties.pageRank,
       });
     else if (e.properties.visit_id)
       nodes.push({
