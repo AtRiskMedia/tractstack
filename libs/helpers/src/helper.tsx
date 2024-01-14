@@ -1276,18 +1276,30 @@ export const processGraphPayload = (payload: any) => {
   });
   const nodes: any[] = [];
   graphNodes.forEach((e: any) => {
+    const color =
+      e.labels.at(0) === `StoryFragment`
+        ? `#51AFEF`
+        : e.labels.at(0) === `TractStack`
+        ? `#ff6c6b`
+        : e.labels.at(0) === `Corpus`
+        ? `#C678DD`
+        : e.labels.at(0) === `Visit`
+        ? `#98BE65`
+        : `#51afef`;
     if (e.properties.object_type)
       nodes.push({
         id: e.id,
         title: e.properties.object_type,
         label: e.properties.object_name,
         value: e.properties.pageRank,
+        color: color,
       });
     else if (e.properties.visit_id)
       nodes.push({
         id: e.id,
         title: `Visit`,
         label: `Visit`,
+        color: color,
       });
   });
   const edges = graphRelationships.map((e: any) => {
