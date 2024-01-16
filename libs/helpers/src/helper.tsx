@@ -1229,13 +1229,22 @@ export const processGraphPayload = (payload: any) => {
   const graphRelationships: any = [];
   const graphRelationshipIds: any = [];
   payload.forEach((row: any) => {
+    console.log(row);
     if (row?.v?.id && !graphNodeIds.includes(row.v.id)) {
       graphNodes.push(row.v);
       graphNodeIds.push(row.v.id);
     }
+    if (row?.b?.id && !graphNodeIds.includes(row.b.id)) {
+      graphNodes.push(row.b);
+      graphNodeIds.push(row.b.id);
+    }
     if (row?.c?.id && !graphNodeIds.includes(row.c.id)) {
       graphNodes.push(row.c);
       graphNodeIds.push(row.c.id);
+    }
+    if (row?.f?.id && !graphNodeIds.includes(row.f.fingerprint_id)) {
+      graphNodes.push(row.f);
+      graphNodeIds.push(row.f.fingerprint_id);
     }
     if (row?.s?.id && !graphNodeIds.includes(row.s.id)) {
       graphNodes.push(row.s);
@@ -1248,6 +1257,14 @@ export const processGraphPayload = (payload: any) => {
     if (row?.a?.id && !graphRelationshipIds.includes(row.a.id)) {
       graphRelationships.push(row.a);
       graphRelationshipIds.push(row.a.id);
+    }
+    if (row?.bb?.id && !graphRelationshipIds.includes(row.bb.id)) {
+      graphRelationships.push(row.bb);
+      graphRelationshipIds.push(row.bb.id);
+    }
+    if (row?.cc?.id && !graphRelationshipIds.includes(row.cc.id)) {
+      graphRelationships.push(row.cc);
+      graphRelationshipIds.push(row.cc.id);
     }
     if (row?.d?.id && !graphRelationshipIds.includes(row.d.id)) {
       graphRelationships.push(row.d);
@@ -1276,22 +1293,41 @@ export const processGraphPayload = (payload: any) => {
   });
   const nodes: any[] = [];
   graphNodes.forEach((e: any) => {
+    // colours by https://github.com/catppuccin/catppuccin Macchiato theme
     const color =
       e.labels.at(0) === `StoryFragment`
-        ? `#51AFEF`
+        ? `#f4dbd6`
         : e.labels.at(0) === `TractStack`
-        ? `#ff6c6b`
+        ? `#f0c6c6`
         : e.labels.at(0) === `Corpus`
-        ? `#C678DD`
+        ? `#f5bde6`
         : e.labels.at(0) === `Visit`
-        ? `#98BE65`
-        : `#51afef`;
+        ? `#c6a0f6`
+        : e.labels.at(0) === `Belief`
+        ? `#ed8796`
+        : e.labels.at(0) === `Fingerprint`
+        ? `#ee99a0`
+        : `#f5a97f`;
     if (e.properties.object_type)
       nodes.push({
         id: e.id,
         title: e.properties.object_type,
         label: e.properties.object_name,
         value: e.properties.pageRank,
+        color: color,
+      });
+    else if (e.properties.fingerprint_id)
+      nodes.push({
+        id: e.id,
+        title: `You`,
+        label: `You`,
+        color: color,
+      });
+    else if (e.properties.belief_id)
+      nodes.push({
+        id: e.id,
+        title: `Belief`,
+        label: e.belief_id,
         color: color,
       });
     else if (e.properties.visit_id)
@@ -1316,6 +1352,7 @@ export const processGraphPayload = (payload: any) => {
       },
     };
   });
+  console.log(nodes, edges);
 
   return { nodes, edges };
 };
