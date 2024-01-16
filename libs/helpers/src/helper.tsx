@@ -1229,7 +1229,6 @@ export const processGraphPayload = (payload: any) => {
   const graphRelationships: any = [];
   const graphRelationshipIds: any = [];
   payload.forEach((row: any) => {
-    console.log(row);
     if (row?.v?.id && !graphNodeIds.includes(row.v.id)) {
       graphNodes.push(row.v);
       graphNodeIds.push(row.v.id);
@@ -1352,7 +1351,6 @@ export const processGraphPayload = (payload: any) => {
       },
     };
   });
-  console.log(nodes, edges);
 
   return { nodes, edges };
 };
