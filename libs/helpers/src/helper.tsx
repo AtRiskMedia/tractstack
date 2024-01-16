@@ -1327,7 +1327,7 @@ export const processGraphPayload = (payload: any) => {
       nodes.push({
         id: e.id,
         title: `Belief`,
-        label: e.belief_id,
+        label: e.properties.belief_id,
         color: color,
       });
     else if (e.properties.visit_id)
