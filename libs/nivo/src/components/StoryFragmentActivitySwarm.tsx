@@ -1,17 +1,17 @@
 // @ts-ignore
-import React from "react";
-import { generateSwarmPlotData } from "@nivo/generators";
-import { ResponsiveSwarmPlot } from "@nivo/swarmplot";
+import React from 'react';
+import { generateSwarmPlotData } from '@nivo/generators';
+import { ResponsiveSwarmPlot } from '@nivo/swarmplot';
 
-import { CustomCircle } from "./CustomCircle";
-import { DetailsPie } from "./DetailsPie";
-import { NonOverflowTooltipWrapper } from "../services/tooltip";
-import { theme, oneDarkTheme } from "../services/theme";
-import { IChartData } from "./PaneActivitySwarm";
+import { CustomCircle } from './CustomCircle';
+import { DetailsPie } from './DetailsPie';
+import { NonOverflowTooltipWrapper } from '../services/tooltip';
+import { theme, oneDarkTheme } from '../services/theme';
+import { IChartData } from './PaneActivitySwarm';
 
 export type SwarmPlotDatum = ReturnType<
   typeof generateSwarmPlotData
->["data"][number];
+>['data'][number];
 
 /*
 type ChartProps = {
@@ -46,12 +46,12 @@ export const StoryFragmentActivitySwarm = (payload: IChartData) => {
       id="id"
       value="engagement"
       valueScale={{
-        type: "linear",
+        type: 'linear',
         min: chartProps.valueMin,
         max: chartProps.valueMax,
       }}
       size={{
-        key: "events",
+        key: 'events',
         values: chartProps.eventsValues,
         sizes: chartProps.eventsSizes,
       }}
@@ -63,7 +63,7 @@ export const StoryFragmentActivitySwarm = (payload: IChartData) => {
       axisLeft={null}
       axisBottom={{
         legend: `Inactive nodes float left. Active nodes float right.`,
-        legendPosition: "middle",
+        legendPosition: 'middle',
         legendOffset: 50,
       }}
       circleComponent={CustomCircle}
@@ -123,7 +123,7 @@ export const StoryFragmentActivitySwarm = (payload: IChartData) => {
           </div>
         </NonOverflowTooltipWrapper>
       )}
-      //onMouseEnter={(e) => console.log("enter: " + e.index, e)}
+      //onMouseEnter={(e) => console.log('enter: ' + e.index, e)}
       onClick={(e) => handleClick(e)}
     />
   );

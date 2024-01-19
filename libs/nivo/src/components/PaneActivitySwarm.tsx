@@ -1,12 +1,12 @@
 // @ts-ignore
-import React from "react";
-import { ResponsiveSwarmPlot, ComputedDatum } from "@nivo/swarmplot";
+import React from 'react';
+import { ResponsiveSwarmPlot, ComputedDatum } from '@nivo/swarmplot';
 
-import { CustomCircle } from "./CustomCircle";
-import { DetailsPie } from "./DetailsPie";
-import { SwarmPlotDatum } from "../components/CustomCircle";
-import { theme, oneDarkTheme } from "../services/theme";
-import { NonOverflowTooltipWrapper } from "../services/tooltip";
+import { CustomCircle } from './CustomCircle';
+import { DetailsPie } from './DetailsPie';
+import { SwarmPlotDatum } from '../components/CustomCircle';
+import { theme, oneDarkTheme } from '../services/theme';
+import { NonOverflowTooltipWrapper } from '../services/tooltip';
 
 export interface IChartData {
   data: {
@@ -49,12 +49,12 @@ export const PaneActivitySwarm = (payload: IChartData) => {
       id="id"
       value="engagement"
       valueScale={{
-        type: "linear",
+        type: 'linear',
         min: chartProps.valueMin,
         max: chartProps.valueMax,
       }}
       size={{
-        key: "events",
+        key: 'events',
         values: chartProps.eventsValues,
         sizes: chartProps.eventsSizes,
       }}
@@ -65,7 +65,7 @@ export const PaneActivitySwarm = (payload: IChartData) => {
       axisLeft={null}
       axisBottom={{
         legend: `Inactive nodes float left. Active nodes float right.`,
-        legendPosition: "middle",
+        legendPosition: 'middle',
         legendOffset: 50,
       }}
       circleComponent={CustomCircle}
@@ -112,7 +112,7 @@ export const PaneActivitySwarm = (payload: IChartData) => {
           </div>
         </NonOverflowTooltipWrapper>
       )}
-      //onMouseEnter={(e) => console.log("enter: " + e.index, e)}
+      //onMouseEnter={(e) => console.log('enter: ' + e.index, e)}
       onClick={(e) => handleClick(e)}
     />
   );

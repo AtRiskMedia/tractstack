@@ -1,7 +1,7 @@
 // @ts-ignore
-import React from "react";
-import { ResponsivePie } from "@nivo/pie";
-import { oneDarkTheme } from "../services/theme";
+import React from 'react';
+import { oneDarkTheme } from '../services/theme';
+import { ResponsivePie } from '@nivo/pie';
 
 interface IPoint {
   id: string;
@@ -23,17 +23,17 @@ export const DetailsPie = (data: IPaneDetailsPieData) => (
     activeOuterRadiusOffset={8}
     borderWidth={4}
     borderColor={{
-      from: "color",
-      modifiers: [["darker", 0.2]],
+      from: 'color',
+      modifiers: [['darker', 0.2]],
     }}
     arcLinkLabelsSkipAngle={10}
     arcLinkLabelsTextColor="#333333"
     arcLinkLabelsThickness={2}
-    arcLinkLabelsColor={{ from: "color" }}
+    arcLinkLabelsColor={{ from: 'color' }}
     arcLabelsSkipAngle={10}
     arcLabelsTextColor={{
-      from: "color",
-      modifiers: [["darker", 2]],
+      from: 'color',
+      modifiers: [['darker', 2]],
     }}
   />
 );
