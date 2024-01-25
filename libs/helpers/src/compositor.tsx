@@ -25,7 +25,7 @@ import {
   // IPaneFragmentBackgroundImage,
   // IPaneFragmentBackgroundVideo,
   // IPaneFragmentSvg,
-} from './types';
+} from '@tractstack/types';
 
 export const Compositor = ({
   panesPayload,

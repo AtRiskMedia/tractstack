@@ -4,8 +4,8 @@ import * as ReactDOMServer from 'react-dom/server';
 
 import { SvgBreaks, SvgPanes, SvgModals } from './shapes';
 import { lispLexer } from './lexer';
-import { concierge } from './concierge';
-import { IStoryFragmentId } from './types';
+import { concierge, preParseConcierge } from './concierge';
+import { IStoryFragmentId } from '@tractstack/types';
 import { Buffer } from 'buffer';
 
 export function useInterval(callback: any, delay: number | null) {
@@ -374,6 +374,8 @@ export const HtmlAstToReact = (
 ) => {
   // recursive function
   const interceptEditInPlace = hooks?.EditInPlace;
+  const Link = hooks?.Link;
+  const processRead = hooks?.processRead;
   const newMemory = { ...memory };
   let contents, rawElement, raw;
   if (element) raw = element;
@@ -535,9 +537,27 @@ export const HtmlAstToReact = (
             } else if (isButton) {
               // inject button with callback function, add css className
               const thisButtonPayload = lispLexer(isButton?.callbackPayload);
+              const pre = preParseConcierge(thisButtonPayload, id);
+              const internal = typeof pre === `string`;
+              const targetUrl = internal
+                ? pre
+                : pre && pre?.length === 1
+                ? pre[0]
+                : null;
               const injectPayload = function (): void {
                 concierge(thisButtonPayload, hooks, id, payload.parent);
               };
+              if (!!Link && targetUrl)
+                return (
+                  <Link
+                    to={targetUrl}
+                    className={isButton?.className || injectClassNames}
+                    key={thisId}
+                    onClick={() => processRead()}
+                  >
+                    {e?.children[0].value}
+                  </Link>
+                );
               return (
                 <button
                   type="button"

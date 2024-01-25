@@ -1,4 +1,41 @@
-import { IStoryFragmentCompositorHooks, IStoryFragmentId } from './types';
+import {
+  IStoryFragmentCompositorHooks,
+  IStoryFragmentId,
+} from '@tractstack/types';
+
+export const preParseConcierge = (payload: any, id: IStoryFragmentId) => {
+  const thisPayload = (payload && payload[0]) || false;
+  const command = (thisPayload && thisPayload[0] && thisPayload[0][0]) || null;
+  const parameters =
+    (thisPayload && thisPayload[0] && thisPayload[0][1]) || null;
+  const parameterOne = (parameters && parameters[0]) || null;
+  const parameterTwo = (parameters && parameters[1]) || null;
+  switch (command) {
+    case `goto`:
+      switch (parameterOne) {
+        case `home`:
+          return `/`;
+        case `concierge`:
+          return `/concierge/${parameterTwo}`;
+        case `context`:
+          return `/context/${parameterTwo}`;
+          break;
+        case `product`:
+          return `/products/${parameterTwo}`;
+        case `storyFragment`:
+          if (parameterTwo !== id.home) return `/${parameterTwo}`;
+          return `/`;
+        case `url`:
+          return [parameterTwo];
+        default:
+          console.log(`LispActionPayload preParse misfire on goto`, parameters);
+      }
+      break;
+    default:
+      console.log(`LispActionPayload preParse misfire`, command, parameters);
+      break;
+  }
+};
 
 export const concierge = (
   payload: any,
