@@ -1,6 +1,6 @@
 {
   "name": "@tractstack/drupal-react-oauth-provider",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "license": "MIT",
   "description": "react oauth provider for drupal",
   "main": "./dist/index.esm.js",

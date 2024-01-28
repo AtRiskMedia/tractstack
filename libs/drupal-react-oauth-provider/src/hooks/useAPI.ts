@@ -7,7 +7,7 @@ import { Error, Data, Loading } from '../returnTypes';
 export type Params = {
   readonly endpoint: string;
   readonly method?: 'GET' | 'POST' | 'PATCH' | 'DELETE';
-  readonly body?: object;
+  readonly body?: any;
   _execute?: boolean;
 };
 
@@ -44,10 +44,20 @@ export const useAPI = ({
         if (token && token.expirationDate > Math.floor(Date.now() / 1000)) {
           addHeaders('Authorization', `Bearer ${token.access_token}`);
         }
-
         if (method === 'GET') {
           addHeaders('Content-Type', 'application/json');
           addHeaders('Accept', 'application/json');
+        } else if (
+          method === 'POST' &&
+          body?.data?.binary &&
+          body?.data?.filename
+        ) {
+          addHeaders('Content-Type', 'application/octet-stream');
+          addHeaders('Accept', 'application/vnd.api+json');
+          addHeaders(
+            'Content-Disposition',
+            `file; filename="${body.data.filename}"`
+          );
         } else {
           addHeaders('Content-Type', 'application/vnd.api+json');
           addHeaders('Accept', 'application/vnd.api+json');
@@ -77,7 +87,7 @@ export const useAPI = ({
           headers: getHeaders(),
           ...(body &&
           ('POST' === method || 'PATCH' === method || 'DELETE' === method)
-            ? { body: JSON.stringify(body) }
+            ? { body: body?.data?.binary || JSON.stringify(body) }
             : {}),
         };
         try {
