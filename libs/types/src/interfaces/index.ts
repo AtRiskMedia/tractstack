@@ -293,7 +293,7 @@ export interface ITemplateDict {
 }
 
 export interface IMenuPayload {
-  optionsPayload: object;
+  optionsPayload: string;
   theme: string;
   id: string;
   internal: { type: string };

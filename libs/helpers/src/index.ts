@@ -12,7 +12,7 @@ import {
   getCurrencySymbol,
   processGraphPayload,
 } from './helper';
-import { concierge } from './concierge';
+import { concierge, preParseConcierge } from './concierge';
 import { lispLexer } from './lexer';
 import { AtRiskMediaIcon, TractStackIcon } from './shapes';
 import { heldBeliefsScales, heldBeliefsTitles } from './beliefs';
@@ -33,6 +33,7 @@ export {
   TractStackIcon,
   Svg,
   concierge,
+  preParseConcierge,
   classNames,
   lispLexer,
   useInterval,
