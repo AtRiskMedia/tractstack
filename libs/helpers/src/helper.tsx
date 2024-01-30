@@ -547,7 +547,7 @@ export const HtmlAstToReact = (
               const injectPayload = function (): void {
                 concierge(thisButtonPayload, hooks, id, payload.parent);
               };
-              if (!!Link && targetUrl)
+              if (!!Link && internal && targetUrl)
                 return (
                   <Link
                     to={targetUrl}
