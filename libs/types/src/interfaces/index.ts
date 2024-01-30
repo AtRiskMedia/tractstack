@@ -211,7 +211,6 @@ export interface IRenderedStoryFragment {
   contentChildren: IContentChildrenDict;
   contentMap: IContentMapDict;
   id: string;
-  menu: any;
   slug: string;
   storyFragment: { [key: string]: IComposedStoryFragment | undefined };
   title: string;
@@ -293,27 +292,11 @@ export interface ITemplateDict {
   [key: string]: any;
 }
 
-export interface IMenuPayloadItem {
-  id: string;
-  title: string;
-  slug: string;
-  optionsPayload: object;
-  level: number | null;
-}
-
 export interface IMenuPayload {
   optionsPayload: object;
   theme: string;
   id: string;
   internal: { type: string };
-  relationships: {
-    imageLogo: any;
-    // menuItems: IMenuPayloadItem[]
-    svgLogo: {
-      id: string;
-      localFile: string;
-    };
-  };
 }
 
 export interface IMenuProps {
@@ -336,7 +319,6 @@ export interface IStoryFragmentCompositorPayload {
   title: string;
   relationships: {
     contextPanes: IContextPanesPayload;
-    menu: IMenuPayload;
     panes: IPane[];
     tractstack: {
       slug: string;
@@ -381,7 +363,7 @@ export interface INavLinkProps {
 export interface IHeaderProps {
   siteTitle: string;
   open: boolean;
-  menu: any; // FIX
+  menu?: IMenuPayload;
   isHome?: boolean;
 }
 
