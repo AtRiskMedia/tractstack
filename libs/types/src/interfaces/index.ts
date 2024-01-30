@@ -374,13 +374,14 @@ export interface IViewportKeyProps {
 }
 
 export interface INavLinkProps {
-  children: any;
+  children: any; // FIX
   to: string;
 }
 
 export interface IHeaderProps {
   siteTitle: string;
   open: boolean;
+  menu: any; // FIX
   isHome?: boolean;
 }
 
