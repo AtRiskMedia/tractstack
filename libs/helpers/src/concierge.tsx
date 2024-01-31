@@ -3,13 +3,18 @@ import {
   IStoryFragmentId,
 } from '@tractstack/types';
 
-export const preParseConcierge = (payload: any, id: IStoryFragmentId) => {
+export const preParseConcierge = (
+  payload: any,
+  id: IStoryFragmentId,
+  hooks: IStoryFragmentCompositorHooks
+) => {
   const thisPayload = (payload && payload[0]) || false;
   const command = (thisPayload && thisPayload[0] && thisPayload[0][0]) || null;
   const parameters =
     (thisPayload && thisPayload[0] && thisPayload[0][1]) || null;
   const parameterOne = (parameters && parameters[0]) || null;
   const parameterTwo = (parameters && parameters[1]) || null;
+
   switch (command) {
     case `goto`:
       switch (parameterOne) {

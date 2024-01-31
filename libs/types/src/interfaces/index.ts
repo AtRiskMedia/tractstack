@@ -6,10 +6,10 @@ type Scalars = {
 };
 
 export interface IStoryFragmentCompositorHooks {
+  processRead: Function;
   belief?: Function;
   youtube?: Function;
   toggle?: Function;
-  processRead: Function;
   updateEventStream?: Function;
   resourcePayload?: any;
   templates?: any;

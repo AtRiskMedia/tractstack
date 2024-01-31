@@ -537,7 +537,7 @@ export const HtmlAstToReact = (
             } else if (isButton) {
               // inject button with callback function, add css className
               const thisButtonPayload = lispLexer(isButton?.callbackPayload);
-              const pre = preParseConcierge(thisButtonPayload, id);
+              const pre = preParseConcierge(thisButtonPayload, id, hooks);
               const internal = typeof pre === `string`;
               const targetUrl = internal
                 ? pre
