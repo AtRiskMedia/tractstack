@@ -501,7 +501,7 @@ export const HtmlAstToReact = (
 
             // if (id?.isBuilderPreview && interceptEditInPlace)
             //  return ` [${e?.children[0].value}](${e.properties.href}) `
-            if (id?.isBuilderPreview && interceptEditInPlace)
+            if (id?.isBuilderPreview && interceptEditInPlace) {
               return (
                 <a
                   className={isButton?.className || injectClassNames}
@@ -511,7 +511,7 @@ export const HtmlAstToReact = (
                   {e?.children[0].value}
                 </a>
               );
-            else if (id?.isBuilderPreview)
+            } else if (id?.isBuilderPreview)
               return (
                 <button
                   type="button"
@@ -1059,9 +1059,11 @@ export const HtmlAstToReact = (
             !!interceptEditInPlace &&
             typeof contents === `object` &&
             typeof contents[0] === `object` &&
-            typeof contents[0][0] === `string`
+            ((typeof contents[0][0] === `object` &&
+              contents[0][0].type === `a`) ||
+              typeof contents[0][0] === `string`)
           ) {
-            // this is text, e.g. list item with html
+            // this is text or link
             return (
               <li
                 className="builder relative z-2 border border-transparent"
