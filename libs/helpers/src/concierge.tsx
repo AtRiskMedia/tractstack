@@ -14,6 +14,7 @@ export const preParseConcierge = (
     (thisPayload && thisPayload[0] && thisPayload[0][1]) || null;
   const parameterOne = (parameters && parameters[0]) || null;
   const parameterTwo = (parameters && parameters[1]) || null;
+  const parameterThree = (parameters && parameters[2]) || null;
 
   switch (command) {
     case `goto`:
@@ -30,6 +31,14 @@ export const preParseConcierge = (
         case `storyFragment`:
           if (parameterTwo !== id.home) return `/${parameterTwo}`;
           return `/`;
+        case `storyFragmentPane`:
+          if (parameterThree) {
+            if (parameterTwo !== id.home)
+              return `/${parameterTwo}#${parameterThree}`;
+            return `/#${parameterThree}`;
+          }
+          console.log(`LispActionPayload preParse misfire on goto`, parameters);
+          break;
         case `url`:
           return [parameterTwo];
         default:
@@ -99,6 +108,7 @@ export const concierge = (
           processRead(`/products/${parameterTwo}`, parameterOne, id?.id);
           break;
         case `storyFragment`:
+        case `storyFragmentPane`:
           processRead(parameterTwo, parameterOne, id?.id);
           break;
         case `anchor`:
