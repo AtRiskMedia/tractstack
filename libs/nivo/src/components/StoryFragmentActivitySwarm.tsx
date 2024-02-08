@@ -29,7 +29,7 @@ export const StoryFragmentActivitySwarm = (payload: IChartData) => {
   const chartProps = {
     valueMin: 0,
     valueMax: 100,
-    eventsValues: [0, 25],
+    eventsValues: [0, 100],
     eventsSizes: [10, 25],
   };
   return (

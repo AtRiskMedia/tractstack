@@ -32,7 +32,7 @@ export const PaneActivitySwarm = (payload: IChartData) => {
   const chartProps = {
     valueMin: 0,
     valueMax: 100,
-    eventsValues: [0, 25],
+    eventsValues: [0, 50],
     eventsSizes: [10, 25],
   };
   return (
