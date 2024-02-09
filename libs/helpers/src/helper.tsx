@@ -796,6 +796,10 @@ export const HtmlAstToReact = (
             thisHookValuesRaw && thisHookValuesRaw.length > 2
               ? thisHookValuesRaw[2]
               : null;
+          const value4 =
+            thisHookValuesRaw && thisHookValuesRaw.length > 3
+              ? thisHookValuesRaw[3]
+              : null;
           // const injectClassNamesExtra =
           //   typeof thisClassNames.codeExtra !== `undefined`
           //     ? thisClassNames.codeExtra
@@ -877,8 +881,6 @@ export const HtmlAstToReact = (
           } else if (
             hook === `toggle` &&
             value1 &&
-            value2 &&
-            value3 &&
             id?.isBuilderPreview &&
             interceptEditInPlace
           )
@@ -899,14 +901,14 @@ export const HtmlAstToReact = (
                 })}
               </div>
             );
-          else if (hook === `toggle` && value1 && value2 && value3) {
+          else if (hook === `toggle` && value1 && value3 && value4) {
             const ToggleBelief = hooks?.toggle;
             return (
               <ToggleBelief
                 key={thisId}
                 belief={value1}
-                value={value2}
-                prompt={value3}
+                value={value3}
+                prompt={value4}
                 storyFragmentId={id}
                 cssClasses={injectClassNames}
               />
