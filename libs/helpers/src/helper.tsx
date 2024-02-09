@@ -408,6 +408,7 @@ export const HtmlAstToReact = (
         else memory[e.tagName] = 0;
         injectClassNames = injectClassNamesRaw[memory[e.tagName]];
       }
+
       switch (e?.tagName) {
         case `p`:
           contents = e?.children?.map((p: any) => {
@@ -795,10 +796,10 @@ export const HtmlAstToReact = (
             thisHookValuesRaw && thisHookValuesRaw.length > 2
               ? thisHookValuesRaw[2]
               : null;
-          const injectClassNamesExtra =
-            typeof thisClassNames.codeExtra !== `undefined`
-              ? thisClassNames.codeExtra
-              : ``;
+          // const injectClassNamesExtra =
+          //   typeof thisClassNames.codeExtra !== `undefined`
+          //     ? thisClassNames.codeExtra
+          //     : ``;
           if (!hook) return <></>;
           if (id?.isBuilderPreview && !interceptEditInPlace)
             return (
@@ -843,7 +844,6 @@ export const HtmlAstToReact = (
                 key={thisId}
                 value={{ slug: value1, scale: value2, extra: value3 }}
                 cssClasses={injectClassNames}
-                cssClassesExtra={injectClassNamesExtra}
                 storyFragmentId={id}
               />
             );
@@ -908,7 +908,7 @@ export const HtmlAstToReact = (
                 value={value2}
                 prompt={value3}
                 storyFragmentId={id}
-                cssClasses={injectClassNamesExtra}
+                cssClasses={injectClassNames}
               />
             );
           } else if (
