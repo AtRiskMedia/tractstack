@@ -771,7 +771,8 @@ export const HtmlAstToReact = (
         case `code`: {
           // if (typeof hooks.template === `undefined`) return null
           // currently only supports inject, belief, youtube and resource
-          const regexpHook = /(youtube|toggle|resource|belief)\((.*?)\)/;
+          const regexpHook =
+            /(identifyAs|youtube|toggle|resource|belief)\((.*?)\)/;
           const regexpValues = /((?:[^\\|]+|\\\|?)+)/g;
           const thisHookRaw = e.children[0].value.match(regexpHook);
           const hook =
@@ -800,10 +801,6 @@ export const HtmlAstToReact = (
             thisHookValuesRaw && thisHookValuesRaw.length > 3
               ? thisHookValuesRaw[3]
               : null;
-          // const injectClassNamesExtra =
-          //   typeof thisClassNames.codeExtra !== `undefined`
-          //     ? thisClassNames.codeExtra
-          //     : ``;
           if (!hook) return <></>;
           if (id?.isBuilderPreview && !interceptEditInPlace)
             return (
@@ -818,7 +815,7 @@ export const HtmlAstToReact = (
               </div>
             );
           if (
-            hook === `belief` &&
+            [`belief`, `identifyAs`].includes(hook) &&
             value1 &&
             value2 &&
             id?.isBuilderPreview &&
@@ -847,6 +844,16 @@ export const HtmlAstToReact = (
               <Belief
                 key={thisId}
                 value={{ slug: value1, scale: value2, extra: value3 }}
+                cssClasses={injectClassNames}
+                storyFragmentId={id}
+              />
+            );
+          } else if (hook === `identifyAs` && value1 && value2) {
+            const IdentifyAs = hooks.identifyAs;
+            return (
+              <IdentifyAs
+                key={thisId}
+                value={{ slug: value1, target: value2, extra: value3 }}
                 cssClasses={injectClassNames}
                 storyFragmentId={id}
               />

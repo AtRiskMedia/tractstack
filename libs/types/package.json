@@ -1,6 +1,6 @@
 {
   "name": "@tractstack/types",
-  "version": "0.1.13",
+  "version": "0.1.14",
   "license": "FSL-1.0-MIT",
   "description": "custom types for tractstack",
   "author": "Adon Irani <a@atriskmedia.com>",
