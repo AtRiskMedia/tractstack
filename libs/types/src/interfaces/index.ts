@@ -241,7 +241,7 @@ export interface IContextPageProps {
 }
 
 export interface IFooterProps {
-  observe?: any;
+  menu?: IMenuPayload;
 }
 
 export interface IPaneProps {
