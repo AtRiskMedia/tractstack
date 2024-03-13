@@ -153,6 +153,33 @@ export const SvgImageMaskPayload = (
     : ``;
   return css;
 };
+export const SvgImageMaskPayloadObject = (
+  shapeName: string,
+  thisId: string,
+  viewportKey: string
+) => {
+  const shape = Svg(shapeName, viewportKey, thisId);
+  const svgString =
+    typeof shape === `object`
+      ? ReactDOMServer.renderToStaticMarkup(shape)
+      : false;
+  const b64 =
+    typeof svgString === `string`
+      ? Buffer.from(svgString, `utf8`).toString(`base64`)
+      : null;
+  const dataUri = b64 && `data:image/svg+xml;base64,${b64}`;
+  const css = dataUri
+    ? `-webkit-mask-image: url("${dataUri}"); mask-image: url("${dataUri}"); ` +
+      `mask-repeat: no-repeat; -webkit-mask-size: 100% AUTO; mask-size: 100% AUTO; `
+    : ``;
+  return {
+    WebkitMaskImage: `url("${dataUri}")`,
+    maskImage: `url("${dataUri}")`,
+    maskRepeat: `no-repeat`,
+    WebkitMaskSize: `100% AUTO`,
+    maskSize: `100% AUTO`,
+  };
+};
 
 export const SvgShapeOutsidePayload = (
   shapeName: string,
