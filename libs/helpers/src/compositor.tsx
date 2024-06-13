@@ -25,7 +25,7 @@ import {
   // IPaneFragmentBackgroundImage,
   // IPaneFragmentBackgroundVideo,
   // IPaneFragmentSvg,
-} from '@tractstack/types';
+} from './types';
 
 export const Compositor = ({
   panesPayload,
@@ -375,7 +375,7 @@ const ParagraphMarkdownCompositor = (
         )
       : false;
   const cssModalMask = hasModalMaskPayload || ``;
-  const imageDataArrayNew = payload?.relationships?.markdown?.map((e) => {
+  const imageDataArrayNew = payload?.relationships?.markdown?.map((e: any) => {
     return e?.relationships?.images?.concat(e?.relationships?.imagesSvg);
   })[0];
   const imageDataArray =
@@ -385,10 +385,11 @@ const ParagraphMarkdownCompositor = (
       : payload?.relationships?.image;
   const htmlAst =
     payload?.markdownId &&
-    payload?.relationships?.markdown.filter((e) => e.id === payload?.markdownId)
-      .length
+    payload?.relationships?.markdown.filter(
+      (e: any) => e.id === payload?.markdownId
+    ).length
       ? payload?.relationships?.markdown.filter(
-          (e) => e.id === payload?.markdownId
+          (e: any) => e.id === payload?.markdownId
         )[0].childMarkdown?.childMarkdownRemark
       : payload?.childPaneFragment?.childMarkdownRemark;
   const astPayload = htmlAst && {

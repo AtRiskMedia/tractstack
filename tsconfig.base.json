@@ -3,6 +3,7 @@
   "compilerOptions": {
     "rootDir": ".",
     "paths": {
+      "@nivo/*": ["libs/nivo/node_modules/@nivo/*"],
       "@tractstack/drupal-react-oauth-provider": [
         "libs/drupal-react-oauth-provider/src/index.ts"
       ],

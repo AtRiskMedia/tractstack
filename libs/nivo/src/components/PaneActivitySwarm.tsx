@@ -74,7 +74,7 @@ export const PaneActivitySwarm = (payload: IChartData) => {
       colors={oneDarkTheme}
       isInteractive={true}
       useMesh={true}
-      tooltip={(p) => (
+      tooltip={(p: any) => (
         <NonOverflowTooltipWrapper point={{ x: p.x, y: p.y }}>
           <div className="text-myblue px-4 pt-4 pb-2 font-main w-full flex flex-col flex-start">
             <span className="text-xl font-bold">{p.data.id}</span>
@@ -113,7 +113,7 @@ export const PaneActivitySwarm = (payload: IChartData) => {
         </NonOverflowTooltipWrapper>
       )}
       //onMouseEnter={(e) => console.log('enter: ' + e.index, e)}
-      onClick={(e) => handleClick(e)}
+      onClick={(e: any) => handleClick(e)}
     />
   );
 };

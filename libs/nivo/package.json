@@ -1,6 +1,6 @@
 {
   "name": "@tractstack/nivo",
-  "version": "0.1.11",
+  "version": "0.1.12",
   "license": "FSL-1.0-MIT",
   "description": "custom nivo visualizations for tractstack",
   "author": "Adon Irani <a@atriskmedia.com>",
@@ -9,11 +9,11 @@
     "atriskmedia"
   ],
   "dependencies": {
-    "@nivo/core": "^0.84.0",
-    "@nivo/generators": "^0.84.0",
-    "@nivo/line": "^0.84.0",
-    "@nivo/pie": "^0.84.0",
-    "@nivo/swarmplot": "^0.84.0"
+    "@nivo/core": "^0.87.0",
+    "@nivo/generators": "^0.87.0",
+    "@nivo/line": "^0.87.0",
+    "@nivo/pie": "^0.87.0",
+    "@nivo/swarmplot": "^0.87.0"
   },
   "main": "dist/index.esm.js",
   "types": "dist/index.esm.d.ts"

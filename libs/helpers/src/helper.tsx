@@ -5,7 +5,7 @@ import * as ReactDOMServer from 'react-dom/server';
 import { SvgBreaks, SvgPanes, SvgModals } from './shapes';
 import { lispLexer } from './lexer';
 import { concierge, preParseConcierge } from './concierge';
-import { IStoryFragmentId } from '@tractstack/types';
+import { IStoryFragmentId } from './types';
 import { Buffer } from 'buffer';
 
 export function useInterval(callback: any, delay: number | null) {
@@ -797,9 +797,9 @@ export const HtmlAstToReact = (
         }
         case `code`: {
           // if (typeof hooks.template === `undefined`) return null
-          // currently only supports inject, belief, youtube and resource
+          // currently only supports inject, belief, youtube, bunny, bunnyContext, and resource
           const regexpHook =
-            /(identifyAs|youtube|toggle|resource|belief)\((.*?)\)/;
+            /(identifyAs|youtube|bunny|bunnyContext|toggle|resource|belief)\((.*?)\)/;
           const regexpValues = /((?:[^\\|]+|\\\|?)+)/g;
           const thisHookRaw = e.children[0].value.match(regexpHook);
           const hook =
@@ -981,6 +981,58 @@ export const HtmlAstToReact = (
                 cssClasses={injectClassNames}
               />
             );
+          } else if (
+            hook === `bunny` &&
+            value1 &&
+            value2 &&
+            id?.isBuilderPreview &&
+            interceptEditInPlace
+          )
+            return (
+              <div
+                className={classNames(
+                  injectClassNames,
+                  `builder relative z-2 border border-transparent`
+                )}
+                id={thisBuilderId}
+                key={thisId}
+              >
+                {interceptEditInPlace({
+                  nth: memory.child,
+                  Tag: e?.tagName,
+                  value: `Bunny video embed - Story Fragment: ${value2}`,
+                  parent: memory.parent,
+                })}
+              </div>
+            );
+          else if (hook === `bunny` && value1 && value2) {
+            return <p>Bunny Video embed - Story Fragment: {value2}</p>;
+          } else if (
+            hook === `bunnyContext` &&
+            value1 &&
+            value2 &&
+            id?.isBuilderPreview &&
+            interceptEditInPlace
+          )
+            return (
+              <div
+                className={classNames(
+                  injectClassNames,
+                  `builder relative z-2 border border-transparent`
+                )}
+                id={thisBuilderId}
+                key={thisId}
+              >
+                {interceptEditInPlace({
+                  nth: memory.child,
+                  Tag: e?.tagName,
+                  value: `Bunny video embed - Context Page: ${value2}`,
+                  parent: memory.parent,
+                })}
+              </div>
+            );
+          else if (hook === `bunny` && value1 && value2) {
+            return <p>Bunny Video embed - Context Page: {value2}</p>;
           } else if (
             hook === `resource` &&
             value1 &&

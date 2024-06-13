@@ -1,7 +1,4 @@
-import {
-  IStoryFragmentCompositorHooks,
-  IStoryFragmentId,
-} from '@tractstack/types';
+import { IStoryFragmentCompositorHooks, IStoryFragmentId } from './types';
 
 export const preParseConcierge = (
   payload: any,
