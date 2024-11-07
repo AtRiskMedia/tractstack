@@ -1,3 +1,4 @@
+// package/virtual.d.ts
 /// <reference types="astro/client" />
 
 declare module 'virtual:theme-config' {
@@ -8,14 +9,11 @@ declare module 'virtual:theme-config' {
   export default config;
 }
 
-declare module 'tractstack:components' {
+// If you need to use these later for external consumption
+declare module 'tractstack/components' {
   export * from './src/components';
 }
 
-declare module 'tractstack:layouts' {
+declare module 'tractstack/layouts' {
   export * from './src/layouts';
-}
-
-declare module 'tractstack:assets' {
-  export * from './src/assets';
 }
