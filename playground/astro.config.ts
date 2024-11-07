@@ -1,12 +1,12 @@
 import { defineConfig } from "astro/config";
-import MyTheme from "tractstack";
+import TractStackTheme from "tractstack";
 
 export default defineConfig({
 	integrations: [
-		MyTheme({
+		TractStackTheme({
 			config: {
-				title: "My Awesome Theme",
-				description: "My awesome theme is currently under construction!",
+				title: "Tract Stack",
+				description: "no-code website builder and content marketing platform",
 			},
 			pages: {
 

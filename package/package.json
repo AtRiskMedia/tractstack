@@ -3,6 +3,7 @@
   "version": "1.0.0-pre-rc",
   "author": "At Risk Media",
   "description": "no-code website builder and content marketing platform",
+  "main": "index.ts",
   "license": "FSL-1.1-MIT",
   "repository": {
 	    "type": "git",
