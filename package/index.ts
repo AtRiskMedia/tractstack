@@ -1,5 +1,3 @@
-import { fileURLToPath } from 'url';
-import { join, dirname } from 'path';
 import defineTheme from "astro-theme-provider";
 import { z } from "astro/zod";
 

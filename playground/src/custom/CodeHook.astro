@@ -6,7 +6,7 @@ interface Props {
 const { target } = Astro.props;
 
 const components = {
-  hero: (await import('./CustomHero.astro')).default,
+  hero: (await import("./CustomHero.astro")).default,
 };
 
 const Component = components[target];

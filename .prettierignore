@@ -1,0 +1,27 @@
+# Dependencies
+**/node_modules
+.pnpm-store
+
+# Package manager files
+pnpm-lock.yaml
+pnpm-workspace.yaml
+
+# Build outputs
+**/dist
+**/.astro
+
+# Cache and temporary files
+.cache
+.temp
+
+# Git
+.git
+.gitignore
+
+# IDE
+.vscode
+.idea
+
+# Specific to your monorepo structure
+package/node_modules
+playground/node_modules

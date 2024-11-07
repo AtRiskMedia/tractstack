@@ -5,17 +5,29 @@
   "version": "1.0.0-pre-rc",
   "license": "FSL-1.1-MIT",
   "repository": {
-	    "type": "git",
-      "url": "https://github.com/AtRiskMedia/tractstack",
-	    "directory": "package"
-	},
+    "type": "git",
+    "url": "https://github.com/AtRiskMedia/tractstack",
+    "directory": "package"
+  },
   "homepage": "https://tractstack.com",
   "keywords": [],
   "scripts": {
-    "playground:dev": "pnpm --filter playground dev"
+    "playground:dev": "pnpm --filter playground dev",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "tsc": "pnpm -r tsc",
+    "tsc:check": "pnpm -r tsc --noEmit --pretty"
   },
   "devDependencies": {
-    "astro": "^4.13.1"
+    "astro": "^4.13.1",
+    "prettier": "^3.2.5",
+    "prettier-plugin-astro": "^0.13.0",
+    "prettier-plugin-tailwindcss": "^0.5.11",
+    "typescript": "^5.4.2"
   },
-  "packageManager": "pnpm@9.12.3+sha512.cce0f9de9c5a7c95bef944169cc5dfe8741abfb145078c0d508b868056848a87c81e626246cb60967cbd7fd29a6c062ef73ff840d96b3c86c40ac92cf4a813ee"
+  "packageManager": "pnpm@9.12.3+sha512.cce0f9de9c5a7c95bef944169cc5dfe8741abfb145078c0d508b868056848a87c81e626246cb60967cbd7fd29a6c062ef73ff840d96b3c86c40ac92cf4a813ee",
+  "engines": {
+    "node": ">=20.0.0",
+    "pnpm": ">=9.12.3"
+  }
 }

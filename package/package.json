@@ -17,19 +17,29 @@
     "virtual.d.ts"
   ],
   "repository": {
-	    "type": "git",
-      "url": "https://github.com/AtRiskMedia/tractstack",
-	    "directory": "package"
-	},
+    "type": "git",
+    "url": "https://github.com/AtRiskMedia/tractstack",
+    "directory": "package"
+  },
   "homepage": "https://tractstack.com",
   "keywords": [
     "astro",
     "withastro",
     "astro-integration"
   ],
-  "scripts": {},
+  "scripts": {
+    "tsc": "tsc --pretty",
+    "tsc:check": "tsc --noEmit --pretty"
+  },
   "devDependencies": {
-    "astro": "^4.13.1"
+    "astro": "^4.13.1",
+    "typescript": "^5.4.2",
+    "@types/hast": "^3.0.4",
+    "nanostores": "^0.9.5"
+  },
+  "peerDependencies": {
+    "react": "^18.0.0",
+    "@heroicons/react": "^2.1.5"
   },
   "dependencies": {
     "astro-theme-provider": "^0.6.1"

@@ -10,29 +10,56 @@ importers:
     devDependencies:
       astro:
         specifier: ^4.13.1
-        version: 4.13.1
+        version: 4.13.1(@types/node@20.17.6)(typescript@5.6.3)
+      prettier:
+        specifier: ^3.2.5
+        version: 3.3.3
+      prettier-plugin-astro:
+        specifier: ^0.13.0
+        version: 0.13.0
+      prettier-plugin-tailwindcss:
+        specifier: ^0.5.11
+        version: 0.5.14(prettier-plugin-astro@0.13.0)(prettier@3.3.3)
+      typescript:
+        specifier: ^5.4.2
+        version: 5.6.3
 
   package:
     dependencies:
+      '@heroicons/react':
+        specifier: ^2.1.5
+        version: 2.1.5(react@18.3.1)
       astro-theme-provider:
         specifier: ^0.6.1
-        version: 0.6.1(astro@4.13.1)
+        version: 0.6.1(astro@4.13.1(@types/node@20.17.6)(typescript@5.6.3))
+      react:
+        specifier: ^18.0.0
+        version: 18.3.1
     devDependencies:
+      '@types/hast':
+        specifier: ^3.0.4
+        version: 3.0.4
       astro:
         specifier: ^4.13.1
-        version: 4.13.1
+        version: 4.13.1(@types/node@20.17.6)(typescript@5.6.3)
+      nanostores:
+        specifier: ^0.9.5
+        version: 0.9.5
+      typescript:
+        specifier: ^5.4.2
+        version: 5.6.3
 
   playground:
     dependencies:
       '@astrojs/node':
         specifier: ^8.3.4
-        version: 8.3.4(astro@4.13.1)
+        version: 8.3.4(astro@4.13.1(@types/node@20.17.6)(typescript@5.6.3))
       '@astrojs/react':
         specifier: ^3.6.2
-        version: 3.6.2(@types/react-dom@18.3.1)(@types/react@18.3.12)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(vite@5.4.0)
+        version: 3.6.2(@types/react-dom@18.3.1)(@types/react@18.3.12)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(vite@5.4.0(@types/node@20.17.6))
       '@astrojs/tailwind':
         specifier: ^5.1.2
-        version: 5.1.2(astro@4.13.1)(tailwindcss@3.4.14)
+        version: 5.1.2(astro@4.13.1(@types/node@20.17.6)(typescript@5.6.3))(tailwindcss@3.4.14)
       '@types/react':
         specifier: ^18.3.12
         version: 18.3.12
@@ -41,7 +68,7 @@ importers:
         version: 18.3.1
       astro:
         specifier: ^4.13.1
-        version: 4.13.1
+        version: 4.13.1(@types/node@20.17.6)(typescript@5.6.3)
       react:
         specifier: ^18.3.1
         version: 18.3.1
@@ -54,6 +81,19 @@ importers:
       tractstack:
         specifier: workspace:^
         version: link:../package
+    devDependencies:
+      '@types/node':
+        specifier: ^20.x
+        version: 20.17.6
+      prettier:
+        specifier: ^3.2.5
+        version: 3.3.3
+      prettier-plugin-astro:
+        specifier: ^0.13.0
+        version: 0.13.0
+      prettier-plugin-tailwindcss:
+        specifier: ^0.5.11
+        version: 0.5.14(prettier-plugin-astro@0.13.0)(prettier@3.3.3)
 
 packages:
 
@@ -64,6 +104,9 @@ packages:
   '@ampproject/remapping@2.3.0':
     resolution: {integrity: sha512-30iZtAPgz+LTIYoeivqYo853f02jBYSd5uGnGpkFV0M3xOt9aN73erkgYAmZU43x4VfqcnLxW9Kpg3R5LC4YYw==}
     engines: {node: '>=6.0.0'}
+
+  '@astrojs/compiler@1.8.2':
+    resolution: {integrity: sha512-o/ObKgtMzl8SlpIdzaxFnt7SATKPxu4oIP/1NL+HDJRzxfJcAkOTAb/ZKMRyULbz4q+1t2/DAebs2Z1QairkZw==}
 
   '@astrojs/compiler@2.10.2':
     resolution: {integrity: sha512-bvH+v8AirwpRWCkYJEyWYdc5Cs/BjG2ZTxIJzttHilXgfKJAdW2496KsUQKzf5j2tOHtaHXKKn9hb9WZiBGpEg==}
@@ -350,6 +393,11 @@ packages:
     cpu: [x64]
     os: [win32]
 
+  '@heroicons/react@2.1.5':
+    resolution: {integrity: sha512-FuzFN+BsHa+7OxbvAERtgBTNeZpUjgM/MIizfVkSCL2/edriN0Hx/DWRCR//aPYwO5QX/YlgLGXk+E3PcfZwjA==}
+    peerDependencies:
+      react: '>= 16'
+
   '@img/sharp-darwin-arm64@0.33.4':
     resolution: {integrity: sha512-p0suNqXufJs9t3RqLBO6vvrgr5OhgbWp76s5gTRvdmxmuv9E1rcaqGUsl3l4mKVmXPkTkTErXediAui4x+8PSA==}
     engines: {glibc: '>=2.26', node: ^18.17.0 || ^20.3.0 || >=21.0.0, npm: '>=9.6.5', pnpm: '>=7.1.0', yarn: '>=3.2.0'}
@@ -616,6 +664,9 @@ packages:
 
   '@types/nlcst@2.0.3':
     resolution: {integrity: sha512-vSYNSDe6Ix3q+6Z7ri9lyWqgGhJTmzRjZRqyq15N0Z/1/UnVsno9G/N40NBijoYx2seFDIl0+B2mgAb9mezUCA==}
+
+  '@types/node@20.17.6':
+    resolution: {integrity: sha512-VEI7OdvK2wP7XHnsuXbAJnEpEkF6NjSN45QJlL4VGqZSXsnicpesdTWsg9RISeSdYd3yeRj/y3k5KGjUXYnFwQ==}
 
   '@types/prop-types@15.7.13':
     resolution: {integrity: sha512-hCZTSvwbzWGvhqxp/RqVqwU999pBf2vp7hzIjiYOsl8wqOmUxkQ6ddw1cV3l8811+kdUFus/q4d1Y3E3SyEifA==}
@@ -1478,6 +1529,10 @@ packages:
     engines: {node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1}
     hasBin: true
 
+  nanostores@0.9.5:
+    resolution: {integrity: sha512-Z+p+g8E7yzaWwOe5gEUB2Ox0rCEeXWYIZWmYvw/ajNYX8DlXdMvMDj8DWfM/subqPAcsf8l8Td4iAwO1DeIIRQ==}
+    engines: {node: ^16.0.0 || ^18.0.0 || >=20.0.0}
+
   nlcst-to-string@4.0.0:
     resolution: {integrity: sha512-YKLBCcUYKAg0FNlOBT6aI91qFmSiFKiluk655WzPF+DDMA02qIyy8uiRqI8QXtcFpEvll12LpL5MXqEmAZ+dcA==}
 
@@ -1653,6 +1708,67 @@ packages:
     resolution: {integrity: sha512-gYBeFTZLu055D8Vv3cSPox/0iTPtkzxpLroSYYA7WXgRi31WCJ51Uyl8ZiPeUUjyvs2MBzK+S8v9JVUgHU/Sqw==}
     engines: {node: '>=18.12'}
 
+  prettier-plugin-astro@0.13.0:
+    resolution: {integrity: sha512-5HrJNnPmZqTUNoA97zn4gNQv9BgVhv+et03314WpQ9H9N8m2L9OSV798olwmG2YLXPl1iSstlJCR1zB3x5xG4g==}
+    engines: {node: ^14.15.0 || >=16.0.0}
+
+  prettier-plugin-tailwindcss@0.5.14:
+    resolution: {integrity: sha512-Puaz+wPUAhFp8Lo9HuciYKM2Y2XExESjeT+9NQoVFXZsPPnc9VYss2SpxdQ6vbatmt8/4+SN0oe0I1cPDABg9Q==}
+    engines: {node: '>=14.21.3'}
+    peerDependencies:
+      '@ianvs/prettier-plugin-sort-imports': '*'
+      '@prettier/plugin-pug': '*'
+      '@shopify/prettier-plugin-liquid': '*'
+      '@trivago/prettier-plugin-sort-imports': '*'
+      '@zackad/prettier-plugin-twig-melody': '*'
+      prettier: ^3.0
+      prettier-plugin-astro: '*'
+      prettier-plugin-css-order: '*'
+      prettier-plugin-import-sort: '*'
+      prettier-plugin-jsdoc: '*'
+      prettier-plugin-marko: '*'
+      prettier-plugin-organize-attributes: '*'
+      prettier-plugin-organize-imports: '*'
+      prettier-plugin-sort-imports: '*'
+      prettier-plugin-style-order: '*'
+      prettier-plugin-svelte: '*'
+    peerDependenciesMeta:
+      '@ianvs/prettier-plugin-sort-imports':
+        optional: true
+      '@prettier/plugin-pug':
+        optional: true
+      '@shopify/prettier-plugin-liquid':
+        optional: true
+      '@trivago/prettier-plugin-sort-imports':
+        optional: true
+      '@zackad/prettier-plugin-twig-melody':
+        optional: true
+      prettier-plugin-astro:
+        optional: true
+      prettier-plugin-css-order:
+        optional: true
+      prettier-plugin-import-sort:
+        optional: true
+      prettier-plugin-jsdoc:
+        optional: true
+      prettier-plugin-marko:
+        optional: true
+      prettier-plugin-organize-attributes:
+        optional: true
+      prettier-plugin-organize-imports:
+        optional: true
+      prettier-plugin-sort-imports:
+        optional: true
+      prettier-plugin-style-order:
+        optional: true
+      prettier-plugin-svelte:
+        optional: true
+
+  prettier@3.3.3:
+    resolution: {integrity: sha512-i2tDNA0O5IrMO757lfrdQZCc2jPNDVntV0m/+4whiDfWaTKfMNgR7Qz0NAeGz/nRqF4m5/6CLzbP4/liHt12Ew==}
+    engines: {node: '>=14'}
+    hasBin: true
+
   prismjs@1.29.0:
     resolution: {integrity: sha512-Kx/1w86q/epKcmte75LNrEoT+lX8pBpavuAbvJWRXar7Hz8jrtF+e3vY751p0R8H9HdArwaCTNDDzHg/ScJK1Q==}
     engines: {node: '>=6'}
@@ -1754,6 +1870,12 @@ packages:
 
   run-parallel@1.2.0:
     resolution: {integrity: sha512-5l4VyZR86LZ/lDxZTR6jqL8AFE2S0IFLMP26AbjsLVADxHdhB/c0GUsH+y39UfCi3dzz8OlQuPmnaJOMoDHQBA==}
+
+  s.color@0.0.15:
+    resolution: {integrity: sha512-AUNrbEUHeKY8XsYr/DYpl+qk5+aM+DChopnWOPEzn8YKzOhv4l2zH6LzZms3tOZP3wwdOyc0RmTciyi46HLIuA==}
+
+  sass-formatter@0.7.9:
+    resolution: {integrity: sha512-CWZ8XiSim+fJVG0cFLStwDvft1VI7uvXdCNJYXhDvowiv+DsbD1nXLiQ4zrE5UBvj5DWZJ93cwN0NX5PMsr1Pw==}
 
   scheduler@0.23.2:
     resolution: {integrity: sha512-UOShsPwz7NrMUqhR6t0hWjFduvOzbtv7toDH1/hIrfRNIDBnnBWd0CwJTGvTpngVlmwGCdP9/Zl/tVrDqcuYzQ==}
@@ -1875,6 +1997,9 @@ packages:
     engines: {node: '>=16 || 14 >=14.17'}
     hasBin: true
 
+  suf-log@2.5.3:
+    resolution: {integrity: sha512-KvC8OPjzdNOe+xQ4XWJV2whQA0aM1kGVczMQ8+dStAO6KfEB140JEVQ9dE76ONZ0/Ylf67ni4tILPJB41U0eow==}
+
   supports-color@5.5.0:
     resolution: {integrity: sha512-QjVjwdXIt408MIiAqCX4oUKsgU2EqAGzs2Ppkm4aQYbjm+ZEWEcW4SfFNTr4uMNZma0ey4f5lgLrkB0aX0QMow==}
     engines: {node: '>=4'}
@@ -1936,8 +2061,16 @@ packages:
     resolution: {integrity: sha512-RAH822pAdBgcNMAfWnCBU3CFZcfZ/i1eZjwFU/dsLKumyuuP3niueg2UAukXYF0E2AAoc82ZSSf9J0WQBinzHA==}
     engines: {node: '>=12.20'}
 
+  typescript@5.6.3:
+    resolution: {integrity: sha512-hjcS1mhfuyi4WW8IWtjP7brDrG2cuDZukyrYrSauoXGNgx0S7zceP07adYkJycEr56BOUTNPzbInooiN3fn1qw==}
+    engines: {node: '>=14.17'}
+    hasBin: true
+
   ultrahtml@1.5.3:
     resolution: {integrity: sha512-GykOvZwgDWZlTQMtp5jrD4BVL+gNn2NVlVafjcFUJ7taY20tqYdwdoWBFy6GBJsNTZe1GkGPkSl5knQAjtgceg==}
+
+  undici-types@6.19.8:
+    resolution: {integrity: sha512-ve2KP6f/JnbPBFyobGHuerC9g1FYGn/F8n1LWTwNxCEzd6IfqTwUQcNXgEtmmQ6DlRrC1hrSrBnCZPokRrDHjw==}
 
   unified@11.0.5:
     resolution: {integrity: sha512-xKvGhPWw3k84Qjh8bI3ZeJjqnyadK+GEFtazSfZv/rKeTkTjOJho6mFqh2SM96iIcZokxiOpg78GazTSg8+KHA==}
@@ -2090,6 +2223,8 @@ snapshots:
       '@jridgewell/gen-mapping': 0.3.5
       '@jridgewell/trace-mapping': 0.3.25
 
+  '@astrojs/compiler@1.8.2': {}
+
   '@astrojs/compiler@2.10.2': {}
 
   '@astrojs/internal-helpers@0.4.1': {}
@@ -2117,9 +2252,9 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@astrojs/node@8.3.4(astro@4.13.1)':
+  '@astrojs/node@8.3.4(astro@4.13.1(@types/node@20.17.6)(typescript@5.6.3))':
     dependencies:
-      astro: 4.13.1
+      astro: 4.13.1(@types/node@20.17.6)(typescript@5.6.3)
       send: 0.19.1
       server-destroy: 1.0.1
     transitivePeerDependencies:
@@ -2129,11 +2264,11 @@ snapshots:
     dependencies:
       prismjs: 1.29.0
 
-  '@astrojs/react@3.6.2(@types/react-dom@18.3.1)(@types/react@18.3.12)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(vite@5.4.0)':
+  '@astrojs/react@3.6.2(@types/react-dom@18.3.1)(@types/react@18.3.12)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(vite@5.4.0(@types/node@20.17.6))':
     dependencies:
       '@types/react': 18.3.12
       '@types/react-dom': 18.3.1
-      '@vitejs/plugin-react': 4.3.3(vite@5.4.0)
+      '@vitejs/plugin-react': 4.3.3(vite@5.4.0(@types/node@20.17.6))
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
       ultrahtml: 1.5.3
@@ -2141,9 +2276,9 @@ snapshots:
       - supports-color
       - vite
 
-  '@astrojs/tailwind@5.1.2(astro@4.13.1)(tailwindcss@3.4.14)':
+  '@astrojs/tailwind@5.1.2(astro@4.13.1(@types/node@20.17.6)(typescript@5.6.3))(tailwindcss@3.4.14)':
     dependencies:
-      astro: 4.13.1
+      astro: 4.13.1(@types/node@20.17.6)(typescript@5.6.3)
       autoprefixer: 10.4.20(postcss@8.4.47)
       postcss: 8.4.47
       postcss-load-config: 4.0.2(postcss@8.4.47)
@@ -2383,6 +2518,10 @@ snapshots:
   '@esbuild/win32-x64@0.21.5':
     optional: true
 
+  '@heroicons/react@2.1.5(react@18.3.1)':
+    dependencies:
+      react: 18.3.1
+
   '@img/sharp-darwin-arm64@0.33.4':
     optionalDependencies:
       '@img/sharp-libvips-darwin-arm64': 1.0.2
@@ -2594,6 +2733,10 @@ snapshots:
     dependencies:
       '@types/unist': 3.0.2
 
+  '@types/node@20.17.6':
+    dependencies:
+      undici-types: 6.19.8
+
   '@types/prop-types@15.7.13': {}
 
   '@types/react-dom@18.3.1':
@@ -2609,14 +2752,14 @@ snapshots:
 
   '@ungap/structured-clone@1.2.0': {}
 
-  '@vitejs/plugin-react@4.3.3(vite@5.4.0)':
+  '@vitejs/plugin-react@4.3.3(vite@5.4.0(@types/node@20.17.6))':
     dependencies:
       '@babel/core': 7.25.2
       '@babel/plugin-transform-react-jsx-self': 7.25.9(@babel/core@7.25.2)
       '@babel/plugin-transform-react-jsx-source': 7.25.9(@babel/core@7.25.2)
       '@types/babel__core': 7.20.5
       react-refresh: 0.14.2
-      vite: 5.4.0
+      vite: 5.4.0(@types/node@20.17.6)
     transitivePeerDependencies:
       - supports-color
 
@@ -2665,31 +2808,31 @@ snapshots:
     dependencies:
       tslib: 2.6.3
 
-  astro-integration-kit@0.14.0(astro@4.13.1):
+  astro-integration-kit@0.14.0(astro@4.13.1(@types/node@20.17.6)(typescript@5.6.3)):
     dependencies:
-      astro: 4.13.1
+      astro: 4.13.1(@types/node@20.17.6)(typescript@5.6.3)
       pathe: 1.1.2
       recast: 0.23.9
 
-  astro-pages@0.3.0(astro@4.13.1):
+  astro-pages@0.3.0(astro@4.13.1(@types/node@20.17.6)(typescript@5.6.3)):
     dependencies:
-      astro: 4.13.1
+      astro: 4.13.1(@types/node@20.17.6)(typescript@5.6.3)
       fast-glob: 3.3.2
 
-  astro-public@0.1.0(astro@4.13.1):
+  astro-public@0.1.0(astro@4.13.1(@types/node@20.17.6)(typescript@5.6.3)):
     dependencies:
-      astro: 4.13.1
+      astro: 4.13.1(@types/node@20.17.6)(typescript@5.6.3)
 
-  astro-theme-provider@0.6.1(astro@4.13.1):
+  astro-theme-provider@0.6.1(astro@4.13.1(@types/node@20.17.6)(typescript@5.6.3)):
     dependencies:
-      astro: 4.13.1
-      astro-integration-kit: 0.14.0(astro@4.13.1)
-      astro-pages: 0.3.0(astro@4.13.1)
-      astro-public: 0.1.0(astro@4.13.1)
+      astro: 4.13.1(@types/node@20.17.6)(typescript@5.6.3)
+      astro-integration-kit: 0.14.0(astro@4.13.1(@types/node@20.17.6)(typescript@5.6.3))
+      astro-pages: 0.3.0(astro@4.13.1(@types/node@20.17.6)(typescript@5.6.3))
+      astro-public: 0.1.0(astro@4.13.1(@types/node@20.17.6)(typescript@5.6.3))
       callsites: 4.2.0
       fast-glob: 3.3.2
 
-  astro@4.13.1:
+  astro@4.13.1(@types/node@20.17.6)(typescript@5.6.3):
     dependencies:
       '@astrojs/compiler': 2.10.2
       '@astrojs/internal-helpers': 0.4.1
@@ -2743,11 +2886,11 @@ snapshots:
       shiki: 1.12.1
       string-width: 7.2.0
       strip-ansi: 7.1.0
-      tsconfck: 3.1.1
+      tsconfck: 3.1.1(typescript@5.6.3)
       unist-util-visit: 5.0.0
       vfile: 6.0.2
-      vite: 5.4.0
-      vitefu: 0.2.5(vite@5.4.0)
+      vite: 5.4.0(@types/node@20.17.6)
+      vitefu: 0.2.5(vite@5.4.0(@types/node@20.17.6))
       which-pm: 3.0.0
       yargs-parser: 21.1.1
       zod: 3.23.8
@@ -3678,6 +3821,8 @@ snapshots:
 
   nanoid@3.3.7: {}
 
+  nanostores@0.9.5: {}
+
   nlcst-to-string@4.0.0:
     dependencies:
       '@types/nlcst': 2.0.3
@@ -3844,6 +3989,20 @@ snapshots:
       find-up-simple: 1.0.0
       find-yarn-workspace-root2: 1.2.16
       which-pm: 3.0.0
+
+  prettier-plugin-astro@0.13.0:
+    dependencies:
+      '@astrojs/compiler': 1.8.2
+      prettier: 3.3.3
+      sass-formatter: 0.7.9
+
+  prettier-plugin-tailwindcss@0.5.14(prettier-plugin-astro@0.13.0)(prettier@3.3.3):
+    dependencies:
+      prettier: 3.3.3
+    optionalDependencies:
+      prettier-plugin-astro: 0.13.0
+
+  prettier@3.3.3: {}
 
   prismjs@1.29.0: {}
 
@@ -4016,6 +4175,12 @@ snapshots:
     dependencies:
       queue-microtask: 1.2.3
 
+  s.color@0.0.15: {}
+
+  sass-formatter@0.7.9:
+    dependencies:
+      suf-log: 2.5.3
+
   scheduler@0.23.2:
     dependencies:
       loose-envify: 1.4.0
@@ -4161,6 +4326,10 @@ snapshots:
       pirates: 4.0.6
       ts-interface-checker: 0.1.13
 
+  suf-log@2.5.3:
+    dependencies:
+      s.color: 0.0.15
+
   supports-color@5.5.0:
     dependencies:
       has-flag: 3.0.0
@@ -4218,13 +4387,19 @@ snapshots:
 
   ts-interface-checker@0.1.13: {}
 
-  tsconfck@3.1.1: {}
+  tsconfck@3.1.1(typescript@5.6.3):
+    optionalDependencies:
+      typescript: 5.6.3
 
   tslib@2.6.3: {}
 
   type-fest@2.19.0: {}
 
+  typescript@5.6.3: {}
+
   ultrahtml@1.5.3: {}
+
+  undici-types@6.19.8: {}
 
   unified@11.0.5:
     dependencies:
@@ -4302,17 +4477,18 @@ snapshots:
       unist-util-stringify-position: 4.0.0
       vfile-message: 4.0.2
 
-  vite@5.4.0:
+  vite@5.4.0(@types/node@20.17.6):
     dependencies:
       esbuild: 0.21.5
       postcss: 8.4.41
       rollup: 4.20.0
     optionalDependencies:
+      '@types/node': 20.17.6
       fsevents: 2.3.3
 
-  vitefu@0.2.5(vite@5.4.0):
+  vitefu@0.2.5(vite@5.4.0(@types/node@20.17.6)):
     optionalDependencies:
-      vite: 5.4.0
+      vite: 5.4.0(@types/node@20.17.6)
 
   web-namespaces@2.0.1: {}
 

@@ -3,13 +3,7 @@ import { toolAddModes } from "./constants";
 import type { Root } from "hast";
 import type { MapStore } from "nanostores";
 
-export type Theme =
-  | "light"
-  | "light-bw"
-  | "light-bold"
-  | "dark"
-  | "dark-bw"
-  | "dark-bold";
+export type Theme = "light" | "light-bw" | "light-bold" | "dark" | "dark-bw" | "dark-bold";
 
 export interface CreationState {
   id: string | null;
@@ -36,11 +30,7 @@ export interface AuthStatus {
   isOpenDemo: boolean;
 }
 
-export type TursoOperation =
-  | "test"
-  | "paneDesigns"
-  | "uniqueTailwindClasses"
-  | "execute";
+export type TursoOperation = "test" | "paneDesigns" | "uniqueTailwindClasses" | "execute";
 
 export interface TursoClientError extends Error {
   name: string;
@@ -142,13 +132,7 @@ export interface MarkdownLookupObj {
   [key: string | number]: { nth: number };
 }
 
-export type ToolMode =
-  | "insert"
-  | "text"
-  | "styles"
-  | "settings"
-  | "pane"
-  | "eraser";
+export type ToolMode = "insert" | "text" | "styles" | "settings" | "pane" | "eraser";
 export type StoreKey =
   | "envSettings"
   | "storyFragmentTitle"
@@ -319,14 +303,7 @@ export type PaneAstTargetId = {
 export type EditModeValue = {
   id: string;
   mode: string;
-  type:
-    | "storyfragment"
-    | "pane"
-    | "context"
-    | "tractstack"
-    | "resource"
-    | "menu"
-    | "file";
+  type: "storyfragment" | "pane" | "context" | "tractstack" | "resource" | "menu" | "file";
   targetId?: PaneAstTargetId;
   payload?: any;
 };
@@ -502,10 +479,7 @@ export type ViewportKey = "mobile" | "tablet" | "desktop" | "auto";
 export type ViewportAuto = "mobile" | "tablet" | "desktop";
 
 export type TupleValue = string | number | boolean;
-export type Tuple =
-  | [TupleValue]
-  | [TupleValue, TupleValue]
-  | [TupleValue, TupleValue, TupleValue];
+export type Tuple = [TupleValue] | [TupleValue, TupleValue] | [TupleValue, TupleValue, TupleValue];
 
 export interface ClassNamesPayloadValue {
   [key: string]: string | string[];

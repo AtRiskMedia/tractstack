@@ -10,7 +10,7 @@ import type { AuthStatus } from "./types";
 export const onRequest = defineMiddleware(async (context, next) => {
   /* eslint-disable @typescript-eslint/no-explicit-any */
   const auth = await isAuthenticated(context as any);
-  console.log(`%%%%% MIDDLEWARE`)
+  console.log(`%%%%% MIDDLEWARE`);
   /* eslint-disable @typescript-eslint/no-explicit-any */
   const isOpenDemo = await isOpenDemoMode(context as any);
   context.locals.user = { isAuthenticated: auth, isOpenDemo } as AuthStatus;
@@ -51,14 +51,14 @@ export const onRequest = defineMiddleware(async (context, next) => {
   ];
 
   const isPublicRoute = publicRoutes.includes(context.url.pathname);
-  const isProtectedRoute = protectedRoutes.some(route => {
+  const isProtectedRoute = protectedRoutes.some((route) => {
     if (route.includes("*")) {
       const regex = new RegExp("^" + route.replace("*", ".*"));
       return regex.test(context.url.pathname);
     }
     return context.url.pathname === route;
   });
-  const isOpenProtectedRoute = openProtectedRoutes.some(route => {
+  const isOpenProtectedRoute = openProtectedRoutes.some((route) => {
     if (route.includes("*")) {
       const regex = new RegExp("^" + route.replace("*", ".*"));
       return regex.test(context.url.pathname);
