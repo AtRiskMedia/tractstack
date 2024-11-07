@@ -10,6 +10,7 @@ import type { AuthStatus } from "./types";
 export const onRequest = defineMiddleware(async (context, next) => {
   /* eslint-disable @typescript-eslint/no-explicit-any */
   const auth = await isAuthenticated(context as any);
+  console.log(`%%%%% MIDDLEWARE`)
   /* eslint-disable @typescript-eslint/no-explicit-any */
   const isOpenDemo = await isOpenDemoMode(context as any);
   context.locals.user = { isAuthenticated: auth, isOpenDemo } as AuthStatus;
