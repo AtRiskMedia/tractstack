@@ -1,0 +1,19 @@
+---
+interface Props {
+  target: string;
+}
+
+const { target } = Astro.props;
+
+const components = {
+  hero: (await import('./CustomHero.astro')).default,
+};
+
+const Component = components[target];
+
+if (!Component) {
+  throw new Error(`No component found for target: ${target}`);
+}
+---
+
+<Component />

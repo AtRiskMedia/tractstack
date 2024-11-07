@@ -2,11 +2,13 @@
 import { Image } from "astro:assets";
 import { Layout } from "tractstack:layouts";
 import { Hero } from "tractstack:components";
+import { CodeHook } from "tractstack:components";
 import { houston } from "tractstack:assets";
 import config from "tractstack:config";
 ---
 
 <Layout>
+  <CodeHook target={`hero`} />
   <Hero title={config.title} desc={config.description} />
   <div class="houston">
     <Image src={houston} alt="" />
