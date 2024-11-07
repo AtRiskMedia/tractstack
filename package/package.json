@@ -1,11 +1,13 @@
 {
   "name": "tractstack",
-  "version": "1.0.0-pre-rc",
+  "version": "0.1.0",
   "author": "At Risk Media",
   "description": "no-code website builder and content marketing platform",
   "main": "index.ts",
+  "types": "index.d.ts",
   "license": "FSL-1.1-MIT",
   "type": "module",
+  "sideEffects": false,
   "exports": {
     ".": "./index.ts",
     "./package.json": "./package.json",
@@ -14,7 +16,8 @@
   "files": [
     "src",
     "index.ts",
-    "virtual.d.ts"
+    "virtual.d.ts",
+    "index.d.ts"
   ],
   "repository": {
     "type": "git",
@@ -25,23 +28,37 @@
   "keywords": [
     "astro",
     "withastro",
-    "astro-integration"
+    "astro-integration",
+    "astro-component",
+    "react"
   ],
   "scripts": {
+    "build": "tsc",
     "tsc": "tsc --pretty",
-    "tsc:check": "tsc --noEmit --pretty"
+    "tsc:check": "tsc --noEmit --pretty",
+    "lint": "eslint .",
+    "test": "jest"
   },
   "devDependencies": {
     "astro": "^4.13.1",
     "typescript": "^5.4.2",
     "@types/hast": "^3.0.4",
-    "nanostores": "^0.9.5"
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
+    "eslint": "^8.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
+    "@typescript-eslint/eslint-plugin": "^6.0.0"
   },
   "peerDependencies": {
-    "react": "^18.0.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "@heroicons/react": "^2.1.5"
   },
   "dependencies": {
-    "astro-theme-provider": "^0.6.1"
+    "astro-theme-provider": "^0.6.1",
+    "nanostores": "^0.9.5"
+  },
+  "engines": {
+    "node": ">=20.0.0"
   }
 }
