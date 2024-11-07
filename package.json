@@ -1,0 +1,21 @@
+{
+  "name": "tractstack-root",
+  "description": "no-code website builder and content marketing platform",
+  "author": "At Risk Media",
+  "version": "1.0.0-pre-rc",
+  "license": "FSL-1.1-MIT",
+  "repository": {
+	    "type": "git",
+      "url": "https://github.com/AtRiskMedia/tractstack",
+	    "directory": "package"
+	},
+  "homepage": "https://tractstack.com",
+  "keywords": [],
+  "scripts": {
+    "playground:dev": "pnpm --filter playground dev"
+  },
+  "devDependencies": {
+    "astro": "^4.13.1"
+  },
+  "packageManager": "pnpm@9.12.3+sha512.cce0f9de9c5a7c95bef944169cc5dfe8741abfb145078c0d508b868056848a87c81e626246cb60967cbd7fd29a6c062ef73ff840d96b3c86c40ac92cf4a813ee"
+}

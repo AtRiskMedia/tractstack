@@ -1,0 +1,25 @@
+{
+  "name": "tractstack",
+  "version": "1.0.0-pre-rc",
+  "author": "At Risk Media",
+  "description": "no-code website builder and content marketing platform",
+  "license": "FSL-1.1-MIT",
+  "repository": {
+	    "type": "git",
+      "url": "https://github.com/AtRiskMedia/tractstack",
+	    "directory": "package"
+	},
+  "homepage": "https://tractstack.com",
+  "keywords": [
+    "astro",
+    "withastro",
+    "astro-integration"
+  ],
+  "scripts": {},
+  "devDependencies": {
+    "astro": "^4.13.1"
+  },
+  "dependencies": {
+    "astro-theme-provider": "^0.6.1"
+  }
+}
