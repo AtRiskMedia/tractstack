@@ -5,6 +5,7 @@ import { initializeSchema } from "./src/db/schema";
 import { createTursoClient } from "./src/db/utils";
 
 const schema = z.object({
+  website: z.string().url(),
   title: z.string(),
   description: z.string().optional(),
 });

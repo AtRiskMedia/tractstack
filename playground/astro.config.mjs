@@ -8,12 +8,14 @@ export default defineConfig({
   integrations: [
     TractStackTheme({
       config: {
+        website: "https://my.tractstack.com",
         title: "Tract Stack",
         description: "no-code website builder and content marketing platform",
       },
       overrides: {
         components: {
           CodeHook: "./src/custom/CodeHook.astro",
+          getBrandColor: "./src/custom/brandColours.ts",
         },
       },
     }),

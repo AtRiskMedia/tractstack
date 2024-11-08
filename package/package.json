@@ -55,9 +55,23 @@
     "react-dom": "^18.2.0"
   },
   "dependencies": {
+    "@headlessui/react": "^2.2.0",
     "@libsql/client": "^0.14.0",
+    "@nanostores/persistent": "^0.10.2",
+    "@nanostores/react": "^0.8.0",
+    "@opuu/inview": "^2.0.1",
+    "assemblyai": "^4.8.0",
     "astro-theme-provider": "^0.6.1",
-    "nanostores": "^0.9.5"
+    "buffer": "^6.0.3",
+    "hast-util-from-html": "^2.0.3",
+    "hast-util-to-mdast": "^10.1.0",
+    "mdast-util-from-markdown": "^2.0.2",
+    "mdast-util-to-hast": "^13.2.0",
+    "mdast-util-to-markdown": "^2.1.2",
+    "nanostores": "^0.9.5",
+    "react-lite-youtube-embed": "^2.4.0",
+    "vis-network": "^9.1.9",
+    "zod": "^3.23.8"
   },
   "engines": {
     "node": ">=20.0.0"

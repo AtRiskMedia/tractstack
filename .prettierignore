@@ -24,4 +24,5 @@ pnpm-workspace.yaml
 
 # Specific to your monorepo structure
 package/node_modules
+package/public/styles/storykeep.css
 playground/node_modules

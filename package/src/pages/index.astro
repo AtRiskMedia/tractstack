@@ -1,8 +1,6 @@
 ---
-import { Image } from "astro:assets";
 import { Layout } from "tractstack:layouts";
 import { CodeHook } from "tractstack:components";
-import { houston } from "tractstack:assets";
 import { setupTurso } from "tractstack";
 
 await setupTurso({
@@ -11,7 +9,6 @@ await setupTurso({
 });
 ---
 
-<Layout>
+<Layout title={`test`}>
   <CodeHook target={`hero`} />
-  <Image src={houston} alt="" />
 </Layout>
