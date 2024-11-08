@@ -7,12 +7,6 @@ import { createTursoClient } from "./src/db/utils";
 const schema = z.object({
   title: z.string(),
   description: z.string().optional(),
-  turso: z
-    .object({
-      url: z.string().url().optional(),
-      authToken: z.string().optional(),
-    })
-    .optional(),
 });
 
 export async function setupTurso(config?: { url?: string; authToken?: string }) {
