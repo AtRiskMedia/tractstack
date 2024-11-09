@@ -1,5 +1,11 @@
 # tractstack
 
+## 0.3.0
+
+### Minor Changes
+
+- a0f6c23: removed buffer
+
 ## 0.2.1
 
 ### Patch Changes

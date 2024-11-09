@@ -1,5 +1,12 @@
 # playground
 
+## 0.0.4
+
+### Patch Changes
+
+- Updated dependencies [a0f6c23]
+  - tractstack@0.3.0
+
 ## 0.0.3
 
 ### Patch Changes
