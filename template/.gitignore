@@ -12,10 +12,8 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 
-
-# environment variables
-.env
-.env.production
+# DON'T ignore .env in the template
+!.env
 
 # macOS-specific files
 .DS_Store
