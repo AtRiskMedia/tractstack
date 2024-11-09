@@ -1,6 +1,6 @@
 {
   "name": "tractstack",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "author": "At Risk Media",
   "description": "no-code website builder and content marketing platform",
   "main": "index.ts",
