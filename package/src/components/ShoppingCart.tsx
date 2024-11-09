@@ -4,7 +4,7 @@ import { cart, removeCartItems, isCartUpdating } from "../store/cart";
 import { Money } from "./other/Money";
 import { ShopifyImage } from "./other/ShopifyImage";
 
-export const ShoppingCart = () => {
+const ShoppingCart = () => {
   const $isCartUpdating = useStore(isCartUpdating);
   const $cart = useStore(cart);
 
@@ -117,3 +117,5 @@ export const ShoppingCart = () => {
     </div>
   );
 };
+
+export default ShoppingCart;

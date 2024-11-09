@@ -1,4 +1,3 @@
-// package/index.ts
 import defineTheme from "astro-theme-provider";
 import { z } from "astro/zod";
 import { initializeSchema } from "./src/db/schema";

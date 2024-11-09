@@ -258,10 +258,13 @@ const EnvironmentSettings = ({ contentMap, showOnlyGroup }: EnvironmentSettingsP
   }, [originalSettings, localSettings]);
 
   const handleSettingChange = useCallback(
-    (index: number, field: keyof EnvSettingDatum, newValue: string | boolean) => {
+    (index: number, field: keyof EnvSettingDatum, newValue: string | boolean | null) => {
       setLocalSettings((prev) => {
         const newSettings = [...prev];
-        newSettings[index] = { ...newSettings[index], [field]: newValue };
+        newSettings[index] = {
+          ...newSettings[index],
+          [field]: newValue ?? "", // Convert null to empty string
+        };
         return newSettings;
       });
       setHasUnsavedChanges(true);

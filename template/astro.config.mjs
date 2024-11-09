@@ -15,7 +15,8 @@ export default defineConfig({
       overrides: {
         components: {
           CodeHook: "./src/custom/CodeHook.astro",
-          getBrandColor: "./src/custom/brandColours.ts",
+          HeaderWidget: "./src/custom/HeaderWidget.astro",
+          brandColors: "./src/custom/brandColours.ts",
         },
       },
     }),

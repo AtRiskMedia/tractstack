@@ -17,7 +17,7 @@ const getScaledProgress = (current: number, total: number) =>
 
 function base64toBlob(b64Data: string, contentType: string = "", sliceSize: number = 512) {
   const byteCharacters = atob(b64Data);
-  const byteArrays = [];
+  const byteArrays: Uint8Array[] = [];
 
   for (let offset = 0; offset < byteCharacters.length; offset += sliceSize) {
     const slice = byteCharacters.slice(offset, offset + sliceSize);

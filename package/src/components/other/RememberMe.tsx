@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { useStore } from "@nanostores/react";
+import { BoltIcon, BoltSlashIcon } from "@heroicons/react/24/outline";
 import { auth } from "../../store/auth";
 import { heldBeliefs } from "../../store/beliefs";
-import { BoltIcon, BoltSlashIcon } from "@heroicons/react/24/outline";
 
 export const RememberMe = () => {
   const [consent, setConsent] = useState(false);

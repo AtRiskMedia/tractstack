@@ -7,12 +7,14 @@ const SEMICOLON = `;`;
 const NEWLINE = `\n`;
 const WHITESPACE = [` `, `\n`, `\t`];
 
+type LispToken = string | number | LispToken[];
+
 export function lispLexer(
   payload: string = ``,
   inString: boolean = false
   /* eslint-disable @typescript-eslint/no-explicit-any */
-): any {
-  const tokens = [];
+): [LispToken[], string] {
+  const tokens: LispToken[] = [];
   let curToken = ``;
 
   for (let i = 0; i < payload.length; i++) {

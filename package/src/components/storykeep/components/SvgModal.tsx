@@ -1,4 +1,4 @@
-import { SvgModals } from "@assets/shapes";
+import { SvgModals } from "../../../assets/shapes";
 
 interface SvgModalProps {
   shapeName: string;

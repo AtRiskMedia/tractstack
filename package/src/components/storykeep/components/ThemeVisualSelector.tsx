@@ -33,7 +33,7 @@ export default function ThemeVisualSelector({ value, onChange }: ThemeVisualSele
   const [brandColors, setBrandColors] = useState<string[]>([]);
 
   useEffect(() => {
-    const colors = [];
+    const colors: string[] = [];
     for (let i = 1; i <= 8; i++) {
       const color = getComputedStyle(document.documentElement)
         .getPropertyValue(`--brand-${i}`)

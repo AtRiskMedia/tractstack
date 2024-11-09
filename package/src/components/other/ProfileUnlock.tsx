@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import type { FormEvent } from "react";
-import { classNames } from "../../utils/helpers";
 import { ChevronRightIcon } from "@heroicons/react/20/solid";
 import { auth, profile, error, success, loading, referrer } from "../../store/auth";
+import { classNames } from "../../utils/helpers";
 import { getTokens } from "../../api/fetchClient";
 
 export async function goUnlockProfile(payload: { email: string; codeword: string }) {

@@ -1,8 +1,6 @@
 import { useEffect, useState, Fragment } from "react";
-import type { FormEvent } from "react";
 import { Listbox, Transition } from "@headlessui/react";
 import { useStore } from "@nanostores/react";
-import { classNames } from "../../utils/helpers";
 import { ChevronRightIcon, ChevronDownIcon } from "@heroicons/react/20/solid";
 import {
   ArrowPathRoundedSquareIcon,
@@ -10,9 +8,11 @@ import {
   BoltIcon,
   ChatBubbleBottomCenterIcon,
 } from "@heroicons/react/24/outline";
+import { classNames } from "../../utils/helpers";
 import { newProfile, sync, auth, profile, error, success, loading } from "../../store/auth";
 import { fetchWithAuth } from "../../api/fetchClient";
 import { contactPersona } from "../../assets/contactPersona";
+import type { FormEvent } from "react";
 import type { ContactPersona } from "../../types";
 
 async function goSaveProfile(payload: {

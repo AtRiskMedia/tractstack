@@ -1,0 +1,23 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "./dist",
+    "rootDir": "./",
+    "module": "ESNext",
+    "target": "ESNext",
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "jsx": "react-jsx",
+    "jsxImportSource": "react",
+    "moduleResolution": "Bundler",
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "declaration": true,
+    "allowJs": true,
+    "noImplicitAny": false,
+    "strict": true,
+    "isolatedModules": true
+  },
+  "include": ["src/**/*", "index.ts", "virtual.d.ts", "index.d.ts"],
+  "exclude": ["node_modules", "dist"]
+}

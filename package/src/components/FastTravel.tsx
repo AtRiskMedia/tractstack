@@ -26,7 +26,7 @@ async function goGetGraph() {
   }
 }
 
-export const FastTravel = ({ contentMap }: { contentMap: ContentMap[] }) => {
+const FastTravel = ({ contentMap }: { contentMap: ContentMap[] }) => {
   const [graphEdges, setGraphEdges] = useState<GraphRelationshipDatum[]>([]);
   const [graphNodes, setGraphNodes] = useState<GraphNodeDatum[]>([]);
   const [loading, setLoading] = useState(false);
@@ -82,3 +82,5 @@ export const FastTravel = ({ contentMap }: { contentMap: ContentMap[] }) => {
     </section>
   );
 };
+
+export default FastTravel;

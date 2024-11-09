@@ -42,3 +42,5 @@ export const Impression = ({
     </div>
   );
 };
+
+export default Impression;

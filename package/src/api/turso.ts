@@ -24,6 +24,7 @@ import type {
   FileDatum,
   TursoQuery,
 } from "../types.ts";
+import type { ResultSet } from "@libsql/client";
 
 let tursoClient: ReturnType<typeof createClient> | null = null;
 
@@ -674,13 +675,12 @@ export async function getFullContentMap(): Promise<FullContentMap[]> {
 
 export async function executeQueries(
   queries: TursoQuery[]
-): Promise<{ success: boolean; results: any[] }> {
-  const results = [];
+): Promise<{ success: boolean; results: ResultSet[] }> {
+  const results: ResultSet[] = [];
 
   for (const query of queries) {
     try {
       const turso = getTursoClient();
-      //console.log(query);
       const result = await turso.execute(query);
       results.push(result);
     } catch (error) {

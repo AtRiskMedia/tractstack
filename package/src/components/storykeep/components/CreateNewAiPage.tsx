@@ -25,19 +25,29 @@ const pageTypes = [
 ];
 const pageTypesContext = [{ id: 3, name: "Short context page" }];
 
+interface PageType {
+  id: number;
+  name: string;
+}
+
 const CreateNewPage = ({ newId, tractStackId, mode }: CreateNewPageProps) => {
   const [stage, setStage] = useState<GenerateStage>("GENERATING_COPY");
   const $theme = useStore(themeStore);
   const [missionInput, setMissionInput] = useState("");
   const [contentInput, setContentInput] = useState("");
-  const [selectedPageType, setSelectedPageType] = useState(
+  const [selectedPageType, setSelectedPageType] = useState<PageType>(
     mode !== `context` ? pageTypes[0] : pageTypesContext[0]
   );
   const [query, setQuery] = useState("");
   const [selectedDesign, setSelectedDesign] = useState<PageDesign | null>(null);
   const [pageDesignList, setPageDesignList] = useState<PageDesign[]>([]);
   const [isGenerating, setIsGenerating] = useState(false);
-  //const [newMarkdown, setNewMarkdown] = useState<string[]>([]);
+
+  const handlePageTypeChange = (pageType: PageType | null) => {
+    if (pageType) {
+      setSelectedPageType(pageType);
+    }
+  };
 
   const filteredPageTypes =
     mode !== `context`
@@ -257,7 +267,7 @@ const CreateNewPage = ({ newId, tractStackId, mode }: CreateNewPageProps) => {
             >
               What kind of web page will this be?
             </label>
-            <Combobox value={selectedPageType} onChange={setSelectedPageType}>
+            <Combobox<PageType> value={selectedPageType} onChange={handlePageTypeChange}>
               <div className="relative mt-1 max-w-sm">
                 <Combobox.Input
                   id="page-type-input"

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import type { FormEvent } from "react";
-import { addCartItem, isCartUpdating, cart } from "../../store/cart";
 import { useStore } from "@nanostores/react";
+import { addCartItem, isCartUpdating, cart } from "../../store/cart";
+import type { FormEvent } from "react";
 
 export const AddToCartForm = ({
   variantId,

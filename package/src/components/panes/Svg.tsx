@@ -1,4 +1,4 @@
-import { SvgPanes, SvgBreaks } from "@assets/shapes";
+import { SvgPanes, SvgBreaks } from "../../assets/shapes";
 
 export const Svg = ({
   shapeName,

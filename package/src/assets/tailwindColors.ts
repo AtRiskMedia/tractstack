@@ -1,8 +1,14 @@
-import { getBrandColor } from "tractstack:components";
+import { brandColours } from "tractstack:components";
 
+type BrandColorKey = keyof typeof brandColours;
 type TailwindColorPalette = {
   [colorName: string]: string[];
 };
+
+export function getBrandColor(colorVar: string): string | null {
+  const colorName = colorVar.replace("var(--", "").replace(")", "");
+  return colorName in brandColours ? brandColours[colorName as BrandColorKey] : null;
+}
 
 export const customColors = {
   mywhite: "#fcfcfc",

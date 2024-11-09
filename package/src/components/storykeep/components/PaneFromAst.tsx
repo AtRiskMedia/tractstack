@@ -14,9 +14,9 @@ import EraserWrapper from "./EraserWrapper";
 import InsertWrapper from "./InsertWrapper";
 import { wrapWithStylesIndicator } from "./StylesWrapper";
 import { classNames } from "../../../utils/helpers";
-import { Belief } from "@components/widgets/Belief";
-import { IdentifyAs } from "@components/widgets/IdentifyAs";
-import { ToggleBelief } from "@components/widgets/ToggleBelief";
+import { Belief } from "../../../components/widgets/Belief";
+import { IdentifyAs } from "../../../components/widgets/IdentifyAs";
+import { ToggleBelief } from "../../../components/widgets/ToggleBelief";
 import type { MouseEvent, ReactNode } from "react";
 import type {
   ButtonData,

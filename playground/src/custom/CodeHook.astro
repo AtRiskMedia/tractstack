@@ -1,11 +1,15 @@
 ---
-interface Props {
+import type { AstroComponent } from 'astro';
+
+export interface Props {
   target: string;
+  resources?: any[] | null;
+  options?: any | null;
 }
 
-const { target } = Astro.props;
+const { target, resources, options } = Astro.props;
 
-const components = {
+const components: Record<string, AstroComponent> = {
   hero: (await import("./CustomHero.astro")).default,
 };
 
@@ -16,4 +20,4 @@ if (!Component) {
 }
 ---
 
-<Component />
+<Component resources={resources} options={options} />

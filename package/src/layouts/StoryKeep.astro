@@ -1,9 +1,8 @@
 ---
 import { ViewTransitions } from "astro:transitions";
-//import SetContentMap from "../components/SetContentMap";
-//import { getContentMap, isTursoReady } from "../api/turso";
-//import { getSetupChecks } from "../utils/setupChecks";
-import config from "tractstack:config";
+import SetContentMap from "../components/SetContentMap";
+import { getContentMap, isTursoReady } from "../api/turso";
+import { getSetupChecks } from "../utils/setupChecks";
 import type { ContentMap } from "../types";
 
 export interface Props {
@@ -36,15 +35,15 @@ const defaultSocialTitle =
     ? title
     : typeof import.meta.env.PUBLIC_OGTITLE === `string` && import.meta.env.PUBLIC_OGTITLE
       ? import.meta.env.PUBLIC_OGTITLE
-      : `Welcome to Tract Stack`;
+      : SITE.title;
 const defaultSocialAuthor =
   typeof import.meta.env.PUBLIC_OGAUTHOR === `string` && import.meta.env.PUBLIC_OGAUTHOR
     ? import.meta.env.PUBLIC_OGAUTHOR
-    : `At Risk Media`;
+    : SITE.author;
 const defaultSocialDesc =
   typeof import.meta.env.PUBLIC_OGDESC === `string` && import.meta.env.PUBLIC_OGDESC
     ? import.meta.env.PUBLIC_OGDESC
-    : `My first Tract Stack`;
+    : SITE.desc;
 const storykeepCss = `/styles/storykeep.css`;
 
 const { hasTurso } = getSetupChecks();
@@ -53,7 +52,7 @@ const contentMap: ContentMap[] = hasTurso && hasTursoReady ? await getContentMap
 ---
 
 <!doctype html>
-<html lang=`${LOCALE.lang ?? "en"}` class={`${scrollSmooth && "motion-safe:scroll-smooth"}`}>
+<html lang="en" class={`${scrollSmooth && "motion-safe:scroll-smooth"}`}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />

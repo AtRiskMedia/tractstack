@@ -17,10 +17,10 @@ export function ContentSearchCombobox({ items, onSelect }: ContentSearchCombobox
       ? items
       : items.filter((item) => item.title.toLowerCase().includes(query.toLowerCase()));
 
-  const handleSelect = (item: FullContentMap) => {
+  const handleSelect = (item: FullContentMap | null) => {
     setQuery("");
     setSelectedItem(item);
-    onSelect(item);
+    if (item) onSelect(item);
   };
 
   const getItemType = (item: FullContentMap): string => {
@@ -39,7 +39,7 @@ export function ContentSearchCombobox({ items, onSelect }: ContentSearchCombobox
   };
 
   return (
-    <Combobox as="div" value={selectedItem} onChange={handleSelect}>
+    <Combobox<FullContentMap | null> value={selectedItem} onChange={handleSelect}>
       <Combobox.Label htmlFor="quick-find-input" className="block text-lg leading-6 text-black">
         Site webpages look-up
       </Combobox.Label>
