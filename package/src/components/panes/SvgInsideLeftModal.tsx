@@ -1,4 +1,3 @@
-import { Buffer } from "buffer";
 import { SvgModals } from "../../assets/shapes";
 
 export const SvgInsideLeftModal = ({
@@ -49,7 +48,7 @@ export const SvgInsideLeftModal = ({
         height="${paneHeight + paddingTop}"
       ></rect>
     </svg>`;
-  const b64Left = Buffer.from(leftMaskSvg, `utf8`).toString(`base64`);
+  const b64Left = btoa(leftMaskSvg);
   const leftMask = `data:image/svg+xml;base64,${b64Left}`;
   const style = {
     width: `calc(var(--scale)*${cut + paddingLeft}px)`,

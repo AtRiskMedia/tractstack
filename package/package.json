@@ -68,7 +68,6 @@
     "assemblyai": "^4.8.0",
     "astro-theme-provider": "^0.6.1",
     "browser-image-compression": "^2.0.2",
-    "buffer": "^6.0.3",
     "hast-util-from-html": "^2.0.3",
     "hast-util-to-html": "^9.0.3",
     "hast-util-to-mdast": "^10.1.0",

@@ -1,0 +1,5 @@
+---
+"tractstack": minor
+---
+
+removed buffer

@@ -1,10 +1,11 @@
-import { Buffer } from "buffer";
 import { SvgString } from "./svgString";
 
 export const svgImageMask = (shapeName: string, thisId: string, viewportKey: string) => {
   const shape = SvgString(shapeName, viewportKey, thisId);
   if (!shape) return null;
-  const dataUri = Buffer.from(shape).toString(`base64`);
+
+  // Use browser's built-in btoa function to convert to base64
+  const dataUri = btoa(shape);
   const dataUriString = `data:image/svg+xml;base64,${dataUri}`;
 
   return {
