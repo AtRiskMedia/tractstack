@@ -17,8 +17,10 @@
     "astro": "^4.13.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "@heroicons/react": "^2.1.5",
+    "@headlessui/react": "^2.2.0",
     "tailwindcss": "^3.4.14",
-    "tractstack": "^0.3.0"
+    "tractstack": "^0.3.1"
   },
   "devDependencies": {
     "@types/react": "^18.2.0",
