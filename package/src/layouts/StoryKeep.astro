@@ -34,15 +34,15 @@ const defaultSocialTitle =
     ? title
     : typeof import.meta.env.PUBLIC_OGTITLE === `string` && import.meta.env.PUBLIC_OGTITLE
       ? import.meta.env.PUBLIC_OGTITLE
-      : SITE.title;
+      : `My first Tract Stack`;
 const defaultSocialAuthor =
   typeof import.meta.env.PUBLIC_OGAUTHOR === `string` && import.meta.env.PUBLIC_OGAUTHOR
     ? import.meta.env.PUBLIC_OGAUTHOR
-    : SITE.author;
+    : `t.b.d.`;
 const defaultSocialDesc =
   typeof import.meta.env.PUBLIC_OGDESC === `string` && import.meta.env.PUBLIC_OGDESC
     ? import.meta.env.PUBLIC_OGDESC
-    : SITE.desc;
+    : `The best is yet to come!`;
 const storykeepCss = `/styles/storykeep.css`;
 
 const { hasTurso } = getSetupChecks();
