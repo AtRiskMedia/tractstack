@@ -13,7 +13,7 @@ import {
 } from "../../store/storykeep";
 import AnalyticsWrapper from "./nivo/AnalyticsWrapper";
 import Pane from "./Pane";
-import CodeHook from "./CodeHook";
+import CodeHookWrapper from "./CodeHookWrapper";
 import { isFullScreenEditModal } from "../../utils/storykeep";
 import { classNames } from "../../utils/helpers";
 import type { ReactNode } from "react";
@@ -187,7 +187,7 @@ const PaneWrapper = (props: {
 
   const Content = useMemo(() => {
     return isCodeHook ? (
-      <CodeHook id={id} toolMode={toolMode} viewportKey={viewportKey} />
+      <CodeHookWrapper id={id} toolMode={toolMode} viewportKey={viewportKey} />
     ) : (
       <Pane
         id={id}

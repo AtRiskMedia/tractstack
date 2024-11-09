@@ -11,7 +11,7 @@ interface CodeHookProps {
   id: string;
 }
 
-const CodeHook = ({ id }: CodeHookProps) => {
+const CodeHookSettings = ({ id }: CodeHookProps) => {
   const $paneCodeHook = useStore(paneCodeHook, { keys: [id] });
   const { updateStoreField, handleUndo } = useStoryKeepUtils(id);
 
@@ -214,4 +214,4 @@ const CodeHook = ({ id }: CodeHookProps) => {
   );
 };
 
-export default CodeHook;
+export default CodeHookSettings;

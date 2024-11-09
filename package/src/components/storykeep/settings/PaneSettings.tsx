@@ -9,7 +9,7 @@ import PaneHeightRatio from "../fields/PaneHeightRatio";
 import PaneImpression from "../fields/PaneImpression";
 import PaneBeliefs from "../fields/PaneBeliefs";
 import PaneBgColour from "../fields/PaneBgColour";
-import CodeHookSettings from "../fields/CodeHook";
+import CodeHookSettings from "../fields/CodeHookSettings";
 import { useStoryKeepUtils } from "../../../utils/storykeep";
 import {
   paneTitle,

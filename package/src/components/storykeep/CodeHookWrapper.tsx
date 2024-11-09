@@ -3,7 +3,7 @@ import { useStore } from "@nanostores/react";
 import { paneInit, paneCodeHook } from "../../store/storykeep";
 import type { ToolMode, ViewportKey } from "../../types";
 
-const CodeHook = (props: { id: string; toolMode: ToolMode; viewportKey: ViewportKey }) => {
+const CodeHookWrapper = (props: { id: string; toolMode: ToolMode; viewportKey: ViewportKey }) => {
   const { id, toolMode /* viewportKey */ } = props;
   const [isClient, setIsClient] = useState(false);
   const $paneInit = useStore(paneInit, { keys: [id] });
@@ -28,4 +28,4 @@ const CodeHook = (props: { id: string; toolMode: ToolMode; viewportKey: Viewport
   );
 };
 
-export default CodeHook;
+export default CodeHookWrapper;

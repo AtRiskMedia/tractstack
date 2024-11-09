@@ -22,7 +22,7 @@ declare module "virtual:theme-config" {
 
 declare module "tractstack:components" {
   import type { AstroComponent } from "astro";
-  
+
   const CodeHook: AstroComponent<{
     target: string;
     resources?: any[] | null;
@@ -34,7 +34,7 @@ declare module "tractstack:components" {
     resources?: any[] | null;
   }>;
 
-  const brandColors: {
+  const brandColours: {
     readonly "brand-1": string;
     readonly "brand-2": string;
     readonly "brand-3": string;
@@ -45,7 +45,7 @@ declare module "tractstack:components" {
     readonly "brand-8": string;
   };
 
-  export { CodeHook, HeaderWidget, brandColors };
+  export { CodeHook, HeaderWidget, brandColours };
 }
 
 declare module "astro:assets" {

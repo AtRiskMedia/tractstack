@@ -108,7 +108,7 @@ const impressions =
   />
   {
     hasConcierge && hasTurso && hasTursoReady && hasContent && hasContentReady && hasBranding ? (
-      <StoryKeepDashboardStore client:load />
+      <StoryKeepDashboardStore client:only="react" />
     ) : null
   }
   {
@@ -116,8 +116,8 @@ const impressions =
       <main id="main-content" class="min-h-screen">
         <div class="px-1.5 pt-1.5 pb-0 pr-0 pl-1.5 py-1.5">
           <div class="py-1.5 bg-white px-3.5 flex gap-y-12 flex-col">
-            <PageViewStats client:load />
-            <ContentSearchWrapper contentMap={filterPayload} client:load />
+            <PageViewStats client:only="react" />
+            <ContentSearchWrapper contentMap={filterPayload} client:only="react" />
             <div class="flex flex-col md:flex-row gap-6">
               <div class="rounded-md bg-mywhite shadow-inner w-full md:w-1/2 py-7">
                 <div class="px-3.5 py-1.5 space-y-6">
@@ -262,7 +262,7 @@ const impressions =
               )}
             </div>
             <DashboardActivity client:only="react" />
-            <WhatsHot contentMap={payload} client:load />
+            <WhatsHot contentMap={payload} client:only="react" />
           </div>
         </div>
       </main>
@@ -277,13 +277,18 @@ const impressions =
         hasAssemblyAI={hasAssemblyAI}
         hasAuth={hasAuth}
         contentMap={payload}
-        client:load
+        client:only="react"
       />
     )
   }
   {
     impressions?.length ? (
-      <ImpressionWrapper slug={`storykeep`} isContext={false} payload={impressions} client:idle />
+      <ImpressionWrapper
+        slug={`storykeep`}
+        isContext={false}
+        payload={impressions}
+        client:only="react"
+      />
     ) : null
   }
   <Footer menu={menuPayload} backToTop={true} slug={`storykeep`} isContext={false} />
