@@ -1,13 +1,39 @@
-import { brandColours } from "tractstack:components";
-
-type BrandColorKey = keyof typeof brandColours;
+type BrandColorKey = number;
 type TailwindColorPalette = {
   [colorName: string]: string[];
 };
 
+const defaultColors = [
+  "#10120d",
+  "#fcfcfc",
+  "#f58333",
+  "#c8df8c",
+  "#293f58",
+  "#a7b1b7",
+  "#393d34",
+  "#e3e3e3",
+];
+const envBrand = import.meta.env.PUBLIC_BRAND;
+const brandColours: string[] = (() => {
+  if (envBrand && typeof envBrand === "string") {
+    const hexColorRegex = /^([A-Fa-f0-9]{6}(?:,[A-Fa-f0-9]{6})*)$/;
+    if (hexColorRegex.test(envBrand)) {
+      return envBrand.split(",");
+    } else {
+      console.error(
+        "PUBLIC_BRAND does not match the expected format of hexadecimal colors separated by commas."
+      );
+    }
+  } else {
+    console.warn("PUBLIC_BRAND is not defined or not a string, using default colors.");
+  }
+  return defaultColors;
+})();
+
 export function getBrandColor(colorVar: string): string | null {
-  const colorName = colorVar.replace("var(--", "").replace(")", "");
-  return colorName in brandColours ? brandColours[colorName as BrandColorKey] : null;
+  const colorName = colorVar.replace("var(--brand-", "").replace(")", "");
+  const index = parseInt(colorName) - 1;
+  return index >= 0 && index < brandColours.length ? brandColours[index] : null;
 }
 
 export const customColors = {

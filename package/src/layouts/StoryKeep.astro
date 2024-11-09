@@ -10,11 +10,10 @@ export interface Props {
   title?: string;
   pubDatetime?: Date;
   modDatetime?: Date | null;
-  scrollSmooth?: boolean;
   ogImage?: string;
 }
 
-const { title, ogImage, canonicalURL, pubDatetime, modDatetime, scrollSmooth = true } = Astro.props;
+const { title, ogImage, canonicalURL, pubDatetime, modDatetime } = Astro.props;
 
 const defaultFavIcon =
   typeof import.meta.env.PUBLIC_FAVICON === `string` && import.meta.env.PUBLIC_FAVICON
@@ -52,7 +51,7 @@ const contentMap: ContentMap[] = hasTurso && hasTursoReady ? await getContentMap
 ---
 
 <!doctype html>
-<html lang="en" class={`${scrollSmooth && "motion-safe:scroll-smooth"}`}>
+<html lang="en" class="motion-safe:scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />

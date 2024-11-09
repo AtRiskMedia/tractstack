@@ -33,19 +33,7 @@ declare module "tractstack:components" {
     slug: string;
     resources?: any[] | null;
   }>;
-
-  const brandColours: {
-    readonly "brand-1": string;
-    readonly "brand-2": string;
-    readonly "brand-3": string;
-    readonly "brand-4": string;
-    readonly "brand-5": string;
-    readonly "brand-6": string;
-    readonly "brand-7": string;
-    readonly "brand-8": string;
-  };
-
-  export { CodeHook, HeaderWidget, brandColours };
+  export { CodeHook, HeaderWidget };
 }
 
 declare module "astro:assets" {

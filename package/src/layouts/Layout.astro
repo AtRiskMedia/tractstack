@@ -11,7 +11,6 @@ export interface Props {
   canonicalURL?: string;
   pubDatetime?: Date;
   modDatetime?: Date | null;
-  scrollSmooth?: boolean;
   stylesUrl?: string;
   ogImage?: string;
 }
@@ -22,7 +21,6 @@ const {
   canonicalURL = new URL(Astro.url.pathname, config.website).href,
   pubDatetime,
   modDatetime,
-  scrollSmooth = true,
   stylesUrl = ``,
 } = Astro.props;
 
@@ -67,7 +65,7 @@ const contentMap: ContentMap[] = hasTurso && hasTursoReady ? await getContentMap
 ---
 
 <!doctype html>
-<html lang="en" class={`${scrollSmooth && "motion-safe:scroll-smooth"}`}>
+<html lang="en" class="motion-safe:scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />

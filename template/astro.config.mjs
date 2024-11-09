@@ -16,7 +16,6 @@ export default defineConfig({
         components: {
           CodeHook: "./src/custom/CodeHook.astro",
           HeaderWidget: "./src/custom/HeaderWidget.astro",
-          brandColors: "./src/custom/brandColours.ts",
         },
       },
     }),
