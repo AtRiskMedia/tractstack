@@ -1,5 +1,11 @@
 # tractstack
 
+## 0.3.1
+
+### Patch Changes
+
+- c54c955: trying to get the right config
+
 ## 0.3.0
 
 ### Minor Changes
