@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useStore } from "@nanostores/react";
-import { XMarkIcon } from "@heroicons/react/24/outline";
+import XMarkIcon from "@heroicons/react/24/outline/XMarkIcon";
 import { panesVisible, showImpressions } from "../store/events";
 import { useInterval } from "../utils/useInterval";
 import { Impression } from "./Impression";

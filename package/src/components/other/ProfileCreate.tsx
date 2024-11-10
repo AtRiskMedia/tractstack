@@ -1,13 +1,12 @@
 import { useEffect, useState, Fragment } from "react";
 import { Listbox, Transition } from "@headlessui/react";
 import { useStore } from "@nanostores/react";
-import { ChevronRightIcon, ChevronDownIcon } from "@heroicons/react/20/solid";
-import {
-  ArrowPathRoundedSquareIcon,
-  BellSlashIcon,
-  BoltIcon,
-  ChatBubbleBottomCenterIcon,
-} from "@heroicons/react/24/outline";
+import ChevronRightIcon from "@heroicons/react/20/solid/ChevronRightIcon";
+import ChevronDownIcon from "@heroicons/react/20/solid/ChevronDownIcon";
+import ArrowPathRoundedSquareIcon from "@heroicons/react/24/outline/ArrowPathRoundedSquareIcon";
+import BellSlashIcon from "@heroicons/react/24/outline/BellSlashIcon";
+import BoltIcon from "@heroicons/react/24/outline/BoltIcon";
+import ChatBubbleBottomCenterIcon from "@heroicons/react/24/outline/ChatBubbleBottomCenterIcon";
 import { newProfile, sync, auth, profile, error, success, loading } from "../../store/auth";
 import { classNames } from "../../utils/helpers";
 import { fetchWithAuth } from "../../api/fetchClient";

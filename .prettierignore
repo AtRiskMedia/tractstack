@@ -26,3 +26,6 @@ pnpm-workspace.yaml
 package/node_modules
 package/public/styles/storykeep.css
 playground/node_modules
+
+# storykeep css
+**/storykeep.css

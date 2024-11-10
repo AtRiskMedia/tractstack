@@ -1,13 +1,11 @@
 import { useState, useEffect } from "react";
 import { useStore } from "@nanostores/react";
 import { Combobox } from "@headlessui/react";
-import {
-  ChevronUpDownIcon,
-  ChevronLeftIcon,
-  ChevronRightIcon,
-  CheckIcon,
-  XMarkIcon,
-} from "@heroicons/react/20/solid";
+import ChevronUpDownIcon from "@heroicons/react/20/solid/ChevronUpDownIcon";
+import ChevronLeftIcon from "@heroicons/react/20/solid/ChevronLeftIcon";
+import ChevronRightIcon from "@heroicons/react/20/solid/ChevronRightIcon";
+import CheckIcon from "@heroicons/react/20/solid/CheckIcon";
+import XMarkIcon from "@heroicons/react/20/solid/XMarkIcon";
 import PreviewPane from "./PreviewPane";
 import { paneDesigns } from "../../../assets/paneDesigns";
 import { editModeStore, themeStore } from "../../../store/storykeep";

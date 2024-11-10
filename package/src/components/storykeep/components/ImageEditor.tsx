@@ -1,6 +1,7 @@
 import { useState, useCallback } from "react";
 import { navigate } from "astro:transitions/client";
-import { CheckCircleIcon, ExclamationTriangleIcon } from "@heroicons/react/24/outline";
+import CheckCircleIcon from "@heroicons/react/24/outline/CheckCircleIcon";
+import ExclamationTriangleIcon from "@heroicons/react/24/outline/ExclamationTriangleIcon";
 import { tursoClient } from "../../../api/tursoClient";
 import type { FileDatum, TursoQuery } from "../../../types";
 

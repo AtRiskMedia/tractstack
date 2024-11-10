@@ -1,7 +1,8 @@
 import { useState, useEffect, useMemo } from "react";
 import { useStore } from "@nanostores/react";
 import { storedDashboardAnalytics, analyticsDuration } from "../../../store/storykeep";
-import { CursorArrowRippleIcon, BeakerIcon } from "@heroicons/react/24/outline";
+import CursorArrowRippleIcon from "@heroicons/react/24/outline/CursorArrowRippleIcon";
+import BeakerIcon from "@heroicons/react/24/outline/BeakerIcon";
 import { classNames } from "../../../utils/helpers";
 import type { FullContentMap, HotItem } from "../../../types";
 

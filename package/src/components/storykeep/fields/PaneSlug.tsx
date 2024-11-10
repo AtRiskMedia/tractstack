@@ -1,4 +1,5 @@
-import { ExclamationCircleIcon, ChevronDoubleLeftIcon } from "@heroicons/react/24/outline";
+import ExclamationCircleIcon from "@heroicons/react/24/outline/ExclamationCircleIcon";
+import ChevronDoubleLeftIcon from "@heroicons/react/24/outline/ChevronDoubleLeftIcon";
 import ContentEditableField from "../components/ContentEditableField";
 import { useStore } from "@nanostores/react";
 import { paneSlug, uncleanDataStore, temporaryErrorsStore } from "../../../store/storykeep";

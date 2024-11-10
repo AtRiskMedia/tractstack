@@ -1,7 +1,8 @@
 import { Fragment, useEffect, useState } from "react";
 import { Network } from "vis-network";
 import { Dialog, Transition } from "@headlessui/react";
-import { BeakerIcon, XMarkIcon } from "@heroicons/react/24/outline";
+import BeakerIcon from "@heroicons/react/24/outline/BeakerIcon";
+import XMarkIcon from "@heroicons/react/24/outline/XMarkIcon";
 import type { GraphNodeDatum, GraphRelationshipDatum, ContentMap } from "../../types";
 
 export interface FastTravelMenu {

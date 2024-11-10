@@ -1,9 +1,7 @@
-import {
-  DevicePhoneMobileIcon,
-  DeviceTabletIcon,
-  ComputerDesktopIcon,
-  ViewfinderCircleIcon,
-} from "@heroicons/react/24/outline";
+import DevicePhoneMobileIcon from "@heroicons/react/24/outline/DevicePhoneMobileIcon";
+import DeviceTabletIcon from "@heroicons/react/24/outline/DeviceTabletIcon";
+import ComputerDesktopIcon from "@heroicons/react/24/outline/ComputerDesktopIcon";
+import ViewfinderCircleIcon from "@heroicons/react/24/outline/ViewfinderCircleIcon";
 import type { ViewportAuto, ViewportKey } from "../../../types";
 
 interface ViewportSelectorProps {

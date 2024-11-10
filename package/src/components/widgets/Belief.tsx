@@ -1,6 +1,7 @@
 import { Fragment, useState, useEffect } from "react";
 import { Listbox, Transition } from "@headlessui/react";
-import { CheckIcon, ChevronUpDownIcon } from "@heroicons/react/20/solid";
+import CheckIcon from "@heroicons/react/20/solid/CheckIcon";
+import ChevronUpDownIcon from "@heroicons/react/20/solid/ChevronUpDownIcon";
 import { useStore } from "@nanostores/react";
 import { heldBeliefsScales, heldBeliefsTitles } from "../../assets/beliefs";
 import { classNames } from "../../utils/helpers";

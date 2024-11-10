@@ -1,7 +1,9 @@
 import { memo, useRef, useMemo, useState, useEffect, useCallback } from "react";
 import { Switch, Listbox } from "@headlessui/react";
 import { useStore } from "@nanostores/react";
-import { XMarkIcon, CheckIcon, ChevronUpDownIcon } from "@heroicons/react/24/outline";
+import XMarkIcon from "@heroicons/react/24/outline/XMarkIcon";
+import CheckIcon from "@heroicons/react/24/outline/CheckIcon";
+import ChevronUpDownIcon from "@heroicons/react/24/outline/ChevronUpDownIcon";
 import { generateMarkdownLookup } from "../../../utils/compositor/generateMarkdownLookup";
 import {
   getActiveTagData,

@@ -121,13 +121,13 @@ const impressions =
             <div class="flex flex-col md:flex-row gap-6">
               <div class="rounded-md bg-mywhite shadow-inner w-full md:w-1/2 py-7">
                 <div class="px-3.5 py-1.5 space-y-6">
-                  <h2 id="create-new-page-heading" class="block text-xl leading-6 text-black">
+                  <h2 id="create-new-page-heading-ai" class="block text-xl leading-6 text-black">
                     Create new page * AI powered
                   </h2>
                   <div
                     class="mt-1 flex flex-col gap-4"
                     role="group"
-                    aria-labelledby="create-new-page-heading"
+                    aria-labelledby="create-new-page-heading-ai"
                   >
                     <a
                       href="/storykeep/create/ai/storyfragment"
@@ -268,6 +268,7 @@ const impressions =
       </main>
     ) : (
       <SiteWizard
+        client:load
         hasConcierge={hasConcierge}
         hasTurso={hasTurso}
         hasTursoReady={hasTursoReady}
@@ -277,7 +278,6 @@ const impressions =
         hasAssemblyAI={hasAssemblyAI}
         hasAuth={hasAuth}
         contentMap={payload}
-        client:only="react"
       />
     )
   }

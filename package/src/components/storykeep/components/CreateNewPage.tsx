@@ -2,13 +2,11 @@ import { useState, useEffect } from "react";
 import { navigate } from "astro:transitions/client";
 import { useStore } from "@nanostores/react";
 import { Combobox } from "@headlessui/react";
-import {
-  ChevronUpDownIcon,
-  ChevronLeftIcon,
-  ChevronRightIcon,
-  CheckIcon,
-  XMarkIcon,
-} from "@heroicons/react/24/outline";
+import ChevronUpDownIcon from "@heroicons/react/24/outline/ChevronUpDownIcon";
+import ChevronLeftIcon from "@heroicons/react/24/outline/ChevronLeftIcon";
+import ChevronRightIcon from "@heroicons/react/24/outline/ChevronRightIcon";
+import CheckIcon from "@heroicons/react/24/outline/CheckIcon";
+import XMarkIcon from "@heroicons/react/24/outline/XMarkIcon";
 import PreviewPage from "./PreviewPage";
 import { viewportKeyStore, creationStateStore, themeStore } from "../../../store/storykeep";
 import { debounce } from "../../../utils/helpers";

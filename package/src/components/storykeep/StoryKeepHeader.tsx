@@ -1,7 +1,8 @@
 import { useState, useRef, useEffect, memo } from "react";
 import { navigate } from "astro:transitions/client";
 import { useStore } from "@nanostores/react";
-import { RectangleGroupIcon, PresentationChartBarIcon } from "@heroicons/react/24/outline";
+import RectangleGroupIcon from "@heroicons/react/24/outline/RectangleGroupIcon";
+import PresentationChartBarIcon from "@heroicons/react/24/outline/PresentationChartBarIcon";
 import { SaveProcessModal } from "./components/SaveProcessModal";
 import ViewportSelector from "./components/ViewportSelector";
 import ToolModeSelector from "./components/ToolModeSelector";

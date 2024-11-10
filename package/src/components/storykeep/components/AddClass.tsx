@@ -1,6 +1,7 @@
 import { useRef } from "react";
 import { Combobox, Listbox } from "@headlessui/react";
-import { CheckIcon, ChevronUpDownIcon } from "@heroicons/react/24/outline";
+import CheckIcon from "@heroicons/react/24/outline/CheckIcon";
+import ChevronUpDownIcon from "@heroicons/react/24/outline/ChevronUpDownIcon";
 import { useDropdownDirection } from "../../../hooks/useDropdownDirection";
 import { classNames } from "../../../utils/helpers";
 import { tailwindClasses } from "../../../assets/tailwindClasses";

@@ -1,6 +1,8 @@
 import { useState, useEffect, useCallback } from "react";
 import { useStore } from "@nanostores/react";
-import { XMarkIcon, PlusIcon, ChevronDoubleLeftIcon } from "@heroicons/react/24/outline";
+import XMarkIcon from "@heroicons/react/24/outline/XMarkIcon";
+import PlusIcon from "@heroicons/react/24/outline/PlusIcon";
+import ChevronDoubleLeftIcon from "@heroicons/react/24/outline/ChevronDoubleLeftIcon";
 import { paneHeldBeliefs, paneWithheldBeliefs } from "../../../store/storykeep";
 import { useStoryKeepUtils } from "../../../utils/storykeep";
 import ContentEditableField from "../components/ContentEditableField";

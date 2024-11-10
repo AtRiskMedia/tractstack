@@ -2,13 +2,11 @@ import { useState, useEffect, useCallback, useRef } from "react";
 import { ulid } from "ulid";
 import { useStore } from "@nanostores/react";
 import { Combobox } from "@headlessui/react";
-import {
-  XMarkIcon,
-  ArrowUpTrayIcon,
-  FolderIcon,
-  CheckIcon,
-  ChevronUpDownIcon,
-} from "@heroicons/react/24/outline";
+import XMarkIcon from "@heroicons/react/24/outline/XMarkIcon";
+import ArrowUpTrayIcon from "@heroicons/react/24/outline/ArrowUpTrayIcon";
+import FolderIcon from "@heroicons/react/24/outline/FolderIcon";
+import CheckIcon from "@heroicons/react/24/outline/CheckIcon";
+import ChevronUpDownIcon from "@heroicons/react/24/outline/ChevronUpDownIcon";
 import imageCompression from "browser-image-compression";
 import {
   paneMarkdownFragmentId,

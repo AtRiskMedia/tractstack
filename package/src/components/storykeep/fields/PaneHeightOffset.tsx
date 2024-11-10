@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-import { ChevronDoubleLeftIcon, InformationCircleIcon } from "@heroicons/react/24/outline";
+import ChevronDoubleLeftIcon from "@heroicons/react/24/outline/ChevronDoubleLeftIcon";
+import InformationCircleIcon from "@heroicons/react/24/outline/InformationCircleIcon";
 import { useStore } from "@nanostores/react";
 import {
   paneHeightOffsetDesktop,

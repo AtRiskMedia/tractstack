@@ -1,5 +1,6 @@
 import { useRef, useState } from "react";
-import { XMarkIcon, ArrowUpTrayIcon } from "@heroicons/react/24/outline";
+import XMarkIcon from "@heroicons/react/24/outline/XMarkIcon";
+import ArrowUpTrayIcon from "@heroicons/react/24/outline/ArrowUpTrayIcon";
 import type { ChangeEvent } from "react";
 
 interface BrandImageUploadProps {

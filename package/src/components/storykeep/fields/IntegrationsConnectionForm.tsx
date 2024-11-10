@@ -1,5 +1,6 @@
 import { useState, useCallback, useEffect } from "react";
-import { CheckCircleIcon, ExclamationTriangleIcon } from "@heroicons/react/24/outline";
+import CheckCircleIcon from "@heroicons/react/24/outline/CheckCircleIcon";
+import ExclamationTriangleIcon from "@heroicons/react/24/outline/ExclamationTriangleIcon";
 import type { ChangeEvent } from "react";
 
 interface IntegrationsConnectionFormProps {
@@ -328,14 +329,14 @@ const IntegrationsConnectionForm = ({ setGotIntegrations }: IntegrationsConnecti
           <div className="flex justify-end space-x-4 pt-4">
             <button
               onClick={handleSkip}
-              className="px-4 py-2 bg-mydarkgrey text-white rounded hover:bg-mydarkgrey/80"
+              className="px-4 py-2 text-white bg-black rounded hover:bg-myorange disabled:bg-mydarkgrey disabled:cursor-not-allowed"
             >
               Skip Integrations
             </button>
             <button
               onClick={handleSave}
               disabled={isSaving}
-              className="px-4 py-2 text-white bg-black rounded hover:bg-myblue disabled:bg-mydarkgrey disabled:cursor-not-allowed"
+              className="px-4 py-2 text-white bg-black rounded hover:bg-myorange disabled:bg-mydarkgrey disabled:cursor-not-allowed"
             >
               {isSaving ? "Saving..." : "Save Integration Settings"}
             </button>

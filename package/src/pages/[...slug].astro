@@ -18,16 +18,6 @@ const user = Astro.locals.user as AuthStatus;
 const { hasConcierge, hasTurso, hasBranding, hasContent } = getSetupChecks();
 const hasTursoReady = hasTurso ? await isTursoReady() : false;
 const hasContentReady = hasTurso && hasContent ? await isContentReady() : false;
-if (
-  !hasConcierge ||
-  !hasTurso ||
-  !hasTursoReady ||
-  !hasBranding ||
-  !hasContent ||
-  !hasContentReady
-) {
-  return Astro.redirect("/storykeep");
-}
 
 // get styles offset
 const stylesVerUrl =
@@ -48,67 +38,78 @@ if (!lookup) return Astro.redirect("/404");
 
 // get storyfragment datum
 const storyfragment = await getStoryFragmentBySlug(lookup);
-if (!storyfragment) {
-  return Astro.redirect("/404");
-}
 
 // id for this storyfragment
-const current: Current = {
-  id: storyfragment.id,
-  slug: storyfragment.slug,
-  title: storyfragment.title,
-  parentId: storyfragment.tractStackId,
-  parentSlug: storyfragment.tractStackSlug,
-  parentTitle: storyfragment.tractStackTitle,
-};
+const current: Current = storyfragment
+  ? {
+      id: storyfragment.id,
+      slug: storyfragment.slug,
+      title: storyfragment.title,
+      parentId: storyfragment.tractStackId,
+      parentSlug: storyfragment.tractStackSlug,
+      parentTitle: storyfragment.tractStackTitle,
+    }
+  : null;
 ---
 
-<Layout
-  title={storyfragment.title}
-  pubDatetime={storyfragment.created}
-  modDatetime={storyfragment.changed}
-  ogImage={typeof storyfragment?.socialImagePath === `string`
-    ? storyfragment.socialImagePath
-    : undefined}
-  stylesUrl={stylesUrl}
->
-  {
-    ENABLE_HEADER_WIDGET ? (
-      <HeaderWidget slug={lookup} resources={storyfragment.resourcesPayload.headerWidget} />
-    ) : null
-  }
-  <Header
-    title={storyfragment.title}
-    menu={storyfragment.menuPayload}
-    slug={lookup}
-    isContext={false}
-    isEditable={true}
-    impressions={storyfragment.impressions}
-    user={user}
-  />
-  <main id="main-content" class="min-h-screen">
-    <StoryFragmentWrapper
-      tailwindBgColour={storyfragment.tailwindBgColour}
-      panesPayload={storyfragment.panesPayload}
-      current={current}
-      resourcesPayload={storyfragment.resourcesPayload}
-    />
-  </main>
-  {
-    storyfragment.impressions?.length ? (
-      <ImpressionWrapper
-        slug={storyfragment.slug}
-        isContext={true}
-        payload={storyfragment.impressions}
-        client:idle
+{
+  !storyfragment ||
+  !hasConcierge ||
+  !hasTurso ||
+  !hasTursoReady ||
+  !hasBranding ||
+  !hasContent ||
+  !hasContentReady ? (
+    <div>
+      Your StoryKeep is bare. Please visit: <a href="/storykeep">Site Wizard</a>
+    </div>
+  ) : (
+    <Layout
+      title={storyfragment.title}
+      pubDatetime={storyfragment.created}
+      modDatetime={storyfragment.changed}
+      ogImage={
+        typeof storyfragment?.socialImagePath === `string`
+          ? storyfragment.socialImagePath
+          : undefined
+      }
+      stylesUrl={stylesUrl}
+    >
+      {ENABLE_HEADER_WIDGET ? (
+        <HeaderWidget slug={lookup} resources={storyfragment.resourcesPayload.headerWidget} />
+      ) : null}
+      <Header
+        title={storyfragment.title}
+        menu={storyfragment.menuPayload}
+        slug={lookup}
+        isContext={false}
+        isEditable={true}
+        impressions={storyfragment.impressions}
+        user={user}
       />
-    ) : null
-  }
-  <Footer
-    created={storyfragment.created}
-    menu={storyfragment.menuPayload}
-    backToTop={true}
-    slug={lookup}
-    isContext={false}
-  />
-</Layout>
+      <main id="main-content" class="min-h-screen">
+        <StoryFragmentWrapper
+          tailwindBgColour={storyfragment.tailwindBgColour}
+          panesPayload={storyfragment.panesPayload}
+          current={current}
+          resourcesPayload={storyfragment.resourcesPayload}
+        />
+      </main>
+      {storyfragment.impressions?.length ? (
+        <ImpressionWrapper
+          slug={storyfragment.slug}
+          isContext={true}
+          payload={storyfragment.impressions}
+          client:idle
+        />
+      ) : null}
+      <Footer
+        created={storyfragment.created}
+        menu={storyfragment.menuPayload}
+        backToTop={true}
+        slug={lookup}
+        isContext={false}
+      />
+    </Layout>
+  )
+}

@@ -1,12 +1,12 @@
 import { useMemo, useState, useEffect, useCallback } from "react";
 import { useStore } from "@nanostores/react";
 import { Combobox } from "@headlessui/react";
-import { ChevronUpDownIcon, CheckIcon, ChevronDoubleLeftIcon } from "@heroicons/react/24/outline";
-import {
-  DevicePhoneMobileIcon,
-  DeviceTabletIcon,
-  ComputerDesktopIcon,
-} from "@heroicons/react/24/outline";
+import ChevronUpDownIcon from "@heroicons/react/24/outline/ChevronUpDownIcon";
+import CheckIcon from "@heroicons/react/24/outline/CheckIcon";
+import ChevronDoubleLeftIcon from "@heroicons/react/24/outline/ChevronDoubleLeftIcon";
+import DevicePhoneMobileIcon from "@heroicons/react/24/outline/DevicePhoneMobileIcon";
+import DeviceTabletIcon from "@heroicons/react/24/outline/DeviceTabletIcon";
+import ComputerDesktopIcon from "@heroicons/react/24/outline/ComputerDesktopIcon";
 import { paneFragmentIds, paneFragmentBgPane } from "../../../store/storykeep";
 import { useStoryKeepUtils } from "../../../utils/storykeep";
 import { SvgBreaks } from "../../../assets/shapes";

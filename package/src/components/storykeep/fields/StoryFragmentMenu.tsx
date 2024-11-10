@@ -1,7 +1,9 @@
 import { useState, useRef } from "react";
 import { useDropdownDirection } from "../../../hooks/useDropdownDirection";
 import { Combobox } from "@headlessui/react";
-import { CheckIcon, ChevronUpDownIcon, ChevronDoubleLeftIcon } from "@heroicons/react/24/outline";
+import CheckIcon from "@heroicons/react/24/outline/CheckIcon";
+import ChevronUpDownIcon from "@heroicons/react/24/outline/ChevronUpDownIcon";
+import ChevronDoubleLeftIcon from "@heroicons/react/24/outline/ChevronDoubleLeftIcon";
 import { useStore } from "@nanostores/react";
 import { storyFragmentMenuId } from "../../../store/storykeep";
 import type { StoreKey, MenuDatum } from "../../../types";

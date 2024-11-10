@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Combobox } from "@headlessui/react";
-import { CheckIcon, ChevronUpDownIcon } from "@heroicons/react/20/solid";
+import CheckIcon from "@heroicons/react/20/solid/CheckIcon";
+import ChevronUpDownIcon from "@heroicons/react/20/solid/ChevronUpDownIcon";
 import type { FullContentMap } from "../../../types";
 
 interface ContentSearchComboboxProps {

@@ -6,9 +6,14 @@ import type { LineDataSeries } from "../../../types";
 type Duration = "daily" | "weekly" | "monthly";
 
 const Line = ({ data, duration }: { data: LineDataSeries[]; duration: Duration }) => {
+  const [isClient, setIsClient] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
   const [key, setKey] = useState(0);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
   useEffect(() => {
     const updateDimensions = () => {
@@ -68,6 +73,8 @@ const Line = ({ data, duration }: { data: LineDataSeries[]; duration: Duration }
     const step = Math.ceil(maxY / (tickCount - 1));
     return Array.from({ length: tickCount }, (_, i) => i * step);
   }, [maxY]);
+
+  if (!isClient) return null;
 
   if (dimensions.width === 0 || dimensions.height === 0) {
     return <div ref={containerRef} style={{ width: "100%", height: "100%" }} />;

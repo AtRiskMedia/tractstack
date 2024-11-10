@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { BeakerIcon } from "@heroicons/react/24/outline";
+import BeakerIcon from "@heroicons/react/24/outline/BeakerIcon";
 import type { FileDatum } from "../../../types";
 
 interface ImagesTableProps {

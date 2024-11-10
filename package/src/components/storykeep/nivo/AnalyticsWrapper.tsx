@@ -1,5 +1,5 @@
 import { useStore } from "@nanostores/react";
-import { ArrowUpIcon } from "@heroicons/react/24/outline";
+import ArrowUpIcon from "@heroicons/react/24/outline/ArrowUpIcon";
 import Pie from "./Pie";
 import Line from "./Line";
 import { analyticsDuration, showAnalytics } from "../../../store/storykeep";

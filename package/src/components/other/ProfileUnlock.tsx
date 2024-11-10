@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import type { FormEvent } from "react";
-import { ChevronRightIcon } from "@heroicons/react/20/solid";
+import ChevronRightIcon from "@heroicons/react/20/solid/ChevronRightIcon";
 import { auth, profile, error, success, loading, referrer } from "../../store/auth";
 import { classNames } from "../../utils/helpers";
 import { getTokens } from "../../api/fetchClient";

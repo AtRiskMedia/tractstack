@@ -1,7 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState, useCallback } from "react";
 import { navigate } from "astro:transitions/client";
-import { CheckCircleIcon, ExclamationTriangleIcon } from "@heroicons/react/24/outline";
+import CheckCircleIcon from "@heroicons/react/24/outline/CheckCircleIcon";
+import ExclamationTriangleIcon from "@heroicons/react/24/outline/ExclamationTriangleIcon";
 import { tursoClient } from "../../../api/tursoClient";
 import { cleanStringUpper } from "../../../utils/helpers";
 import type { TractStackDatum, TursoQuery } from "../../../types";

@@ -1,4 +1,5 @@
-import { RectangleGroupIcon, BeakerIcon } from "@heroicons/react/24/outline";
+import RectangleGroupIcon from "@heroicons/react/24/outline/RectangleGroupIcon";
+import BeakerIcon from "@heroicons/react/24/outline/BeakerIcon";
 
 export const OpenStoryKeep = ({
   slug,

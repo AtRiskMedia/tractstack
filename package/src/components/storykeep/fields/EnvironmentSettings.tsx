@@ -1,13 +1,11 @@
 import { memo, useState, useEffect, useCallback, useMemo } from "react";
 import { Switch, Combobox } from "@headlessui/react";
-import {
-  CheckIcon,
-  XMarkIcon,
-  PlusIcon,
-  ChevronUpDownIcon,
-  ExclamationTriangleIcon,
-  InformationCircleIcon,
-} from "@heroicons/react/24/outline";
+import CheckIcon from "@heroicons/react/24/outline/CheckIcon";
+import XMarkIcon from "@heroicons/react/24/outline/XMarkIcon";
+import PlusIcon from "@heroicons/react/24/outline/PlusIcon";
+import ChevronUpDownIcon from "@heroicons/react/24/outline/ChevronUpDownIcon";
+import ExclamationTriangleIcon from "@heroicons/react/24/outline/ExclamationTriangleIcon";
+import InformationCircleIcon from "@heroicons/react/24/outline/InformationCircleIcon";
 import { envSettings } from "../../../store/storykeep";
 import ContentEditableField from "../components/ContentEditableField";
 import { DesignSnapshotModal } from "../components/DesignSnapshotModal";
@@ -258,13 +256,10 @@ const EnvironmentSettings = ({ contentMap, showOnlyGroup }: EnvironmentSettingsP
   }, [originalSettings, localSettings]);
 
   const handleSettingChange = useCallback(
-    (index: number, field: keyof EnvSettingDatum, newValue: string | boolean | null) => {
+    (index: number, field: keyof EnvSettingDatum, newValue: string | boolean) => {
       setLocalSettings((prev) => {
         const newSettings = [...prev];
-        newSettings[index] = {
-          ...newSettings[index],
-          [field]: newValue ?? "", // Convert null to empty string
-        };
+        newSettings[index] = { ...newSettings[index], [field]: newValue };
         return newSettings;
       });
       setHasUnsavedChanges(true);
@@ -602,7 +597,7 @@ const EnvironmentSettings = ({ contentMap, showOnlyGroup }: EnvironmentSettingsP
           {renderLabel()}
           <Combobox
             value={setting.value || "default"}
-            onChange={(newValue) => handleSettingChange(index, "value", newValue)}
+            onChange={(newValue) => handleSettingChange(index, "value", newValue ?? false)}
           >
             <div className="relative mt-1">
               <div className="relative w-full cursor-default overflow-hidden rounded-lg bg-white text-left shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-teal-300 sm:text-sm">
@@ -706,7 +701,7 @@ const EnvironmentSettings = ({ contentMap, showOnlyGroup }: EnvironmentSettingsP
           {renderLabel()}
           <Combobox
             value={setting.value}
-            onChange={(newValue) => handleSettingChange(index, "value", newValue)}
+            onChange={(newValue) => handleSettingChange(index, "value", newValue ?? false)}
           >
             <div className="relative mt-1">
               <div className="relative w-full cursor-default overflow-hidden rounded-lg bg-white text-left shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-teal-300 sm:text-sm">
@@ -892,7 +887,7 @@ const EnvironmentSettings = ({ contentMap, showOnlyGroup }: EnvironmentSettingsP
           {renderLabel()}
           <Combobox
             value={setting.value}
-            onChange={(newValue) => handleSettingChange(index, "value", newValue)}
+            onChange={(newValue) => handleSettingChange(index, "value", newValue ?? false)}
           >
             <div className="relative mt-1">
               <div className="relative w-full cursor-default overflow-hidden rounded-lg bg-white text-left shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-teal-300 sm:text-sm">

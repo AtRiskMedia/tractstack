@@ -40,12 +40,12 @@ const hasTursoReady = hasTurso ? await isTursoReady() : false;
 const logo =
   typeof import.meta.env.PUBLIC_LOGO === `string` && import.meta.env.PUBLIC_LOGO
     ? import.meta.env.PUBLIC_LOGO
-    : `logo.svg`;
+    : `/logo.svg`;
 const logoIsSvg = logo.includes(`svg`);
 const wordmark =
   typeof import.meta.env.PUBLIC_WORDMARK === `string` && import.meta.env.PUBLIC_WORDMARK
     ? import.meta.env.PUBLIC_WORDMARK
-    : `wordmark.svg`;
+    : `/wordmark.svg`;
 const wordmarkIsSvg = wordmark.includes(`svg`);
 ---
 

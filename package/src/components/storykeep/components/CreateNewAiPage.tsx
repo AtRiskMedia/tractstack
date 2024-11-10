@@ -1,7 +1,9 @@
 import { useEffect, useState, useCallback } from "react";
 import { navigate } from "astro:transitions/client";
 import { useStore } from "@nanostores/react";
-import { ChevronUpDownIcon, CheckIcon, XMarkIcon } from "@heroicons/react/24/outline";
+import ChevronUpDownIcon from "@heroicons/react/24/outline/ChevronUpDownIcon";
+import CheckIcon from "@heroicons/react/24/outline/CheckIcon";
+import XMarkIcon from "@heroicons/react/24/outline/XMarkIcon";
 import { Combobox } from "@headlessui/react";
 import { initializeStores } from "../../../utils/compositor/initStore";
 import { themeStore, creationStateStore } from "../../../store/storykeep";

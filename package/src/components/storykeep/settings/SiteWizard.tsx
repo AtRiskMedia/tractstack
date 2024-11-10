@@ -1,10 +1,8 @@
 import { useState, useEffect } from "react";
-import {
-  CheckCircleIcon,
-  InformationCircleIcon,
-  ChevronUpIcon,
-  LockClosedIcon,
-} from "@heroicons/react/24/outline";
+import CheckCircleIcon from "@heroicons/react/24/outline/CheckCircleIcon";
+import InformationCircleIcon from "@heroicons/react/24/outline/InformationCircleIcon";
+import ChevronUpIcon from "@heroicons/react/24/outline/ChevronUpIcon";
+import LockClosedIcon from "@heroicons/react/24/outline/LockClosedIcon";
 import TursoConnectionForm from "../fields/TursoConnectionForm";
 import IntegrationsConnectionForm from "../fields/IntegrationsConnectionForm";
 import DatabaseBootstrap from "../components/DatabaseBootstrap";

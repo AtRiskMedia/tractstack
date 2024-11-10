@@ -1,5 +1,6 @@
 import { useStore } from "@nanostores/react";
-import { EyeDropperIcon, ClipboardDocumentIcon } from "@heroicons/react/24/outline";
+import EyeDropperIcon from "@heroicons/react/24/outline/EyeDropperIcon";
+import ClipboardDocumentIcon from "@heroicons/react/24/outline/ClipboardDocumentIcon";
 import { stylesMemoryStore } from "../../../store/storykeep";
 import { classNames } from "../../../utils/helpers";
 import { tagNames } from "../../../types";

@@ -1,4 +1,4 @@
-import { CheckIcon } from "@heroicons/react/20/solid";
+import CheckIcon from "@heroicons/react/20/solid/CheckIcon";
 
 interface ContentTypeFilterProps {
   types: string[];

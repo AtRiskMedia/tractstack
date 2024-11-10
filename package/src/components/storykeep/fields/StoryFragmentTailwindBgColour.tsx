@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect, useMemo, useCallback } from "react";
-import { ChevronDoubleLeftIcon } from "@heroicons/react/24/outline";
+import ChevronDoubleLeftIcon from "@heroicons/react/24/outline/ChevronDoubleLeftIcon";
 import { useStore } from "@nanostores/react";
 import { storyFragmentTailwindBgColour } from "../../../store/storykeep";
 import ColorPickerWrapper from "../components/ColorPickerWrapper";

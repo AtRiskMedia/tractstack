@@ -1,7 +1,8 @@
 import { useState, useMemo, useRef } from "react";
 import { useDropdownDirection } from "../../../hooks/useDropdownDirection";
 import { Combobox } from "@headlessui/react";
-import { ChevronUpDownIcon, CheckIcon } from "@heroicons/react/24/outline";
+import ChevronUpDownIcon from "@heroicons/react/24/outline/ChevronUpDownIcon";
+import CheckIcon from "@heroicons/react/24/outline/CheckIcon";
 import { getTailwindColorOptions } from "../../../assets/tailwindColors";
 import { classNames } from "../../../utils/helpers";
 

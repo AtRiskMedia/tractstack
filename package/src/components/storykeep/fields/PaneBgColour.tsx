@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from "react";
 import { useStore } from "@nanostores/react";
-import { XMarkIcon, ChevronDoubleLeftIcon } from "@heroicons/react/24/outline";
+import XMarkIcon from "@heroicons/react/24/outline/XMarkIcon";
+import ChevronDoubleLeftIcon from "@heroicons/react/24/outline/ChevronDoubleLeftIcon";
 import { paneFragmentIds, paneFragmentBgColour } from "../../../store/storykeep";
 import { useStoryKeepUtils, createFieldWithHistory } from "../../../utils/storykeep";
 import { tailwindToHex, hexToTailwind } from "../../../assets/tailwindColors";

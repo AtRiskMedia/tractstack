@@ -1,7 +1,10 @@
 import { useState, useEffect } from "react";
 import { useStore } from "@nanostores/react";
 import { Switch } from "@headlessui/react";
-import { ArrowUpIcon, ArrowDownIcon, XMarkIcon, CheckIcon } from "@heroicons/react/20/solid";
+import ArrowUpIcon from "@heroicons/react/20/solid/ArrowUpIcon";
+import ArrowDownIcon from "@heroicons/react/20/solid/ArrowDownIcon";
+import XMarkIcon from "@heroicons/react/20/solid/XMarkIcon";
+import CheckIcon from "@heroicons/react/20/solid/CheckIcon";
 import PaneTitle from "../fields/PaneTitle";
 import PaneSlug from "../fields/PaneSlug";
 import PaneHeightOffset from "../fields/PaneHeightOffset";

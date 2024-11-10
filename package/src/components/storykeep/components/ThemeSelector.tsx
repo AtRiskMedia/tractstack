@@ -1,6 +1,7 @@
 import { Fragment } from "react";
 import { Listbox, Transition } from "@headlessui/react";
-import { ChevronUpDownIcon, CheckIcon } from "@heroicons/react/24/outline";
+import ChevronUpDownIcon from "@heroicons/react/24/outline/ChevronUpDownIcon";
+import CheckIcon from "@heroicons/react/24/outline/CheckIcon";
 import type { Theme } from "../../../types";
 
 interface ThemeSelectorProps {

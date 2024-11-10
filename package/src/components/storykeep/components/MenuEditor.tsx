@@ -1,11 +1,9 @@
 import { useState, useCallback } from "react";
 import { navigate } from "astro:transitions/client";
-import {
-  CheckCircleIcon,
-  ExclamationTriangleIcon,
-  XMarkIcon,
-  PlusIcon,
-} from "@heroicons/react/24/outline";
+import CheckCircleIcon from "@heroicons/react/24/outline/CheckCircleIcon";
+import ExclamationTriangleIcon from "@heroicons/react/24/outline/ExclamationTriangleIcon";
+import XMarkIcon from "@heroicons/react/24/outline/XMarkIcon";
+import PlusIcon from "@heroicons/react/24/outline/PlusIcon";
 import { tursoClient } from "../../../api/tursoClient";
 import { cleanString } from "../../../utils/helpers";
 import type { MenuDatum, MenuLink, TursoQuery } from "../../../types";

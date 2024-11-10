@@ -1,12 +1,11 @@
 import { useRef, useState, useEffect, useCallback } from "react";
 import { Combobox } from "@headlessui/react";
-import { ChevronUpDownIcon, CheckIcon } from "@heroicons/react/20/solid";
+import ChevronUpDownIcon from "@heroicons/react/20/solid/ChevronUpDownIcon";
+import CheckIcon from "@heroicons/react/20/solid/CheckIcon";
 import { classNames } from "../../../utils/helpers";
-import {
-  DevicePhoneMobileIcon,
-  DeviceTabletIcon,
-  ComputerDesktopIcon,
-} from "@heroicons/react/24/outline";
+import DevicePhoneMobileIcon from "@heroicons/react/24/outline/DevicePhoneMobileIcon";
+import DeviceTabletIcon from "@heroicons/react/24/outline/DeviceTabletIcon";
+import ComputerDesktopIcon from "@heroicons/react/24/outline/ComputerDesktopIcon";
 import { useDropdownDirection } from "../../../hooks/useDropdownDirection";
 import type { ChangeEvent } from "react";
 

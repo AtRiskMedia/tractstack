@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useStore } from "@nanostores/react";
-import { BoltIcon, BoltSlashIcon } from "@heroicons/react/24/outline";
+import BoltIcon from "@heroicons/react/24/outline/BoltIcon";
+import BoltSlashIcon from "@heroicons/react/24/outline/BoltSlashIcon";
 import { auth } from "../../store/auth";
 import { heldBeliefs } from "../../store/beliefs";
 

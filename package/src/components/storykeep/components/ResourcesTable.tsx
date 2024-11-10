@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { BeakerIcon } from "@heroicons/react/24/outline";
+import BeakerIcon from "@heroicons/react/24/outline/BeakerIcon";
 import type { ResourceDatum } from "../../../types";
 
 interface ResourcesTableProps {
