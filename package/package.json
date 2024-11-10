@@ -1,12 +1,18 @@
 {
   "name": "tractstack",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "author": "At Risk Media",
   "description": "no-code website builder and content marketing platform",
   "main": "index.ts",
   "types": "index.d.ts",
   "license": "FSL-1.1-MIT",
   "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AtRiskMedia/tractstack",
+    "directory": "package"
+  },
+  "homepage": "https://tractstack.com",
   "sideEffects": false,
   "exports": {
     ".": "./index.ts",
@@ -18,6 +24,9 @@
     "index.ts",
     "virtual.d.ts",
     "index.d.ts"
+  ],
+  "keywords": [
+    "astro-integration"
   ],
   "scripts": {
     "build": "tsc",
@@ -71,14 +80,6 @@
     "astro": "^4.13.1",
     "eslint": "^8.0.0",
     "typescript": "^5.4.2"
-  },
-  "overrides": {
-    "debug": "^4.3.4"
-  },
-  "pnpm": {
-    "overrides": {
-      "debug": "^4.3.4"
-    }
   },
   "engines": {
     "node": ">=20.0.0"
